@@ -1,5 +1,33 @@
 /*pages d'accueil*/
+body
+{
+    background-color: grey;
+}
 .title
 {
     text-align: center;
 }
+a
+{
+    color: greenyellow;
+}
+
+/* pour repere des colonne
+
+.leftColumm
+{
+    background-color: blue;
+}
+.centralColumm
+{
+    background-color: red;
+    
+}
+.rigthColumm
+{
+    background-color: gray;
+}*/
+/*navbar*/
+nav
+{
+    background-color: grey;}

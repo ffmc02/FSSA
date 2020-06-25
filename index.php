@@ -46,6 +46,18 @@ include_once 'controlleur/indexCtrl.php';
                 <h1>Bienvenue sur le site d'inscription aux épreuves de la <br>Ligue des hauts de france (FFSA)
                 </h1>
             </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-lg-3 leftColumm">
+                <p>Les prochaines épreuve <a href="">Par ici</a></p>
+            </div>
+            <div class="col-lg-6 centralColumm">
+                <p>essaye centre </p>
+            </div>
+            <div class="col-lg-3 rigthColumm">
+                <p>essay droite</p>
+            </div>
         </div>
         
     </div>
