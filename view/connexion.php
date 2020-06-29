@@ -54,7 +54,7 @@ include_once '../include/navbar.php';
                         <input id="nameUser" type="text" name="nameUser" />
                     </div>
                     <div>  
-                        <label for="nameUser"> Votre prénom :</label> 
+                        <label for="firstnameUser"> Votre prénom :</label> 
                         <input id="firstnameUser" type="text" name="firstnameUser" />
                     </div>
                     <div>  
@@ -65,13 +65,13 @@ include_once '../include/navbar.php';
                         <label for="zipCodeUser"> Votre code postale :</label> 
                         <input id="zipeCodeUser" type="text" name="zipeCodeUser" />
                     </div>
-                    <div>  
-                        <label for="nameUser"> Votre mot de passe :</label> 
-                        <input id="passwordUser" type="text" name="passwordUser" />
+                      <div>  
+                        <label for="city"> votre ville :</label> 
+                        <input id="city" type="text" name="city" />
                     </div>
                     <div>  
-                        <label for="conbfirmPasswordUSer"> Confirmé votre mot de passe :</label> 
-                        <input id="confirmPasswordUser" type="text" name="confirmPasswordUser" />
+                        <label for="passwordUser"> Votre mot de passe :</label> 
+                        <input id="passwordUser" type="text" name="passwordUser" />
                     </div>
                     <div>  
                         <label for="conbfirmPasswordUSer"> Confirmé votre mot de passe :</label> 
@@ -86,7 +86,7 @@ include_once '../include/navbar.php';
                         <input id="licenceNumber" type="text" name="licenceNumber" />
                     </div>
                     <div> 
-                        <input id="inscription" type="submit" name="inscription" value="je m'inscrit" />
+                        <input id="inscription" type="submit" name="validate" value="je m'inscrit" />
                     </div>
                 </form>
                 <div>

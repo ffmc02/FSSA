@@ -20,7 +20,7 @@ class membres {
     public $cle = '';
     public $adress = '';
     public $ZipeCode = 0;
-    public $city = '';
+    public $City = '';
     public $AsaCode = 0;
     public $LicenceNumber = 0;
     public $Actif = false;
@@ -40,15 +40,15 @@ class membres {
                 . '(`name`, `Firstname`, `password`, `cle`,  `adress`, `ZipeCode`, `City`, `AsaCode`, `LicenceNumber`)'
                 . 'VALUES (`:name`, `:Firstname`, `:password`, `:cle`,  `:adress`, `:ZipeCode`, `:City`, `:AsaCode`, `:LicenceNumber`)';
         $queryResult = $this->pdo->db->prepare($query);
-        $queryResult->bindValue(':name', $this->title, PDO::PARAM_STR);
-        $queryResult->bindValue(':Firstname', $this->title, PDO::PARAM_STR);
-        $queryResult->bindValue(':password', $this->title, PDO::PARAM_STR);
-        $queryResult->bindValue(':cle', $this->title, PDO::PARAM_STR);
-        $queryResult->bindValue(':adress', $this->title, PDO::PARAM_STR);
-        $queryResult->bindValue(':ZipeCode', $this->idExtraUrban, PDO::PARAM_INT);
-        $queryResult->bindValue(':City', $this->title, PDO::PARAM_STR);
-        $queryResult->bindValue(':AsaCode', $this->idExtraUrban, PDO::PARAM_INT);
-        $queryResult->bindValue(':LicenceNumber', $this->idExtraUrban, PDO::PARAM_INT);
+        $queryResult->bindValue(':name', $this->name, PDO::PARAM_STR);
+        $queryResult->bindValue(':Firstname', $this->Firstname, PDO::PARAM_STR);
+        $queryResult->bindValue(':password', $this->password, PDO::PARAM_STR);
+        $queryResult->bindValue(':cle', $this->cle, PDO::PARAM_STR);
+        $queryResult->bindValue(':adress', $this->adress, PDO::PARAM_STR);
+        $queryResult->bindValue(':ZipeCode', $this->ZipeCode, PDO::PARAM_INT);
+        $queryResult->bindValue(':City', $this->City, PDO::PARAM_STR);
+        $queryResult->bindValue(':AsaCode', $this->AsaCode, PDO::PARAM_INT);
+        $queryResult->bindValue(':LicenceNumber', $this->LicenceNumber, PDO::PARAM_INT);
         return $queryResult->execute();
     }
 
