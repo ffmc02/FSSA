@@ -1,4 +1,6 @@
 <?php
+include_once '../Modele/dataBase.php';
+include_once '../Modele/membres.php';
 include_once '../controlleur/connexionCtrl.php';
 include_once '../include/header.php';
 include_once '../include/navbar.php';
