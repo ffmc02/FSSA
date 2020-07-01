@@ -1,11 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of membres
  *
@@ -13,16 +7,18 @@
  */
 class membres {
 
+    public $pdo;
     public $id = 0;
-    public $name = '';
-    public $firstname = '';
-    public $password = '';
-    public $cle = '';
-    public $adress = '';
-    public $ZipeCode = 0;
+    public $Name = '';
+    public $Firstname = '';
+    public $Email='';
+    public $Password = '';
+    public $Cle = '';
+    public $Address = '';
+    public $ZipCode = 0;
     public $City = '';
-    public $AsaCode = 0;
-    public $LicenceNumber = 0;
+    public $AsaCode = '0';
+    public $LicenceNumber = '0';
     public $Actif = false;
 
     public function __construct() {
@@ -36,20 +32,27 @@ class membres {
     }
 
     public function newMember() {
-        $query = 'INSER INTO  `0108asap_membres` '
-                . '(`name`, `Firstname`, `password`, `cle`,  `adress`, `ZipeCode`, `City`, `AsaCode`, `LicenceNumber`)'
-                . 'VALUES (`:name`, `:Firstname`, `:password`, `:cle`,  `:adress`, `:ZipeCode`, `:City`, `:AsaCode`, `:LicenceNumber`)';
+        $query = 'INSERT INTO `0108asap_membres`( `Name`, `Firstname`, `Email`, `Password`, `Cle`, `Actif`, `Address`, `ZipCode`, `City`, `AsaCode`, `LicenceNumber`) '
+                . 'VALUES (:Name, :Firstname, :Email, :Password, :Cle, :Actif, :Address, :ZipCode, :City, :AsaCode, :LicenceNumber)';
         $queryResult = $this->pdo->db->prepare($query);
-        $queryResult->bindValue(':name', $this->name, PDO::PARAM_STR);
+        $queryResult->bindValue(':Name', $this->Name, PDO::PARAM_STR);
         $queryResult->bindValue(':Firstname', $this->Firstname, PDO::PARAM_STR);
-        $queryResult->bindValue(':password', $this->password, PDO::PARAM_STR);
-        $queryResult->bindValue(':cle', $this->cle, PDO::PARAM_STR);
-        $queryResult->bindValue(':adress', $this->adress, PDO::PARAM_STR);
-        $queryResult->bindValue(':ZipeCode', $this->ZipeCode, PDO::PARAM_INT);
+        $queryResult->bindValue(':Email', $this->Email, PDO::PARAM_STR);
+        $queryResult->bindValue(':Password', $this->Password, PDO::PARAM_STR);
+        $queryResult->bindValue(':Cle', $this->Cle, PDO::PARAM_STR);
+        $queryResult->bindValue(':Actif', $this->Actif, PDO::PARAM_STR);
+        $queryResult->bindValue(':Address', $this->Address, PDO::PARAM_STR);
+        $queryResult->bindValue(':ZipCode', $this->ZipCode, PDO::PARAM_INT);
         $queryResult->bindValue(':City', $this->City, PDO::PARAM_STR);
-        $queryResult->bindValue(':AsaCode', $this->AsaCode, PDO::PARAM_INT);
-        $queryResult->bindValue(':LicenceNumber', $this->LicenceNumber, PDO::PARAM_INT);
+        $queryResult->bindValue(':AsaCode', $this->AsaCode, PDO::PARAM_STR);
+        $queryResult->bindValue(':LicenceNumber', $this->LicenceNumber, PDO::PARAM_STR);
+        //  //permet d'afficher la reguette excuter
+//          $queryResult->debugDumpParams();
+//    die();
+        //execution de la requette préparer:
         return $queryResult->execute();
     }
-
+public function connexionMembers(){
+    
+}
 }

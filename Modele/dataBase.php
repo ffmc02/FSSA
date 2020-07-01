@@ -14,7 +14,7 @@ class dataBase {
     public function __construct() {
         try {
             //Local
-            $this->db = new PDO('mysql:host=localhost;dbname=ffsa;charset=utf8', 'root', '');
+            $this->db = new PDO('mysql:host=localhost:3306;dbname=ffsa;charset=utf8', 'root', '');
             // devamorce
 //            $this->db = new PDO('mysql:host=localhost;dbname=gaetan02;charset=utf8', 'gaetan02', '05071988G@e');
         }
