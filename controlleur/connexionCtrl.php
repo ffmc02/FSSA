@@ -4,9 +4,9 @@
 $title = 'connexions';
 $Member = new membres;
 //liste de fonction 
-$ListFunction= new functions();
-$listerFunctions= $ListFunction->ListOfFunction();
-var_dump($listerFunctions);
+$FonctionList = new functions();
+$listerFunctions = $FonctionList->ListOfFunction();
+
 $formError = array();
 $regexMail = '/^[a-z0-9.-]+@[a-z0-9.-]{2,}.[a-z]{2,4}$/';
 $regexTitle = '/^[A-Za-z \d\-àâéèêôùûçÀÂÉÈÔÙÛÇ]+$/';
@@ -29,75 +29,78 @@ $cle = $test1 . $time . $test1;
 //je verifie que le bonton inscription a été cliqué
 if (isset($_POST['validate'])) {
 //    je vérifier que les input ne sont pas vide
-    if (!empty($_POST['nameUser'])) {
-        if (preg_match($regexTitle, $_POST['nameUser'])) {
-            $Member->Name = htmlspecialchars($_POST['nameUser']);
+    if (!empty($_POST['NameUser'])) {
+        if (preg_match($regexTitle, $_POST['NameUser'])) {
+            $Member->Name = htmlspecialchars($_POST['NameUser']);
         } else {
-            $formError['nameUser'] = 'Veuiller ne mettre que des caractères alphabétiques!!!!!!!!!!';
+            $formError['NameUser'] = 'Veuiller ne mettre que des caractères alphabétiques!!!!!!!!!!';
         }
     } else {
-        $formError['nameUser'] = 'Vous n\'avez pas remplie votre Nom';
+        $formError['NameUser'] = 'Vous n\'avez pas remplie votre Nom';
     }
-    if (!empty($_POST['firstnameUser'])) {
-        $Member->Firstname = htmlspecialchars($_POST['firstnameUser']);
+    if (!empty($_POST['FirstnameUser'])) {
+        $Member->Firstname = htmlspecialchars($_POST['FirstnameUser']);
     } else {
-        $formError['firstnameUser'] = 'Vous n\'avez pas remplie votre prénom';
+        $formError['FirstnameUser'] = 'Vous n\'avez pas remplie votre prénom';
     }
-    if (!empty($_POST['emailUser'])) {
-        if (filter_var($_POST['emailUser'], FILTER_VALIDATE_EMAIL)) {
-            $Member->Email = htmlspecialchars($_POST['emailUser']);
+    if (!empty($_POST['EmailUser'])) {
+        if (filter_var($_POST['EmailUser'], FILTER_VALIDATE_EMAIL)) {
+            $Member->Email = htmlspecialchars($_POST['EmailUser']);
         } else {
-            $formError['emailUser'] = 'Veuillez mettre un mail correct';
+            $formError['EmailUser'] = 'Veuillez mettre un mail correct';
         }
     } else {
-        $formError['emailUser'] = 'Veuillez remplir mail';
+        $formError['EmailUser'] = 'Veuillez remplir mail';
     }
-
-
-    if (!empty($_POST['adressUser'])) {
-        $Member->Address = htmlspecialchars($_POST['adressUser']);
+    if (!empty($_POST['AddressUser'])) {
+        $Member->Address = htmlspecialchars($_POST['AddressUser']);
     } else {
-        $formError['adressUser'] = 'Vous n\'avez pas remplie votre adresse';
+        $formError['AddressUser'] = 'Vous n\'avez pas remplie votre adresse';
     }
-    if (!empty($_POST['zipeCodeUser'])) {
-        $Member->ZipCode = htmlspecialchars($_POST['zipeCodeUser']);
+    if (!empty($_POST['ZipCodeUser'])) {
+        $Member->ZipCode = htmlspecialchars($_POST['ZipCodeUser']);
     } else {
-        $formError['zipeCodeUser'] = 'Vous n\'avez pas remplie votre code postale';
+        $formError['ZipCodeUser'] = 'Vous n\'avez pas remplie votre code postale';
     }
-    if (!empty($_POST['city'])) {
-        $Member->City = htmlspecialchars($_POST['city']);
+    if (!empty($_POST['City'])) {
+        $Member->City = htmlspecialchars($_POST['City']);
     } else {
-        $formError['city'] = 'Vous n\'avez pas remplie votre ville';
+        $formError['City'] = 'Vous n\'avez pas remplie votre ville';
     }
-    if (!empty($_POST['passwordUser'])) {
-        if ($_POST['passwordUser'] == $_POST['confirmPasswordUser']) {
-            $Member->Password = password_hash($_POST['passwordUser'], PASSWORD_BCRYPT);
+    if (!empty($_POST['PasswordUser'])) {
+        if ($_POST['PasswordUser'] == $_POST['ConbfirmPasswordUSer']) {
+            $Member->Password = password_hash($_POST['PasswordUser'], PASSWORD_BCRYPT);
         } else {
-            $formError['passwordUser'] = 'Attention, les mots de passe ne sont pas identiques.';
+            $formError['PasswordUser'] = 'Attention, les mots de passe ne sont pas identiques.';
         }
     } else {
-        $formError['passwordUser'] = 'Merci de remplir les champs password';
+        $formError['PasswordUser'] = 'Merci de remplir les champs password';
     }
     $Member->Cle = $cle;
-    if (!empty($_POST['asaCode'])) {
-        $Member->AsaCode = htmlspecialchars($_POST['asaCode']);
+    if (!empty($_POST['AsaCode'])) {
+        $Member->AsaCode = htmlspecialchars($_POST['AsaCode']);
     } else {
-        $formError['asaCode'] = 'Vous n\'avez pas remplie votre numéro d\'ASA';
+        $formError['AsaCode'] = 'Vous n\'avez pas remplie votre numéro d\'ASA';
     }
-    if (!empty($_POST['licenceNumber'])) {
-        $Member->LicenceNumber = htmlspecialchars($_POST['licenceNumber']);
+    if (!empty($_POST['LicenceNumber'])) {
+        $Member->LicenceNumber = htmlspecialchars($_POST['LicenceNumber']);
     } else {
-        $formError['licenceNumber'] = 'Vous n\'avez pas remplie votre numéro de licences';
+        $formError['LicenceNumber'] = 'Vous n\'avez pas remplie votre numéro de licences';
     }
     $Member->Actif = 'true';
+    if (!empty($_POST['TypeOfLicence'])) {
+        $Member->id_0108asap_functions = htmlspecialchars($_POST['TypeOfLicence']);
+    } else {
+        $formError['TypeOfLicence'] = 'Vous n\'avez pas séléctionné le type de licences!';
+    }
     if (count($formError) == 0) {
         $chekMembre = $Member->newMember();
-        var_dump($chekMembre);
         if ($chekMembre == true) {
             $_POST['connexion'] = '';
-            $_POST['loginNameUser'] = $_POST['nameUser'];
-            $_POST['loginpasswordUser'] = $_POST['passwordUser'];
-            $_POST['loginLicenceNumber'] = $_POST['licenceNumber'];
+            $_POST['LoginNameUseer'] = $_POST['NameUser'];
+            $_POST['LoginMailUser'] = $_POST['EmailUser'];
+            $_POST['LoginPasswordUser'] = $_POST['PasswordUser'];
+            $_POST['LoginLicenceNumber'] = $_POST['LicenceNumber'];
         }
     } else {
         $formError['licenceNumber'] = 'une erreur est survenue';
@@ -106,4 +109,60 @@ if (isset($_POST['validate'])) {
     
 }
 // partie connection 
+if (isset($_POST['connection'])) {
+    $MembersExist = new membres();
+    $IdMembers = new membres();
+    $formError = array();
+    if (!empty($_POST['LoginMailUser'])) {
+        if (filter_var($_POST['LoginMailUser'], FILTER_VALIDATE_EMAIL)) {
+            $MembersExist->Email = htmlspecialchars($_POST['LoginMailUser']);
+        } else {
+            $formError['LoginMailUser'] = 'Veuillez mettre un mail correct';
+        }
+    } else {
+        $formError['LoginMailUser'] = 'Veuillez remplir mail';
+    }
+    if (!empty($_POST['LoginPasswordUser'])) {
 
+        $LoginPassword = $_POST['LoginPasswordUser'];
+    } else {
+        $formError['LoginPasswordUser'] = 'Merci de remplir les champs password';
+    }
+    if (!empty($_POST['LoginNameUseer'])) {
+        $NameUser = htmlspecialchars($_POST['LoginNameUseer']);
+    } else {
+        $formError['LoginNameUseer'] = 'Merci de remplir votre nom';
+    }
+    if (!empty($_POST['LoginLicenceNumber'])) {
+        $LicenceNumber = htmlspecialchars($_POST['LoginLicenceNumber']);
+    } else {
+        $formError['LoginLicenceNumber'] = 'Merci de remplir votre numéro de licences';
+    }
+    if (count($formError) == 0) {
+        $verif = $MembersExist->connexionMembers();
+//            var_dump($verif);
+
+        if ($verif->CountMembers == 1)
+        //je verifier que l'utilisateur existe bien dans la base de donnée grace a son email  
+        //
+//          je verifie que le password entré par l'utilisateur et le meme que celui renseigner dans la base de donnée
+            $password = $verif->Password;
+
+        $validPassword = password_verify($LoginPassword, $password);
+        if ($validPassword) {
+            $_SESSION['idUser'] = $verif->id;
+            $_SESSION['loginMail'] = $verif->Email;
+            $_SESSION['Name'] = $verif->Name;
+            $_SESSION['Firstname']=$verif->Firstname;
+            $_SESSION['LicenceNumber'] = $verif->LicenceNumber;
+            $_SESSION['connect'] = 'OK';
+            $_SESSION['access'] = $verif->id_0108asap_functions;
+          
+            if (in_array($_SESSION['access'], $fonction)) {
+                header("Location: HomeLogin.php");
+            } else {
+                header("Location: ../index.php");
+            }
+        }
+    }
+} 

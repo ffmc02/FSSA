@@ -11,7 +11,7 @@ class membres {
     public $id = 0;
     public $Name = '';
     public $Firstname = '';
-    public $Email='';
+    public $Email = '';
     public $Password = '';
     public $Cle = '';
     public $Address = '';
@@ -20,6 +20,7 @@ class membres {
     public $AsaCode = '0';
     public $LicenceNumber = '0';
     public $Actif = false;
+    public $id_0108asap_functions = 0;
 
     public function __construct() {
 //fonction de connexion a ma base de donnéer 
@@ -32,8 +33,8 @@ class membres {
     }
 
     public function newMember() {
-        $query = 'INSERT INTO `0108asap_membres`( `Name`, `Firstname`, `Email`, `Password`, `Cle`, `Actif`, `Address`, `ZipCode`, `City`, `AsaCode`, `LicenceNumber`) '
-                . 'VALUES (:Name, :Firstname, :Email, :Password, :Cle, :Actif, :Address, :ZipCode, :City, :AsaCode, :LicenceNumber)';
+        $query = 'INSERT INTO `0108asap_membres`( `Name`, `Firstname`, `Email`, `Password`, `Cle`, `Actif`, `Address`, `ZipCode`, `City`, `AsaCode`, `LicenceNumber`, `id_0108asap_functions`) '
+                . 'VALUES (:Name, :Firstname, :Email, :Password, :Cle, :Actif, :Address, :ZipCode, :City, :AsaCode, :LicenceNumber, :id_0108asap_functions)';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':Name', $this->Name, PDO::PARAM_STR);
         $queryResult->bindValue(':Firstname', $this->Firstname, PDO::PARAM_STR);
@@ -46,13 +47,26 @@ class membres {
         $queryResult->bindValue(':City', $this->City, PDO::PARAM_STR);
         $queryResult->bindValue(':AsaCode', $this->AsaCode, PDO::PARAM_STR);
         $queryResult->bindValue(':LicenceNumber', $this->LicenceNumber, PDO::PARAM_STR);
+        $queryResult->bindValue(':id_0108asap_functions', $this->id_0108asap_functions, PDO::PARAM_INT);
         //  //permet d'afficher la reguette excuter
 //          $queryResult->debugDumpParams();
 //    die();
         //execution de la requette préparer:
         return $queryResult->execute();
     }
-public function connexionMembers(){
-    
-}
+
+    public function connexionMembers() {
+        $query = 'SELECT COUNT(`id`)AS `CountMembers` , `id`, `Name`, `Firstname`, `Email`, `Password`, `LicenceNumber`'
+                . ', `id_0108asap_functions`'
+                . ' FROM `0108asap_membres`'
+                . ' WHERE `Email`= :Email '
+                . 'GROUP BY `id`, `Email`, `Name`, `Firstname`, `Password`, `LicenceNumber`'
+                . ', `id_0108asap_functions`'
+                . '';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':Email', $this->Email, PDO::PARAM_STR);
+        $queryResult->execute();
+        return $queryResult->fetch(PDO::FETCH_OBJ);
+    }
+
 }

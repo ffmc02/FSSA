@@ -1,7 +1,9 @@
 <?php
+
 include_once '../Modele/dataBase.php';
 include_once '../Modele/membres.php';
 include_once '../Modele/functions.php';
+include_once '../config.php';
 include_once '../controlleur/connexionCtrl.php';
 include_once '../include/header.php';
 include_once '../include/navbar.php';
@@ -27,16 +29,24 @@ include_once '../include/navbar.php';
                 <h2>Formulaire de connexion</h2>
                 <form method="post" id="connexionForm">
                     <div>
-                        <label for="loginNameUser" > Votre nom :</label>
-                        <input id="loginNameUser" type="text" name="loginNameUser"/>
+                        <label for="LoginNameUseer" > Votre nom :</label>
+                        <input id="LoginNameUseer" type="text" name="LoginNameUseer"/>
+                        <p class="text-danger"><?= isset($formError['LoginNameUseer']) ? $formError['LoginNameUseer'] : '' ?></p>
                     </div>
                     <div>
-                        <label for="loginLicenceNumber"> votre numéro de licence :</label> 
-                        <input id="loginLicenceNumber" type="text"  name="loginLicenceNumber" />
+                        <label for="LoginMailUser" > Votre Mail :</label>
+                        <input id="LoginMailUser" type="text" name="LoginMailUser"/>
+                          <p class="text-danger"><?= isset($formError['LoginMailUser']) ? $formError['LoginMailUser'] : '' ?></p>
                     </div>
                     <div>
-                        <label for="loginpasswordUser">votre mot de passe :</label> 
-                        <input id="loginpasswordUser" type="text" name="loginpasswordUser" />
+                        <label for="LoginLicenceNumber"> votre numéro de licence :</label> 
+                        <input id="LoginLicenceNumber" type="text"  name="LoginLicenceNumber" />
+                          <p class="text-danger"><?= isset($formError['LoginLicenceNumber']) ? $formError['LoginLicenceNumber'] : '' ?></p>
+                    </div>
+                    <div>
+                        <label for="LoginPasswordUser">votre mot de passe :</label> 
+                        <input id="LoginPasswordUser" type="text" name="LoginPasswordUser" />
+                          <p class="text-danger"><?= isset($formError['LoginPasswordUser']) ? $formError['LoginPasswordUser'] : '' ?></p>
                     </div>
                     <div> 
                         <input id="connection" type="submit" name="connection" value="connexion" />
@@ -51,56 +61,56 @@ include_once '../include/navbar.php';
                 <h2>Formulaire d'inscription</h2>
                 <form method="post" id="inscription">
                     <div>  
-                        <label for="nameUser"> Votre nom :</label> 
-                        <input id="nameUser" type="text" name="nameUser" />
-                         <p class="text-danger"><?= isset($formError['nameUser']) ? $formError['nameUser'] : '' ?></p>
+                        <label for="NameUser"> Votre nom :</label> 
+                        <input id="NameUser" type="text" name="NameUser" />
+                        <p class="text-danger"><?= isset($formError['NameUser']) ? $formError['NameUser'] : '' ?></p>
                     </div>
                     <div>  
-                        <label for="firstnameUser"> Votre prénom :</label> 
-                        <input id="firstnameUser" type="text" name="firstnameUser" />
-                        <p class="text-danger"><?= isset($formError['firstnameUser']) ? $formError['firstnameUser'] : '' ?></p>
-                    </div>
-                         <div>  
-                        <label for="emailUser"> Votre Email :</label> 
-                        <input id="emailUser" type="email" name="emailUser" />
-                        <p class="text-danger"><?= isset($formError['emailUser']) ? $formError['emailUser'] : '' ?></p>
+                        <label for="FirstnameUser"> Votre prénom :</label> 
+                        <input id="FirstnameUser" type="text" name="FirstnameUser" />
+                        <p class="text-danger"><?= isset($formError['FirstnameUser']) ? $formError['FirstnameUser'] : '' ?></p>
                     </div>
                     <div>  
-                        <label for="adressUser"> Votre adresse :</label> 
-                        <input id="adressUser" type="text" name="adressUser" />
-                         <p class="text-danger"><?= isset($formError['adressUser']) ? $formError['adressUser'] : '' ?></p>
+                        <label for="EmailUser"> Votre Email :</label> 
+                        <input id="EmailUser" type="email" name="EmailUser" />
+                        <p class="text-danger"><?= isset($formError['EmailUser']) ? $formError['EmailUser'] : '' ?></p>
                     </div>
                     <div>  
-                        <label for="zipCodeUser"> Votre code postale :</label> 
-                        <input id="zipeCodeUser" type="text" name="zipeCodeUser" />
-                        <p class="text-danger"><?= isset($formError['zipeCodeUser']) ? $formError['zipeCodeUser'] : '' ?></p>
-                    </div>
-                      <div>  
-                        <label for="city"> votre ville :</label> 
-                        <input id="city" type="text" name="city" />
-                        <p class="text-danger"><?= isset($formError['city']) ? $formError['city'] : '' ?></p>
+                        <label for="AddressUser"> Votre adresse :</label> 
+                        <input id="AddressUser" type="text" name="AddressUser" />
+                        <p class="text-danger"><?= isset($formError['AddressUser']) ? $formError['AddressUser'] : '' ?></p>
                     </div>
                     <div>  
-                        <label for="passwordUser"> Votre mot de passe :</label> 
-                        <input id="passwordUser" type="password" name="passwordUser" />
-                        <p class="text-danger"><?= isset($formError['passwordUser']) ? $formError['passwordUser'] : '' ?></p>
+                        <label for="ZipCodeUser"> Votre code postale :</label> 
+                        <input id="ZipCodeUser" type="text" name="ZipCodeUser" />
+                        <p class="text-danger"><?= isset($formError['ZipCodeUser']) ? $formError['ZipCodeUser'] : '' ?></p>
                     </div>
                     <div>  
-                        <label for="conbfirmPasswordUSer"> Confirmé votre mot de passe :</label> 
-                        <input id="confirmPasswordUser" type="password" name="confirmPasswordUser" />
-                        <p class="text-danger"><?= isset($formError['passwordUser']) ? $formError['passwordUser'] : '' ?></p>
+                        <label for="City"> votre ville :</label> 
+                        <input id="City" type="text" name="City" />
+                        <p class="text-danger"><?= isset($formError['City']) ? $formError['City'] : '' ?></p>
                     </div>
                     <div>  
-                        <label for="asaCode">Numéro de votre ASA ou ASK :</label> 
-                        <input id="asaCode" type="text" name="asaCode" />
-                        <p class="text-danger"><?= isset($formError['asaCode']) ? $formError['asaCode'] : '' ?></p>
+                        <label for="PasswordUser"> Votre mot de passe :</label> 
+                        <input id="PasswordUser" type="password" name="PasswordUser" />
+                        <p class="text-danger"><?= isset($formError['PasswordUser']) ? $formError['PasswordUser'] : '' ?></p>
                     </div>
                     <div>  
-                        <label for="licenceNumber"> Votre numéro de licence:</label> 
-                        <input id="licenceNumber" type="text" name="licenceNumber" />
-                        <p class="text-danger"><?= isset($formError['licenceNumber']) ? $formError['licenceNumber'] : '' ?></p>
+                        <label for="ConbfirmPasswordUSer"> Confirmé votre mot de passe :</label> 
+                        <input id="ConbfirmPasswordUSer" type="password" name="ConbfirmPasswordUSer" />
+                        <p class="text-danger"><?= isset($formError['PasswordUser']) ? $formError['PasswordUser'] : '' ?></p>
                     </div>
-                    <div ">
+                    <div>  
+                        <label for="AsaCode">Numéro de votre ASA ou ASK :</label> 
+                        <input id="AsaCode" type="text" name="AsaCode" />
+                        <p class="text-danger"><?= isset($formError['AsaCode']) ? $formError['AsaCode'] : '' ?></p>
+                    </div>
+                    <div>  
+                        <label for="LicenceNumber"> Votre numéro de licence:</label> 
+                        <input id="LicenceNumber" type="text" name="LicenceNumber" />
+                        <p class="text-danger"><?= isset($formError['LicenceNumber']) ? $formError['LicenceNumber'] : '' ?></p>
+                    </div>
+                    <div>
                         <label>Sélectionnez le type de licence dans la liste suivante :*</label><br>
                         <select class="custom-select custom-select-sm" name="TypeOfLicence" id="TypeOfLicence">
                             <option selected=""></option>
@@ -110,6 +120,7 @@ include_once '../include/navbar.php';
                             }
                             ?>
                         </select>
+                        <p class="text-danger"><?= isset($formError['TypeOfLicence']) ? $formError['TypeOfLicence'] : '' ?></p>
                     </div>
                     <div> 
                         <input id="inscription" type="submit" name="validate" value="je m'inscrit" />
