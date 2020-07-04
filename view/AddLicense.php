@@ -1,8 +1,4 @@
 <?php
-include_once '../Model/DataBase.php';
-include_once '../Model/FunctionSummary.php';
-include_once '../Model/Functions.php';
-include_once '../Model/Members.php';
 include_once '../Config.php';
 include_once '../controller/AddLicencesCtrl.php';
 include_once '../Include/Header.php';

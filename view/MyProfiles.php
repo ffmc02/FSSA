@@ -1,6 +1,5 @@
 <?php
-include_once '../Model/DataBase.php';
-include_once '../Model/Members.php';
+
 include_once '../Config.php';
 include_once '../Controller/MyProfilesCtrl.php';
 include_once '../Include/Header.php';
@@ -39,12 +38,23 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         <p>Votre Vile :<?= $MemberDetail->City ?></p>
                         <p>Votre Numéro d'ASA ou ASK :<?= $MemberDetail->AsaCode ?></p>
                         <p>Votre Numero de license :<?= $MemberDetail->LicenceNumber ?></p>
-                        <p>Votre Fonction :<?= $MemberDetail->TypeOfLicence ?></p>
+                        <p>Votre Licences Principal  :<?= $MemberDetail->TypeOfLicence ?></p>
 
                     <?php
                     }
                 }
-                ?>
+                ?><p>et vos autre licences</p>
+            <?php 
+                    foreach ($ListLicences as $MemberDetail) {
+                        $IdProfile = $MemberDetail->IdMembers;
+                        if ($IdProfile == $RegisteredId) {
+                            ?>
+                            <p><?= $MemberDetail->TypeOfLicence ?>  Numéro <?= $MemberDetail->SecondaryLicense?></p>
+                           
+                            <?php
+                        }
+                    }
+                    ?>
                         <a href="HomeLogin.php"><button>Retour à l'accueil de connexion</button></a>   
 
             </div>

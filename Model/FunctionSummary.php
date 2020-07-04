@@ -29,7 +29,7 @@ class FunctionSummary {
     }
 
     public function AddLicences() {
-        $query = 'INSERT INTO `0108asap_functionsummary`( `LicenceNumber`, `id_0108asap_member`, ` id_0108asap_function`) '
+        $query = 'INSERT INTO `0108asap_functionsummary`( `LicenceNumber`, `id_0108asap_member`, `id_0108asap_function`) '
                 . 'VALUES (:LicenceNumber, :id_0108asap_member, :id_0108asap_function)';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':LicenceNumber', $this->LicenceNumber, PDO::PARAM_STR);
