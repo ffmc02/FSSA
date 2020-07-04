@@ -1,12 +1,12 @@
 <?php
 
-include_once '../Modele/dataBase.php';
-include_once '../Modele/membres.php';
-include_once '../Modele/functions.php';
-include_once '../config.php';
-include_once '../controlleur/connexionCtrl.php';
-include_once '../include/header.php';
-include_once '../include/navbar.php';
+include_once '../Model/DataBase.php';
+include_once '../Model/Members.php';
+include_once '../Model/Functions.php';
+include_once '../Config.php';
+include_once '../Controller/ConnectionCtrl.php';
+include_once '../Include/Header.php';
+include_once '../Include/Navbar.php';
 ?>
 <div class="container-fluid">
     <div class="row">
@@ -135,5 +135,5 @@ include_once '../include/navbar.php';
         </div>
     </div>
     <?php
-    include_once '../include/footer.php';
+    include_once '../Include/Footer.php';
     

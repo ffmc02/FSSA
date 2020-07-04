@@ -95,6 +95,8 @@ if (isset($_POST['validate'])) {
     }
     if (count($formError) == 0) {
         $chekMembre = $Member->newMember();
+        var_dump($Member);
+        var_dump($chekMembre);
         if ($chekMembre == true) {
             $_POST['connexion'] = '';
             $_POST['LoginNameUseer'] = $_POST['NameUser'];
@@ -157,8 +159,9 @@ if (isset($_POST['connection'])) {
             $_SESSION['LicenceNumber'] = $verif->LicenceNumber;
             $_SESSION['connect'] = 'OK';
             $_SESSION['access'] = $verif->id_0108asap_functions;
+           
           
-            if (in_array($_SESSION['access'], $fonction)) {
+            if (in_array($_SESSION['access'], $Function)) {
                 header("Location: HomeLogin.php");
             } else {
                 header("Location: ../index.php");

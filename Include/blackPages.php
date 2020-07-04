@@ -1,8 +1,8 @@
 <?php
-include_once '../Modele/dataBase.php';
-include_once '../config.php';
-include_once '../include/header.php';
-include_once '../include/navbar.php';
+include_once '../Model/DataBase.php';
+include_once '../Config.php';
+include_once '../Include/Header.php';
+include_once '../Include/Navbar.php';
 
 ?>
 <div class="container-fluid">

@@ -31,7 +31,7 @@ class functions {
     }
 
     public function FunctionOfUser() {
-        $query = 'SELECT `id_0108asap_functions`,`TypeOfLicence`, 0108asap_membres.`id`FROM `0108asap_membres` INNER JOIN 0108asap_functions ON 0108asap_membres.`id_0108asap_functions`=0108asap_functions.`id` WHERE 0108asap_membres.`id`=:id GROUP BY `TypeOfLicence`, `id_0108asap_functions`';
+        $query = 'SELECT `id_0108asap_functions`,`TypeOfLicence`, 0108asap_functions.`id` AS `IdFunction` FROM `0108asap_membres` INNER JOIN 0108asap_functions ON 0108asap_membres.`id_0108asap_functions`=0108asap_functions.`id` WHERE 0108asap_membres.`id`=:id GROUP BY `TypeOfLicence`, `id_0108asap_functions`';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':id', $this->id, PDO::PARAM_INT);
 //         $queryResult->debugDumpParams();

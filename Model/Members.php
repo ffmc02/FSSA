@@ -21,6 +21,7 @@ class membres {
     public $LicenceNumber = '0';
     public $Actif = false;
     public $id_0108asap_functions = 0;
+    public $TypeOfLicence='';
 
     public function __construct() {
 //fonction de connexion a ma base de donnéer 
@@ -57,7 +58,7 @@ class membres {
 
     public function connexionMembers() {
         $query = 'SELECT COUNT(`id`)AS `CountMembers` , `id`, `Name`, `Firstname`, `Email`, `Password`, `LicenceNumber`'
-                . ', `id_0108asap_functions`'
+                . ', `id_0108asap_functions` '
                 . ' FROM `0108asap_membres`'
                 . ' WHERE `Email`= :Email '
                 . 'GROUP BY `id`, `Email`, `Name`, `Firstname`, `Password`, `LicenceNumber`'
@@ -67,6 +68,16 @@ class membres {
         $queryResult->bindValue(':Email', $this->Email, PDO::PARAM_STR);
         $queryResult->execute();
         return $queryResult->fetch(PDO::FETCH_OBJ);
+    }
+    public function MemberProfile(){
+       $query='SELECT `0108asap_membres`.`id` AS `IdMembers`, `Name`, `Firstname`, `Email`, `Address`, `ZipCode`, `City`, `AsaCode`, `LicenceNumber`, `id_0108asap_functions` , `TypeOfLicence` '
+               . 'FROM `0108asap_membres`'
+               . ' INNER JOIN 0108asap_functions'
+               . ' ON `id_0108asap_functions`=0108asap_functions.`id` '
+               . ''; 
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
     }
 
 }

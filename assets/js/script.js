@@ -2,7 +2,7 @@
 //
 //alert('proute');
 //Partie connecttion
-$('.connection').hide();
+ $('.inscription').hide();
 $('.btnInscription').click(function () {
     $('.inscription').show();
     $('.connection').hide();
