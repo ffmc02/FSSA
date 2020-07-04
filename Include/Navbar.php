@@ -10,13 +10,13 @@
                     <a class="nav-link" href="HomeLogin.php"> Accueil de connexion <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="../Index.php"> Accueil Du site <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="../index.php"> Accueil Du site <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="logout.php"> Déconnexion <span class="sr-only">(current)</span></a>
                 </li>
                 <?php } else { ?>
-                <a class="nav-link" href="../Index.php">Accueil <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="../index.php">Accueil <span class="sr-only">(current)</span></a>
                 <li class="nav-item">
                     <a class="nav-link" href="Connection.php">connexion</a>
                 </li>

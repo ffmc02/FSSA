@@ -3,9 +3,9 @@ include_once '../Model/DataBase.php';
 include_once '../Config.php';
 include_once '../Include/Header.php';
 include_once '../Include/Navbar.php';
-
-?>
-<div class="container-fluid">
+if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Function)) {
+    ?>
+    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3">
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
@@ -19,16 +19,19 @@ include_once '../Include/Navbar.php';
         </div>
         <div class="row">
             <div class="col-lg-3 leftColumm">
-              
+
             </div>
             <div class="col-lg-6 centralColumm">
-               
+
             </div>
             <div class="col-lg-3 rigthColumm">
-               
+
             </div>
         </div>
-</div>
+    </div>
     <?php
-        include_once '../include/footer.php';
-        ?>
+} else {
+    include_once '../Include/RestrictedZone.php';
+}
+include_once '../include/footer.php';
+?>
