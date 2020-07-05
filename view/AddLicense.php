@@ -22,7 +22,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
 
             </div>
             <div class="col-lg-6 centralColumm">
-                 <div>
+                <div>
                     <p class="text-primary"><?= isset($Message) ? $Message : '' ?></p>
                     <p class="text-danger"><?= isset($MessageError) ? $MessageError : '' ?></p>
                 </div>
@@ -41,52 +41,52 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 </div>
                 <div class="Licences">
                     <p>Vous avez comme license secondaire la ou les license de </p>
-                     <?php 
+                    <?php
                     foreach ($ListLicences as $MemberDetail) {
                         $IdProfile = $MemberDetail->IdMembers;
-                        $IdSummary=$MemberDetail->IdSummary;
+                        $IdSummary = $MemberDetail->IdSummary;
                         if ($IdProfile == $RegisteredId) {
                             ?>
                             <p><?= $MemberDetail->TypeOfLicence ?></p>
-                            <p>Avec le Numéro <?= $MemberDetail->SecondaryLicense?></p>
-                            <p>Modifier cette <a href="ModifyMyLicences.php?IdLicence=<?=$IdSummary?>">Licences</a></p>
+                            <p>Avec le Numéro <?= $MemberDetail->SecondaryLicense ?></p>
+                            <p>Modifier cette <a href="ModifyMyLicences.php?IdLicence=<?= $IdSummary ?>">Licences</a></p>
                             <?php
                         }
                     }
                     ?>
                 </div>
-               
+
                 <div class="Licences">
                     <h3> Vous souhaitez ajouter une ou plusieurs licence ?</h3>
                     <p>Utilisé le formulaire<button class="BtnFormAddLicences"> suivant:</button></p>
                 </div>
                 <div class="FormAddLicences">
                     <form method="post" name="LicenceAdd">
-                                          <div>
-                        <label>Sélectionnez le type de licence dans la liste suivante :*</label><br>
-                        <select class="custom-select custom-select-sm" name="TypeOfLicence" id="TypeOfLicence">
-                            <option selected=""></option>
-                            <?php foreach ($listerFunctions as $FunctionList) { ?>
-                                <option value="<?= $FunctionList->id ?>"> <?= $FunctionList->TypeOfLicence ?></option>
-                                <?php
-                            }
-                            ?>
-                        </select>
-                        <p class="text-danger"><?= isset($formError['TypeOfLicence']) ? $formError['TypeOfLicence'] : '' ?></p>
-                    </div>
-                        <div>  
-                        <label for="LicenceNumber"> Votre numéro de licence:</label> 
-                        <input id="LicenceNumber" type="text" name="LicenceNumber" />
-                        <p class="text-danger"><?= isset($formError['LicenceNumber']) ? $formError['LicenceNumber'] : '' ?></p>
-                    </div>
                         <div>
-                            <input id="IdMember" name="IdMember" type="hidden" value="<?= $_SESSION['idUser']?>" />
+                            <label>Sélectionnez le type de licence dans la liste suivante :*</label><br>
+                            <select class="custom-select custom-select-sm" name="TypeOfLicence" id="TypeOfLicence">
+                                <option selected=""></option>
+                                <?php foreach ($listerFunctions as $FunctionList) { ?>
+                                    <option value="<?= $FunctionList->id ?>"> <?= $FunctionList->TypeOfLicence ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                            <p class="text-danger"><?= isset($formError['TypeOfLicence']) ? $formError['TypeOfLicence'] : '' ?></p>
+                        </div>
+                        <div>  
+                            <label for="LicenceNumber"> Votre numéro de licence:</label> 
+                            <input id="LicenceNumber" type="text" name="LicenceNumber" />
+                            <p class="text-danger"><?= isset($formError['LicenceNumber']) ? $formError['LicenceNumber'] : '' ?></p>
+                        </div>
+                        <div>
+                            <input id="IdMember" name="IdMember" type="hidden" value="<?= $_SESSION['idUser'] ?>" />
                         </div>
                         <div> <input type="submit" value="enregister" name="AddLicences" id="AddLicences"/>
                             <a href="AddLicense.php">  <button class="retour">Retour</button></a>
-                             </div>
+                        </div>
                     </form>
-                    
+
                 </div>
             </div>
             <div class="col-lg-3 rigthColumm">

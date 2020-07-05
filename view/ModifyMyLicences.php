@@ -27,46 +27,44 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                     <p>Pour modifié votre license Utilisé le formulaire suivant</p>
                 </div>
                 <div>
-                    <form method="post" name="LicenceAdd">
-                        <div>
-                            <label>Sélectionnez le type de licence dans la liste suivante :</label><br>
-                            <select class="custom-select custom-select-sm" name="TypeOfLicence" id="TypeOfLicence">
-                                <?php foreach ($listerFunctions as $FunctionList) { ?>
-                                    <option value="<?= $FunctionList->id ?>"> <?= $FunctionList->TypeOfLicence ?></option>
-                                    <?php
-                                }
-                                if ($IdProfile == $RegisteredId) {
-                                    ?>
-                                    <option value="<?= $FunctionList->id ?>"> <?= $FunctionList->TypeOfLicence ?></option>
-                                </select>
-                                <p class="text-danger"><?= isset($formError['TypeOfLicence']) ? $formError['TypeOfLicence'] : '' ?></p>
-                            </div>
-                            <div>  
-                                <label for="LicenceNumber"> Votre numéro de licence:</label> 
-                                <?php
-                                foreach ($ListLicences as $MemberDetail) {
-                                    $IdProfile = $MemberDetail->IdMembers;
-                                    $IdSummary = $MemberDetail->IdSummary;
-                                    if ($IdProfile == $RegisteredId) {
-                                        ?>
-
-                                        <input id="LicenceNumber" type="text" name="LicenceNumber" placeholder=""/>
-                                        <p class="text-danger"><?= isset($formError['LicenceNumber']) ? $formError['LicenceNumber'] : '' ?></p>
-                                    </div>
-                                    <?php
-                                }
-                            }
+                    <?php
+                    foreach ($ListLicences as $modelDetailListe) {
+                        $Licences = $modelDetailListe->IdSummary;
+                        if ($Licences == $IdLicence) {
                             ?>
-                            <div>
-                                <input id="IdMember" name="IdMember" type="hidden" value="<?= $_SESSION['idUser'] ?>" />
-                            </div>
-                            <div> <input type="submit" value="enregister" name="AddLicences" id="AddLicences"/>
-
-                            </div>
-                            <?php
-                        }
-                        ?>
+                    <p>Vous souhaitez modifiez la licence <?= $modelDetailListe->TypeOfLicence?> avec le numéro <?= $modelDetailListe->SecondaryLicense?></p>
+                    <form method="post" name="LicenceAdd">
+                      <div>
+                            <label>Sélectionnez le type de licence dans la liste suivante :*</label><br>
+                            <select class="custom-select custom-select-sm" name="TypeOfLicence" id="TypeOfLicence">
+                                <option selected=""></option>
+                                <?php foreach ($listerFunctions as $FunctionList) { ?>
+                                    <option value="<?= $FunctionList->id ?>" > <?= $FunctionList->TypeOfLicence ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                            <p class="text-danger"><?= isset($formError['TypeOfLicence']) ? $formError['TypeOfLicence'] : '' ?></p>
+                        </div>
+                        <div>  
+                            <label for="LicenceNumber"> Votre numéro de licence:</label> 
+                            <input id="LicenceNumber" type="text" name="LicenceNumber" placeholder="<?= $modelDetailListe->SecondaryLicense?>"/>
+                            <p class="text-danger"><?= isset($formError['LicenceNumber']) ? $formError['LicenceNumber'] : '' ?></p>
+                        </div>
+                        <div>
+                            <input id="IdMember" name="IdMember" type="hidden" value="<?= $_SESSION['idUser'] ?>" />
+                        </div>
+                        <div> <input type="submit" value="Modifier mes licences" name="ModifyLicences" id="ModifyLicences"/>
+                           
+                        </div>
                     </form>
+                    <div>
+                         <a href="AddLicense.php"><button class="retour">Retour</button></a>
+                    </div>
+                             <?php
+                        }
+                    }
+                    ?>
                 </div>
             </div>
             <div class="col-lg-3 rigthColumm">
