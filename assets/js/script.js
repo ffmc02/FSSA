@@ -11,4 +11,10 @@ $('.btnInscription').click(function () {
 $('.btnConnection').click(function () {
      $('.inscription').hide();
     $('.connection').show();
-}); 
+});
+//Ajout de licences
+$('.FormAddLicences').hide();
+$('.BtnFormAddLicences').click(function (){
+    $('.Licences').hide();
+    $('.FormAddLicences').show();
+});

@@ -1,5 +1,4 @@
 <?php
-include_once '../Model/DataBase.php';
 include_once '../Config.php';
 include_once '../Include/Header.php';
 include_once '../Include/Navbar.php';

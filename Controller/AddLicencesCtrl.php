@@ -18,6 +18,7 @@ if (isset($_POST['AddLicences'])) {
     if (!empty($_POST['TypeOfLicence'])) {
         if (preg_match($regexId, $_POST['TypeOfLicence'])) {
             $LicenceNew->id_0108asap_function = htmlspecialchars($_POST['TypeOfLicence']);
+            
         }
     } else {
         $formError['TypeOfLicence'] = 'Merci choisir votre fonction à ajouter';
@@ -39,6 +40,7 @@ if (isset($_POST['AddLicences'])) {
 
         if ($AddANewLicencse == true) {
             $Message = 'votre nouvelle license a été ajouté avec succés';
+
         } else {
             $MessageError = 'Une erreur est survenue veuillez contacter le web master via l\'adresse mail dev.gaetan.jonard@outlook.fr avec le code erreur AddLicense comme objet du mail';
         }

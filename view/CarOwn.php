@@ -1,6 +1,6 @@
 <?php
-include_once '../Model/DataBase.php';
 include_once '../Config.php';
+include_once '../Controller/CarOwnCtrl.php';
 include_once '../Include/Header.php';
 include_once '../Include/Navbar.php';
 
@@ -11,7 +11,7 @@ include_once '../Include/Navbar.php';
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
             </div>
             <div class="col-lg-6 ">
-                <h1></h1>
+                <h1>Ajouter une voiture de cource </h1>
             </div>
             <div class="col-lg-3">
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>

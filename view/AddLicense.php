@@ -22,7 +22,11 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
 
             </div>
             <div class="col-lg-6 centralColumm">
-                <div>
+                 <div>
+                    <p class="text-primary"><?= isset($Message) ? $Message : '' ?></p>
+                    <p class="text-danger"><?= isset($MessageError) ? $MessageError : '' ?></p>
+                </div>
+                <div class="Licences">
                     <h2>Vous avez comme license principal  </h2>
                     <?php
                     foreach ($MembersProfile as $MemberDetail) {
@@ -35,29 +39,28 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                     }
                     ?>
                 </div>
-                <div>
+                <div class="Licences">
                     <p>Vous avez comme license secondaire la ou les license de </p>
                      <?php 
                     foreach ($ListLicences as $MemberDetail) {
                         $IdProfile = $MemberDetail->IdMembers;
+                        $IdSummary=$MemberDetail->IdSummary;
                         if ($IdProfile == $RegisteredId) {
                             ?>
                             <p><?= $MemberDetail->TypeOfLicence ?></p>
                             <p>Avec le Numéro <?= $MemberDetail->SecondaryLicense?></p>
+                            <p>Modifier cette <a href="ModifyMyLicences.php?IdLicence=<?=$IdSummary?>">Licences</a></p>
                             <?php
                         }
                     }
                     ?>
                 </div>
-                <div>
-                    <p class="text-primary"><?= isset($Message) ? $Message : '' ?></p>
-                    <p class="text-danger"><?= isset($MessageError) ? $MessageError : '' ?></p>
-                </div>
-                <div>
+               
+                <div class="Licences">
                     <h3> Vous souhaitez ajouter une ou plusieurs licence ?</h3>
-                    <p>Utilisé le formulaire suivant:</p>
+                    <p>Utilisé le formulaire<button class="BtnFormAddLicences"> suivant:</button></p>
                 </div>
-                <div>
+                <div class="FormAddLicences">
                     <form method="post" name="LicenceAdd">
                                           <div>
                         <label>Sélectionnez le type de licence dans la liste suivante :*</label><br>
@@ -80,8 +83,10 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <input id="IdMember" name="IdMember" type="hidden" value="<?= $_SESSION['idUser']?>" />
                         </div>
                         <div> <input type="submit" value="enregister" name="AddLicences" id="AddLicences"/>
+                            <a href="AddLicense.php">  <button class="retour">Retour</button></a>
                              </div>
                     </form>
+                    
                 </div>
             </div>
             <div class="col-lg-3 rigthColumm">
