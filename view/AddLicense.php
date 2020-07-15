@@ -11,7 +11,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
             </div>
             <div class="col-lg-6 ">
-                <h1>Ajouter une licence a votre profils</h1>
+                <h1>Liste des licenses de votre profils</h1>
             </div>
             <div class="col-lg-3">
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
@@ -50,10 +50,14 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <p><?= $MemberDetail->TypeOfLicence ?></p>
                             <p>Avec le Numéro <?= $MemberDetail->SecondaryLicense ?></p>
                             <p>Modifier cette <a href="ModifyMyLicences.php?IdLicence=<?= $IdSummary ?>">Licences</a></p>
+                            <p>Supprimer cette <a href="DeleteALicences.php?IdLicence=<?= $IdSummary ?>">Licences</a></p>
                             <?php
                         }
                     }
                     ?>
+                            <div>
+                                <a href="HomeLogin.php"><button> Retour</button></a>
+                            </div>
                 </div>
 
                 <div class="Licences">
@@ -66,9 +70,12 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <label>Sélectionnez le type de licence dans la liste suivante :*</label><br>
                             <select class="custom-select custom-select-sm" name="TypeOfLicence" id="TypeOfLicence">
                                 <option selected=""></option>
-                                <?php foreach ($listerFunctions as $FunctionList) { ?>
+                                <?php foreach ($listerFunctions as $FunctionList) { 
+//                                if()){?>
                                     <option value="<?= $FunctionList->id ?>"> <?= $FunctionList->TypeOfLicence ?></option>
                                     <?php
+//                                }
+                                
                                 }
                                 ?>
                             </select>

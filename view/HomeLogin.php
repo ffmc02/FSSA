@@ -44,20 +44,26 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <p>et vos autre licences</p>
                             <p><?= $MemberDetail->TypeOfLicence ?> Avec le Numéro <?= $MemberDetail->SecondaryLicense ?></p>
 
-                            <?php } else {
+                        <?php } else {
                             ?>
                             <p>Vous n'avez pas d'autre licences pour le moment </p>
-                        <?php
+                            <?php
                         }
                     }
                     ?>
                 </div>  
                 <p>Liste des rallyes ouvert à l'inscription <a href="RallyOpenToRegistration.php">ICI</a></p>
-                <P>Liste des rallyes ou vous étes inscrit <a href="ParticipationAgreement.php">ICI</a></P>
-    <?php if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Pilote)) { ?>
+                <p>Liste des rallyes ou vous étes inscrit <a href="ParticipationAgreement.php">ICI</a></p>
+                <?php if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Pilote)) { ?>
                     <p>Ajouter votre ou vcs voiture <a href="CarOwn.php">ICI</a></p>
 
-    <?php } ?>
+                <?php
+                }
+                if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Responsible)) {
+                    ?>
+                    <p> ouvrire une compétition à l'inscription <a href="AddACompetition.php">ICI</a></p>
+                <?php }
+                ?>        
             </div>
             <div class="col-lg-3 rigthColumm">
                 <p>Votre profils <a href="MyProfiles.php">ICI</a></p>

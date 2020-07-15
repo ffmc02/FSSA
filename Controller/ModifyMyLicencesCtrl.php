@@ -4,9 +4,6 @@ $title='Modification de licences';
 // initialisation d'un tableau d'erreur
 $formError = array();
 $regexId = '/^\d+$/';
-//liste des licences secondaire
-$ListOfLicense = new FunctionSummary();
-$ListLicences = $ListOfLicense->DisplayOfAllLicenses();
 
 //affichage de la licence principal
 $FonctionList = new functions();
@@ -20,7 +17,8 @@ if (isset($_GET['IdLicence'])) {
 }
 if (isset($_SESSION['idUser'])) {
     $RegisteredId = $_SESSION['idUser'];
-    $ModifyLicence=$RegisteredId;
+    
+    //$ModifyLicence=$RegisteredId;
 }
 if (isset($_POST['ModifyLicences'])) {
     if (!empty($_POST['TypeOfLicence'])) {
@@ -30,6 +28,11 @@ if (isset($_POST['ModifyLicences'])) {
         }
     } else {
         $formError['TypeOfLicence'] = 'Merci choisir votre fonction à ajouter';
+    }
+    if (isset($_GET['IdLicence'])) {
+        if (preg_match($regexId, $_GET['IdLicence'])) {
+            $ModifyLicence->id= htmlspecialchars($_GET['IdLicence']);
+        }
     }
     if (!empty($_POST['LicenceNumber'])) {
         if (preg_match($regexId, $_POST['LicenceNumber'])) {
@@ -48,6 +51,7 @@ if (isset($_POST['ModifyLicences'])) {
 
         if ($ModifyTheLicencse == true) {
             $Message = 'votre nouvelle license a été ajouté avec succés';
+             header("Location: AddLicense.php");
 
         } else {
             $MessageError = 'Une erreur est survenue veuillez contacter le web master via l\'adresse mail dev.gaetan.jonard@outlook.fr avec le code erreur AddLicense comme objet du mail';
@@ -56,3 +60,6 @@ if (isset($_POST['ModifyLicences'])) {
         $ModifyTheLicencse = '';
     }
 }
+//liste des licences secondaire
+$ListOfLicense = new FunctionSummary();
+$ListLicences = $ListOfLicense->DisplayOfAllLicenses();

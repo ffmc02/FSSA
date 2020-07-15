@@ -19,7 +19,7 @@ class FunctionSummary {
     public $id_0108asap_function = 0;
 
     public function __construct() {
-//fonction de connexion a ma base de donnéer 
+//fonction de connexion a ma base de donnÃ©er 
         //ordi formation
         $this->pdo = dataBase::getIntance();
 
@@ -57,6 +57,13 @@ class FunctionSummary {
         $queryResult->bindValue(':LicenceNumber', $this->LicenceNumber, PDO::PARAM_STR);
         $queryResult->bindValue(':id_0108asap_member', $this->id_0108asap_member, PDO::PARAM_INT);
         $queryResult->bindValue(':id_0108asap_function', $this->id_0108asap_function, PDO::PARAM_INT);
+        return $queryResult->execute();
+    }
+
+    public function DeleteALicense() {
+        $query = 'DELETE FROM `0108asap_functionsummary` WHERE `id`=:id';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $queryResult->execute();
     }
 
