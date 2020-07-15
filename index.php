@@ -87,7 +87,8 @@ include_once 'Controller/IndexCtrl.php';
             <div class="col-lg-6 centralColumm">
                  <?php
                      if(isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Pilote)){?>
-                <p>Ajouter votre ou vcs voiture <a href="view/CarOwn.php">ICI</a></p>
+                <p>Ajouter votre ou vcs voiture <a href="view/AddCars.php">ICI</a></p>
+                <p>Mes voitures <a href="view/MyRaceCars.php">ICI</a></p>
                 
                  <?php 
                      

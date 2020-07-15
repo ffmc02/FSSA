@@ -33,6 +33,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 <p>Observation :<?=$listSport->Observation?></p>
                    <?php  }
                 ?>
+                <a href="HomeLogin.php"><button>Retour</button></a>
             </div>
             <div class="col-lg-3 rigthColumm">
 

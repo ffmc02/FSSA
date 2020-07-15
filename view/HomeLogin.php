@@ -55,12 +55,14 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 <p>Liste des rallyes ouvert à l'inscription <a href="RallyOpenToRegistration.php">ICI</a></p>
                 <p>Liste des rallyes ou vous étes inscrit <a href="ParticipationAgreement.php">ICI</a></p>
                 <?php if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Pilote)) { ?>
-                    <p>Ajouter votre ou vcs voiture <a href="CarOwn.php">ICI</a></p>
+                <p>Ajouter votre ou vcs voiture <a href="AddCars.php">ICI</a></p>
+                <p>Mes voitures déja enregistré<a href="MyRaceCars.php">ICI</a></p>
 
                 <?php
                 }
                 if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Responsible)) {
                     ?>
+                    <p>Listes des Voitures enregistré <a href="ListOfCars.php">ICI</a></p>
                     <p> ouvrire une compétition à l'inscription <a href="AddACompetition.php">ICI</a></p>
                     <p>liste des compétitions <a href="SportsEvents.php">ICI</a></p>
                 <?php }
