@@ -1,6 +1,7 @@
 <?php
+//SportsEvents
 include_once '../Config.php';
-include_once '../controller/AddACompetionCtrl.php';
+include_once '../controller/SportsEventsCtrl.php';
 include_once '../Include/Header.php';
 include_once '../Include/Navbar.php';
 if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Responsible)) {
@@ -11,7 +12,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
             </div>
             <div class="col-lg-6 ">
-                <h1>Ajout d'une compétition Automobile</h1>
+                <h1>Liste des Hébergement </h1>
             </div>
             <div class="col-lg-3">
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
@@ -22,17 +23,16 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
 
             </div>
             <div class="col-lg-6 centralColumm">
-                <div>
-                <p>Vous pouvez ajouter une comptétition grace au formulaire suivant :</p>
-                </div>
-                <div>
-                    <form name="AddCompetition" method="PÖST" id="AddCommpetition">
-                        <div> 
-                            <label for=""></label>
-                            <input type="" name="" id="" />
-                        </div>
-                    </form>
-                </div>
+                <p>Hébergement choix des dates et noms de l'épreuve</p>
+                <?php
+                    foreach ($listSportEvents as $listSport){
+                        ?>
+                <p>Nom de l'épreuve :<?= $listSport->NameOfTheTest?></p>
+                <p>Date de l'évenemet :<?= $listSport->DateOfTeste?></p>
+                <p>Type d'hebergement :<?=$listSport->TypeOfAccommodation?></p>
+                <p>Observation :<?=$listSport->Observation?></p>
+                   <?php  }
+                ?>
             </div>
             <div class="col-lg-3 rigthColumm">
 

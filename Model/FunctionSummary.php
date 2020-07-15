@@ -17,6 +17,7 @@ class FunctionSummary {
     public $LicenceNumber = '0';
     public $id_0108asap_member = 0;
     public $id_0108asap_function = 0;
+    public $pdo;
 
     public function __construct() {
 //fonction de connexion a ma base de donnÃ©er 

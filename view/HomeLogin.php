@@ -62,6 +62,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Responsible)) {
                     ?>
                     <p> ouvrire une compétition à l'inscription <a href="AddACompetition.php">ICI</a></p>
+                    <p>liste des compétitions <a href="SportsEvents.php">ICI</a></p>
                 <?php }
                 ?>        
             </div>
