@@ -1,8 +1,4 @@
 <?php
-
-include_once '../Model/DataBase.php';
-include_once '../Model/Members.php';
-include_once '../Model/Functions.php';
 include_once '../Config.php';
 include_once '../Controller/ConnectionCtrl.php';
 include_once '../Include/Header.php';
@@ -27,31 +23,40 @@ include_once '../Include/Navbar.php';
         <div class="col-lg-6 centralColumm">
             <div class="connection" id="connection">
                 <h2>Formulaire de connexion</h2>
+                <div>
+                    <p class="text-danger"><?= isset($formError['$UserNotRegistred']) ? $formError['$UserNotRegistred'] : '' ?></p>
+                    <p class="text-danger"><?= isset($formError['Technical']) ? $formError['Technical'] : '' ?></p>
+                </div>
                 <form method="post" id="connexionForm">
                     <div>
                         <label for="LoginNameUseer" > Votre nom :</label>
-                        <input id="LoginNameUseer" type="text" name="LoginNameUseer"/>
+                        <input id="LoginNameUseer" type="text" name="LoginNameUseer" value=" <?= isset($_SESSION['TemporyName']) ? $_SESSION['TemporyName'] : '' ?>"/>
                         <p class="text-danger"><?= isset($formError['LoginNameUseer']) ? $formError['LoginNameUseer'] : '' ?></p>
                     </div>
                     <div>
                         <label for="LoginMailUser" > Votre Mail :</label>
-                        <input id="LoginMailUser" type="text" name="LoginMailUser"/>
-                          <p class="text-danger"><?= isset($formError['LoginMailUser']) ? $formError['LoginMailUser'] : '' ?></p>
+                        <input id="LoginMailUser" type="text" name="LoginMailUser" value=" <?= isset($_SESSION['TemporyloginMail']) ? $_SESSION['TemporyloginMail'] : '' ?>" />
+                        <p class="text-danger"><?= isset($formError['LoginMailUser']) ? $formError['LoginMailUser'] : '' ?></p>
                     </div>
                     <div>
                         <label for="LoginLicenceNumber"> votre numéro de licence :</label> 
-                        <input id="LoginLicenceNumber" type="text"  name="LoginLicenceNumber" />
-                          <p class="text-danger"><?= isset($formError['LoginLicenceNumber']) ? $formError['LoginLicenceNumber'] : '' ?></p>
+                        <input id="LoginLicenceNumber" type="text"  name="LoginLicenceNumber" value=" <?= isset($_SESSION['TemporyLicenceNumber']) ? $_SESSION['TemporyLicenceNumber'] : '' ?>"/>
+                        <p class="text-danger"><?= isset($formError['LoginLicenceNumber']) ? $formError['LoginLicenceNumber'] : '' ?></p>
                     </div>
                     <div>
                         <label for="LoginPasswordUser">votre mot de passe :</label> 
-                        <input id="LoginPasswordUser" type="text" name="LoginPasswordUser" />
-                          <p class="text-danger"><?= isset($formError['LoginPasswordUser']) ? $formError['LoginPasswordUser'] : '' ?></p>
+                        <input id="LoginPasswordUser" type="password" name="LoginPasswordUser" />
+                        <p class="text-danger"><?= isset($formError['LoginPasswordUser']) ? $formError['LoginPasswordUser'] : '' ?></p>
                     </div>
                     <div> 
                         <input id="connection" type="submit" name="connection" value="connexion" />
                     </div>
                 </form>
+                <div>
+                    <br>
+                    <br>
+                    <br>
+                </div>
                 <div>
                     <p>Je ne suis pas <button class="btnInscription" id="btnInscription" >inscrit</button></p>
 
@@ -106,6 +111,11 @@ include_once '../Include/Navbar.php';
                         <p class="text-danger"><?= isset($formError['AsaCode']) ? $formError['AsaCode'] : '' ?></p>
                     </div>
                     <div>  
+                        <label for="AsaName">Nom de votre ASA ou ASK :</label> 
+                        <input id="AsaName" type="text" name="AsaName" />
+                        <p class="text-danger"><?= isset($formError['AsaName']) ? $formError['AsaName'] : '' ?></p>
+                    </div>
+                    <div>  
                         <label for="LicenceNumber"> Votre numéro de licence:</label> 
                         <input id="LicenceNumber" type="text" name="LicenceNumber" />
                         <p class="text-danger"><?= isset($formError['LicenceNumber']) ? $formError['LicenceNumber'] : '' ?></p>
@@ -114,9 +124,13 @@ include_once '../Include/Navbar.php';
                         <label>Sélectionnez le type de licence dans la liste suivante :*</label><br>
                         <select class="custom-select custom-select-sm" name="TypeOfLicence" id="TypeOfLicence">
                             <option selected=""></option>
-                            <?php foreach ($listerFunctions as $FunctionList) { ?>
-                                <option value="<?= $FunctionList->id ?>"> <?= $FunctionList->TypeOfLicence ?></option>
-                                <?php
+                            <?php
+                            foreach ($listerFunctions as $FunctionList) {
+                                if ($FunctionList->id != 155) {
+                                    ?>
+                                    <option value="<?= $FunctionList->id ?>"> <?= $FunctionList->TypeOfLicence ?></option>
+                                    <?php
+                                }
                             }
                             ?>
                         </select>
@@ -136,4 +150,4 @@ include_once '../Include/Navbar.php';
     </div>
     <?php
     include_once '../Include/Footer.php';
-    
+    ?>

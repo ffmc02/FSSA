@@ -50,7 +50,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             ?>    
                         </tbody>
                     </table>
-
+                      <a href="HomeLogin.php"><button>Retour</button></a>
                 </div>
             </div>
             <div class="col-lg-3 rigthColumm">

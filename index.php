@@ -1,7 +1,7 @@
 <?php
 include_once 'Config.php';
 include_once 'Controller/IndexCtrl.php';
-
+var_dump($_SESSION['access']);
  ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -93,7 +93,7 @@ include_once 'Controller/IndexCtrl.php';
                  <?php 
                      
                      } else { ?>
-                <p>Inscrivé vous <a href="">Ici </a> </p>
+                <p>Inscrivé vous <a href="view/Connection.php">Ici </a> </p>
                    <?php }
             ?>
             </div>
