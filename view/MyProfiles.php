@@ -1,5 +1,4 @@
 <?php
-
 include_once '../Config.php';
 include_once '../Controller/MyProfilesCtrl.php';
 include_once '../Include/Header.php';
@@ -21,45 +20,59 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
         </div>
         <div class="row">
             <div class="col-lg-3 leftColumm">
-
             </div>
             <div class="col-lg-6 centralColumm">
-                <p>Mon profil est le suivant :</p>
+                <div>
+                <p>Votre profil: </p>
+                <p>Votree nom: <?= $_SESSION['Name'] ?></p>
+                <p>votre Prénom: <?= $_SESSION['Firstname'] ?></p>
+                <p> Votre Mail de contact: <?= $_SESSION['loginMail'] ?></p>
                 <?php
-                foreach ($MembersProfile as $MemberDetail) {
+                foreach ($UserProfil as $UserProfils) {
+                    if($UserProfils->id ==$RegisteredId) {
+                        ?> 
+                <p>Votre adresse: <?= $UserProfils->Address ?></p>
+                <p>Votre code postale: <?= $UserProfils->ZipCode ?></p>
+                <p>Votre ville: <?= $UserProfils->City ?></p>
+                <p>Le numéro de votre ASA ou ASK: <?= $UserProfils->AsaCode ?></p>
+                <p>Le nom de votre ASA ou ASK: <?= $UserProfils->AsaName ?></p>
+                        <?php
+                    }
+                }
+                ?>
+                   <div>
+                    <a href="EditingProfiles.php?IdUser=<?= $_SESSION['idUser'] ?>"><button>Modifier Mon profils</button></a>
+                </div>
+                 </div>
+            <div>
+                <p>Votre licence principale est :</p>
+                <?php
+                foreach ($PrmaryLicensesUsed as $PrimaryLicencesList) {
+                    $IdProfile = $PrimaryLicencesList->IdMembers;
+                    if ($IdProfile == $RegisteredId) {
+                        ?>
+                        <?= $PrimaryLicencesList->TypeOfLicence ?>
+                        <?php
+                    }
+                }
+                foreach ($ListLicences as $MemberDetail) {
                     $IdProfile = $MemberDetail->IdMembers;
                     if ($IdProfile == $RegisteredId) {
                         ?>
-                        <p>Votre nom :<?= $MemberDetail->Name ?> </p>
-                        <p>Votre Prénom :<?= $MemberDetail->Firstname ?></p>
-                        <p>Votre Email :<?= $MemberDetail->Email ?></p>
-                        <p>Votre Adresse :<?= $MemberDetail->Address ?></p>
-                        <p>Votre Code Postam :<?= $MemberDetail->ZipCode ?></p>
-                        <p>Votre Vile :<?= $MemberDetail->City ?></p>
-                        <p>Votre Numéro d'ASA ou ASK :<?= $MemberDetail->AsaCode ?></p>
-                        <p>Votre Numero de license :<?= $MemberDetail->LicenceNumber ?></p>
-                        <p>Votre Licences Principal  :<?= $MemberDetail->TypeOfLicence ?></p>
-
-                    <?php
+                        <p><?= $MemberDetail->TypeOfLicence ?>  Numéro <?= $MemberDetail->SecondaryLicense ?></p>
+                        <?php
                     }
                 }
-                ?><p>et vos autre licences</p>
-            <?php 
-                    foreach ($ListLicences as $MemberDetail) {
-                        $IdProfile = $MemberDetail->IdMembers;
-                        if ($IdProfile == $RegisteredId) {
-                            ?>
-                            <p><?= $MemberDetail->TypeOfLicence ?>  Numéro <?= $MemberDetail->SecondaryLicense?></p>
-                           
-                            <?php
-                        }
-                    }
-                    ?>
-                        <a href="HomeLogin.php"><button>Retour à l'accueil de connexion</button></a>   
-
-            </div>
-            <div class="col-lg-3 rigthColumm">
-
+                ?>
+              <div>
+                    <a href="EditingProfiles.php?IdUser=<?= $_SESSION['idUser'] ?>"><button>Modifier ma license principale</button></a>
+                </div>
+                        <div>
+                            <br> <br><br>
+                        </div>
+                <div>
+                    <a href="HomeLogin.php"><button>Retour à l'accueil de connexion</button></a>   
+                </div>
             </div>
         </div>
     </div>

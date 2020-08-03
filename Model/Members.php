@@ -21,7 +21,8 @@ class membres {
     public $AsaName = '0';
     public $Actif = false;
     public $id_0108asap_functions = 0;
-    public $TypeOfLicence='';
+    public $TypeOfLicence = '';
+    
 
     public function __construct() {
 //fonction de connexion a ma base de donnéer 
@@ -32,6 +33,7 @@ class membres {
         // Sinon on affiche un message d'erreur
         //il les faut pour faire les transaction (3 prochaine methode)
     }
+
     public function lastInsertId() {
         return $this->pdo->db->lastInsertId();
     }
@@ -68,15 +70,65 @@ class membres {
         $queryResult->execute();
         return $queryResult->fetch(PDO::FETCH_OBJ);
     }
-    public function MemberProfile(){
-       $query='SELECT `0108asap_membres`.`id` AS `IdMembers`, `Name`, `Firstname`, `Email`, `Address`, `ZipCode`, `City`, `AsaCode`, `AsaName` , `TypeOfLicence` '
-               . 'FROM `0108asap_membres`'
-               . ' INNER JOIN 0108asap_functions'
-               . ' ON `id_0108asap_functions`=0108asap_functions.`id` '
-               . ''; 
+
+    public function MemberProfile() {
+        $query = 'SELECT `0108asap_membres`.`id` AS `IdMembers`, `Name`, `Firstname`, `Email`, `Address`, `ZipCode`, `City`, `AsaCode`, `AsaName` , '
+                . '`TypeOfLicence` '
+                . 'FROM `0108asap_membres '
+                . '`INNER JOIN 0108asap_functionsummary '
+                . 'ON`0108asap_functionsummary`.`id_0108asap_member`=`0108asap_membres`.`id` '
+                . 'INNER JOIN  0108asap_functions '
+                . 'ON `0108asap_functionsummary`.`id_0108asap_function`= `0108asap_functions`.`id`'
+                . ' WHERE `LicencePrimary`=1 '
+                . '';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->execute();
         return $queryResult->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function UserProfil() {
+        $query = 'SELECT `id`, `Name`, `Firstname`, `Email`, `Address`, `ZipCode`, `City`, `AsaCode`, `AsaName` '
+                . 'FROM `0108asap_membres`'
+//                . ' WHERE `id`=:id';
+//         $queryResult = $this->pdo->db->prepare($query);
+//        $queryResult->bindValue(':id', $this->id, PDO::PARAM_STR);
+//        $queryResult->execute();
+//        return $queryResult->fetch(PDO::FETCH_OBJ);
+                       . '';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
+    }
+    public function ProfilEdditing(){
+        $query='UPDATE `0108asap_membres` '
+                . 'SET '
+                . '`Name`= :Name, '
+                . '`Firstname`:Firstname, '
+                . '`Email`=:Email, '
+                . '`Actif`=:Actif, '
+                . '`Address`=:Address, '
+                . '`ZipCode`=:ZipCode, '
+                . '`City`=:City, '
+                . '`AsaCode`=:AsaCode, '
+                . '`AsaName`=:AsaName '
+                . 'WHERE `id`=:id'
+                . '';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $queryResult->bindValue(':Name', $this->Name, PDO::PARAM_STR);
+        $queryResult->bindValue(':Firstname', $this->Firstname, PDO::PARAM_STR);
+        $queryResult->bindValue(':Email', $this->Email, PDO::PARAM_STR);
+        $queryResult->bindValue(':Actif', $this->Actif, PDO::PARAM_STR);
+        $queryResult->bindValue(':Address', $this->Address, PDO::PARAM_STR);
+        $queryResult->bindValue(':ZipCode', $this->ZipCode, PDO::PARAM_INT);
+        $queryResult->bindValue(':City', $this->City, PDO::PARAM_STR);
+        $queryResult->bindValue(':AsaCode', $this->AsaCode, PDO::PARAM_STR);
+        $queryResult->bindValue(':AsaName', $this->AsaName, PDO::PARAM_STR);
+          //permet d'afficher la reguette excuter
+//          $queryResult->debugDumpParams();
+//    die();
+       // execution de la requette préparer:
+        return $queryResult->execute();
     }
 
 }

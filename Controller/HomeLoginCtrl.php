@@ -7,3 +7,6 @@ $RegisteredId = $_SESSION['idUser'];
 }
 $ListOfLicense= new FunctionSummary();
 $ListLicences= $ListOfLicense->DisplayOfAllLicenses();
+
+$ListPrimaryLicenses=new FunctionSummary();
+$PrmaryLicensesUsed= $ListPrimaryLicenses->PrimaryLicensesUsed();

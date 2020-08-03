@@ -75,12 +75,23 @@ public function DisplayPrimaryLicenses() {
         
         return $queryResult->fetchAll(PDO::FETCH_OBJ);
     }
+    public function PrimaryLicensesUsed(){
+           $query = 'SELECT`0108asap_functionsummary`.`id` AS `IdSummary`, `0108asap_functionsummary`.`LicenceNumber` AS `SecondaryLicense`, `LicencePrimary`, `0108asap_functions`.`TypeOfLicence`, `0108asap_functionsummary`.`id_0108asap_member` AS `IdMembers` '
+                . 'FROM `0108asap_functionsummary` '
+                . 'INNER JOIN `0108asap_functions` '
+                . 'ON `0108asap_functionsummary`.`id_0108asap_function`=`0108asap_functions`.`id`'
+                . 'WHERE `LicencePrimary`=1 ';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
+    }
 
     public function DisplayOfAllLicenses() {
         $query = 'SELECT`0108asap_functionsummary`.`id` AS `IdSummary`, `0108asap_functionsummary`.`LicenceNumber` AS `SecondaryLicense`, `LicencePrimary`, `0108asap_functions`.`TypeOfLicence`, `0108asap_functionsummary`.`id_0108asap_member` AS `IdMembers` '
                 . 'FROM `0108asap_functionsummary` '
                 . 'INNER JOIN `0108asap_functions` '
-                . 'ON `0108asap_functionsummary`.`id_0108asap_function`=`0108asap_functions`.`id`';
+                . 'ON `0108asap_functionsummary`.`id_0108asap_function`=`0108asap_functions`.`id`'
+                . 'WHERE `LicencePrimary`=0 ';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->execute();
         return $queryResult->fetchAll(PDO::FETCH_OBJ);

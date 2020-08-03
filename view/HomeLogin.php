@@ -25,12 +25,12 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
             </div>
             <div class="col-lg-6 centralColumm">
                 <div>
-                    <?php
-                    foreach ($MembersProfile as $MemberDetail) {
-                        $IdProfile = $MemberDetail->IdMembers;
+                   <?php
+                    foreach ($PrmaryLicensesUsed as $PrimaryLicencesList) {
+                        $IdProfile = $PrimaryLicencesList->IdMembers;
                         if ($IdProfile == $RegisteredId) {
                             ?>
-                            <p>Vous avez la fonction <?= $MemberDetail->TypeOfLicence ?></p>
+                            <p>Vous avez la fonction  <?= $PrimaryLicencesList->TypeOfLicence ?></p>
                             <?php
                         }
                     }
