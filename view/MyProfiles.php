@@ -59,7 +59,6 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         $IdProfile = $MemberDetail->IdMembers;
                         if ($IdProfile == $RegisteredId) {
                             ?>
-                    
                             <p>vos licence secondaire sont :<?= $MemberDetail->TypeOfLicence ?>  Numéro <?= $MemberDetail->SecondaryLicense ?></p>
                             <?php
                         }
