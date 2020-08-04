@@ -89,11 +89,6 @@ class membres {
     public function UserProfil() {
         $query = 'SELECT `id`, `Name`, `Firstname`, `Email`, `Address`, `ZipCode`, `City`, `AsaCode`, `AsaName` '
                 . 'FROM `0108asap_membres`'
-//                . ' WHERE `id`=:id';
-//         $queryResult = $this->pdo->db->prepare($query);
-//        $queryResult->bindValue(':id', $this->id, PDO::PARAM_STR);
-//        $queryResult->execute();
-//        return $queryResult->fetch(PDO::FETCH_OBJ);
                        . '';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->execute();
@@ -101,16 +96,8 @@ class membres {
     }
     public function ProfilEdditing(){
         $query='UPDATE `0108asap_membres` '
-                . 'SET '
-                . '`Name`= :Name, '
-                . '`Firstname`:Firstname, '
-                . '`Email`=:Email, '
-                . '`Actif`=:Actif, '
-                . '`Address`=:Address, '
-                . '`ZipCode`=:ZipCode, '
-                . '`City`=:City, '
-                . '`AsaCode`=:AsaCode, '
-                . '`AsaName`=:AsaName '
+                . ''
+                . 'SET `Name`=:Name, `Firstname`=:Firstname,`Email`=:Email, `Address`=:Address, `ZipCode`=:ZipCode,`City`=:City,`AsaCode`=:AsaCode,`AsaName`=:AsaName '
                 . 'WHERE `id`=:id'
                 . '';
         $queryResult = $this->pdo->db->prepare($query);
@@ -118,7 +105,6 @@ class membres {
         $queryResult->bindValue(':Name', $this->Name, PDO::PARAM_STR);
         $queryResult->bindValue(':Firstname', $this->Firstname, PDO::PARAM_STR);
         $queryResult->bindValue(':Email', $this->Email, PDO::PARAM_STR);
-        $queryResult->bindValue(':Actif', $this->Actif, PDO::PARAM_STR);
         $queryResult->bindValue(':Address', $this->Address, PDO::PARAM_STR);
         $queryResult->bindValue(':ZipCode', $this->ZipCode, PDO::PARAM_INT);
         $queryResult->bindValue(':City', $this->City, PDO::PARAM_STR);

@@ -74,7 +74,14 @@ if (isset($_POST['Edditing'])) {
       $ModfifyOfProfil->Actif='true';
       
       $ChekEditingProfil=$ModfifyOfProfil->ProfilEdditing();
-      var_dump($ChekEditingProfil);
+      if($ChekEditingProfil==true){
+             $_SESSION['loginMail'] =$_POST['EmailUser'] ;
+                $_SESSION['Name'] = $_POST['NameUser'];
+                $_SESSION['Firstname'] = $_POST['FirstnameUser'];
+                
+            header("Location:MyProfiles.php ");
+      }
+   
     }
 }
 $ProfilUser=new membres();

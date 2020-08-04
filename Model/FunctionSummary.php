@@ -18,7 +18,7 @@ class FunctionSummary {
     public $id_0108asap_member = 0;
     public $id_0108asap_function = 0;
     public $LicencePrimary = 0;
-    public $id0108asap_member=0;
+    public $id0108asap_member = 0;
     public $pdo;
 
     public function __construct() {
@@ -31,6 +31,7 @@ class FunctionSummary {
         //il les faut pour faire les transaction (3 prochaine methode)
     }
 
+    //licence principal
     public function AddPrimaryLicense() {
         $query = 'INSERT INTO `0108asap_functionsummary`( `LicenceNumber`, `id_0108asap_member`, `id_0108asap_function`, `LicencePrimary`) '
                 . 'VALUES (:LicenceNumber, :id_0108asap_member, :id_0108asap_function, :LicencePrimary)';
@@ -45,24 +46,16 @@ class FunctionSummary {
         return $queryResult->execute();
     }
 
-    public function AddLicences() {
-        $query = 'INSERT INTO `0108asap_functionsummary`( `LicenceNumber`, `id_0108asap_member`, `id_0108asap_function`) '
-                . 'VALUES (:LicenceNumber, :id_0108asap_member, :id_0108asap_function)';
+    public function VerifLicense() {
+        $query = 'SELECT COUNT(`id_0108asap_member`)WHERE `id_0108asap_member`=:id0108asap_member';
         $queryResult = $this->pdo->db->prepare($query);
-        $queryResult->bindValue(':LicenceNumber', $this->LicenceNumber, PDO::PARAM_STR);
-        $queryResult->bindValue(':id_0108asap_member', $this->id_0108asap_member, PDO::PARAM_INT);
-        $queryResult->bindValue(':id_0108asap_function', $this->id_0108asap_function, PDO::PARAM_INT);
-        return $queryResult->execute();
-    }
-public function VerifLicense(){
-    $query='SELECT COUNT(`id_0108asap_member`)WHERE `id_0108asap_member`=:id0108asap_member';
-     $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':id0108asap_member', $this->id0108asap_member, PDO::PARAM_INT);
         $queryResult->execute();
         return $queryResult->setFetchMode(PDO::FETCH_OBJ);
-}
+    }
 
-public function DisplayPrimaryLicenses() {
+    //licence principal
+    public function DisplayPrimaryLicenses() {
         $query = 'SELECT '
 //                . 'COUNT(`id_0108asap_member`), '
                 . ' `LicenceNumber`, `id_0108asap_member`, `id_0108asap_function`, `LicencePrimary` '
@@ -72,11 +65,13 @@ public function DisplayPrimaryLicenses() {
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':id0108asap_member', $this->id0108asap_member, PDO::PARAM_INT);
         $queryResult->execute();
-        
+
         return $queryResult->fetchAll(PDO::FETCH_OBJ);
     }
-    public function PrimaryLicensesUsed(){
-           $query = 'SELECT`0108asap_functionsummary`.`id` AS `IdSummary`, `0108asap_functionsummary`.`LicenceNumber` AS `SecondaryLicense`, `LicencePrimary`, `0108asap_functions`.`TypeOfLicence`, `0108asap_functionsummary`.`id_0108asap_member` AS `IdMembers` '
+
+    //licence principal
+    public function PrimaryLicensesUsed() {
+        $query = 'SELECT`0108asap_functionsummary`.`id` AS `IdSummary`, `0108asap_functionsummary`. `LicenceNumber` AS `SecondaryLicense`, `LicencePrimary`, `0108asap_functions`.`TypeOfLicence`, `0108asap_functionsummary`.`id_0108asap_member` AS `IdMembers` '
                 . 'FROM `0108asap_functionsummary` '
                 . 'INNER JOIN `0108asap_functions` '
                 . 'ON `0108asap_functionsummary`.`id_0108asap_function`=`0108asap_functions`.`id`'
@@ -86,6 +81,28 @@ public function DisplayPrimaryLicenses() {
         return $queryResult->fetchAll(PDO::FETCH_OBJ);
     }
 
+    //licence principa
+    public function ModifyTheMainLicense() {
+        $query = 'UPDATE `0108asap_functionsummary` SET `LicenceNumber`=:LicenceNumber, `id_0108asap_function`=:id_0108asap_function WHERE `id`=:id';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':LicenceNumber', $this->LicenceNumber, PDO::PARAM_STR);
+        $queryResult->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $queryResult->bindValue(':id_0108asap_function', $this->id_0108asap_function, PDO::PARAM_INT);
+        return $queryResult->execute();
+    }
+
+    //licence secondaire
+    public function AddLicences() {
+        $query = 'INSERT INTO `0108asap_functionsummary`( `LicenceNumber`, `id_0108asap_member`, `id_0108asap_function`) '
+                . 'VALUES (:LicenceNumber, :id_0108asap_member, :id_0108asap_function)';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':LicenceNumber', $this->LicenceNumber, PDO::PARAM_STR);
+        $queryResult->bindValue(':id_0108asap_member', $this->id_0108asap_member, PDO::PARAM_INT);
+        $queryResult->bindValue(':id_0108asap_function', $this->id_0108asap_function, PDO::PARAM_INT);
+        return $queryResult->execute();
+    }
+
+//licence secpndaire
     public function DisplayOfAllLicenses() {
         $query = 'SELECT`0108asap_functionsummary`.`id` AS `IdSummary`, `0108asap_functionsummary`.`LicenceNumber` AS `SecondaryLicense`, `LicencePrimary`, `0108asap_functions`.`TypeOfLicence`, `0108asap_functionsummary`.`id_0108asap_member` AS `IdMembers` '
                 . 'FROM `0108asap_functionsummary` '
@@ -97,6 +114,7 @@ public function DisplayPrimaryLicenses() {
         return $queryResult->fetchAll(PDO::FETCH_OBJ);
     }
 
+//licence secpndaire
     public function Licensing() {
         $query = 'UPDATE `0108asap_functionsummary`'
                 . ' SET `LicenceNumber`=:LicenceNumber,`id_0108asap_member`=:id_0108asap_member,`id_0108asap_function`=:id_0108asap_function'
@@ -109,6 +127,7 @@ public function DisplayPrimaryLicenses() {
         return $queryResult->execute();
     }
 
+//licence secpndaire
     public function DeleteALicense() {
         $query = 'DELETE FROM `0108asap_functionsummary` WHERE `id`=:id';
         $queryResult = $this->pdo->db->prepare($query);
