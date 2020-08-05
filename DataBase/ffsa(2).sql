@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mar. 04 août 2020 à 14:17
+-- Généré le : mer. 05 août 2020 à 06:53
 -- Version du serveur :  5.7.24
 -- Version de PHP : 7.4.4
 
@@ -197,7 +197,11 @@ CREATE TABLE `0108asap_rally` (
   `NumberOfCompetitonDays` int(10) NOT NULL,
   `RecognitionDates` date DEFAULT NULL,
   `RecognitionDates2` date DEFAULT NULL,
-  `RecognitionDates3` date DEFAULT NULL
+  `RecognitionDates3` date DEFAULT NULL,
+  `id_0108asap_typeofcompetition` int(11) NOT NULL,
+  `id_0108asap_categorycompetition` int(11) DEFAULT NULL,
+  `id_0108asap_competiton` int(11) NOT NULL,
+  `id_0108asap_sportsevents` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
@@ -295,7 +299,11 @@ ALTER TABLE `0108asap_membres`
 -- Index pour la table `0108asap_rally`
 --
 ALTER TABLE `0108asap_rally`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_0108asap_typeofcompetition` (`id_0108asap_typeofcompetition`),
+  ADD KEY `id_0108asap_competiton` (`id_0108asap_competiton`),
+  ADD KEY `id_0108asap_categorycompetition` (`id_0108asap_categorycompetition`),
+  ADD KEY `id_0108asap_sportsevents` (`id_0108asap_sportsevents`);
 
 --
 -- Index pour la table `0108asap_sportsevents`
@@ -393,6 +401,15 @@ ALTER TABLE `0108asap_competiton`
 --
 ALTER TABLE `0108asap_functions`
   ADD CONSTRAINT `0108ASAP_Functions_0108ASAP_membres_FK` FOREIGN KEY (`id_0108ASAP_membres`) REFERENCES `0108asap_membres` (`id`);
+
+--
+-- Contraintes pour la table `0108asap_rally`
+--
+ALTER TABLE `0108asap_rally`
+  ADD CONSTRAINT `0108asap_rally_ibfk_1` FOREIGN KEY (`id_0108asap_typeofcompetition`) REFERENCES `0108asap_typeofcompetition` (`id`),
+  ADD CONSTRAINT `0108asap_rally_ibfk_2` FOREIGN KEY (`id_0108asap_competiton`) REFERENCES `0108asap_competiton` (`id`),
+  ADD CONSTRAINT `0108asap_rally_ibfk_3` FOREIGN KEY (`id_0108asap_categorycompetition`) REFERENCES `0108asap_categorycompetition` (`id`),
+  ADD CONSTRAINT `0108asap_rally_ibfk_4` FOREIGN KEY (`id_0108asap_sportsevents`) REFERENCES `0108asap_sportsevents` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

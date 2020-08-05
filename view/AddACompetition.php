@@ -26,47 +26,61 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                     <p>Vous pouvez ajouter une comptétition grace au formulaire suivant :</p>
                 </div>
                 <div>
-                    <form name="AddCompetition" method="PÖST" id="AddCommpetition">
+                    <form name="AddCompetitions" method="PÖST" id="AddCommpetitions">
                         <div> 
-                            <label for=EventCategory"">Nom de la cource</label>
-                            <input type="text" name="EventCategory" id="EventCategory" />
-                            <p class="text-danger"><?= isset($formError['EventCategory']) ? $formError['EventCategory'] : '' ?></p>
-                        </div>
-
-                        <div> 
-                            <label for="TypeOfRace">Type de cource(Rallye, Rallye tout terrain, slalom, etc</label>
-                            <input type="text" name="TypeOfRace" id="TypeOfRace" />
-                            <p class="text-danger"><?= isset($formError['TypeOfRace']) ? $formError['TypeOfRace'] : '' ?></p>
-                        </div>
-                        <div> 
-                            <label for="Area">Type de surface (route circuit terre etc </label>
-                            <input type="text" name="Area" id="Area" />
-                            <p class="text-danger"><?= isset($formError['Area']) ? $formError['Area'] : '' ?></p>
+                            <label for="CatgoryCompetition">Catégorie de la compétion</label>
+                            <select class="custom-select custom-select-sm" name="CatgoryCompetition" id="CatgoryCompetition">
+                                <option selected="">Choissez dans la liste suivante </option>
+                                <?php
+                                foreach ($DisplayListOfCompetitions as $ListCompetition) {
+                                    ?>
+                                    <option value="<?= $ListCompetition->id ?>"> <?= $ListCompetition->TypeOfCompetiton ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                            <p class="text-danger"><?= isset($formError['CatgoryCompetition']) ? $formError['CatgoryCompetition'] : '' ?></p>
                         </div>
                         <div> 
-                            <label for="CategoryOfTheCompetition">Catégorie de la cource (championat national, régional etc</label>
-                            <input type="text" name="CategoryOfTheCompetition" id="CategoryOfTheCompetition" />
-                            <p class="text-danger"><?= isset($formError['CategoryOfTheCompetition']) ? $formError['CategoryOfTheCompetition'] : '' ?></p>
+                            <label for="typeCompetiton">Type de competition (rallye, course de cote etc)</label>
+                            <select class="custom-select custom-select-sm" name="typeCompetiton" id="typeCompetiton">
+                                <option selected="">Choissez dans la liste suivante </option>
+                                <?php
+                                foreach ($DisplayCategoryCompetion as $CategoryCompetition) {
+                                    ?>
+                                    <option value="<?= $CategoryCompetition->id ?>"> <?= $CategoryCompetition->CategoryCompetition ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                            <p class="text-danger"><?= isset($formError['typeCompetiton']) ? $formError['typeCompetiton'] : '' ?></p>
                         </div>
                         <div> 
-                            <label for="MaximunNumberOfConcurrent">Nombre maximun de concurrents </label>
-                            <input type="text" name="MaximunNumberOfConcurrent" id="MaximunNumberOfConcurrent" />
-                            <p class="text-danger"><?= isset($formError['MaximunNumberOfConcurrent']) ? $formError['MaximunNumberOfConcurrent'] : '' ?></p>
+                            <label for="NameOfCompetion">Nom de La compétition: </label>
+                            <input type="text" name="NameOfCompetion" id="NameOfCompetion" />
+                            <p class="text-danger"><?= isset($formError['NameOfCompetion']) ? $formError['NameOfCompetion'] : '' ?></p>
                         </div>
                         <div> 
-                            <label for="MinimumNumberOfCommissioners">Nombre de commicaire minimun </label>
-                            <input type="text" name="MinimumNumberOfCommissioners" id="MinimumNumberOfCommissioners" />
-                            <p class="text-danger"><?= isset($formError['MinimumNumberOfCommissioners']) ? $formError['MinimumNumberOfCommissioners'] : '' ?></p>
+                            <label for="StartOfTheCompetition">Date de début de la compétition</label>
+                            <input type="date" name="StartOfTheCompetition" id="StartOfTheCompetition" />
+                            <p class="text-danger"><?= isset($formError['StartOfTheCompetition']) ? $formError['StartOfTheCompetition'] : '' ?></p>
                         </div>
                         <div> 
-                            <label for="MinimumNumberOfOfficials">Nombre minimun d'officiel (voiture ouveurse DES et PC </label>
-                            <input type="text" name="MinimumNumberOfOfficials" id="MinimumNumberOfOfficials" />
-                            <p class="text-danger"><?= isset($formError['MinimumNumberOfOfficials']) ? $formError['MinimumNumberOfOfficials'] : '' ?></p>
+                            <label for="NumberDays ">Nombre de jour de compétions</label>
+                            <input type="text" name="NumberDays " id="NumberDays " />
+                            <p class="text-danger"><?= isset($formError['NumberDays ']) ? $formError['NumberDays '] : '' ?></p>
+                        </div>
+                        <div>
+                            <label for="OpenOrClose">Ouvrire la compétition</label>
+                            <select class="custom-select custom-select-sm" name="OpenOrClose" id="OpenOrClose">
+                                <option selected="">Choissez si vous ouvrez la compétition à l'nscription</option>
+                                <option value="Open">Ouvert</option>
+                                <option value="Close">Fermer</option>
+                            </select>
+                            <p class="text-danger"><?= isset($formError['OpenOrClose ']) ? $formError['OpenOrClose '] : '' ?></p>
                         </div>
                         <div> 
-                            <label for="MinimunNumbersOfVolunteers">Nombre de Bénévole minimun</label>
-                            <input type="" name="" id="" />
-                            <p class="text-danger"><?= isset($formError['']) ? $formError[''] : '' ?></p>
+                            <input type="submit" name="AddCompetition" id="AddCompetition" value="Ajouter la compétition" />
                         </div>
                     </form>
                 </div>
@@ -82,3 +96,10 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
 }
 include_once '../include/footer.php';
 ?>
+<!-- 
+                        <div> 
+                            <label for=""></label>
+                            <input type="" name="" id="" />
+                            <p class="text-danger"><?= isset($formError['']) ? $formError[''] : '' ?></p>
+                        </div>
+-->

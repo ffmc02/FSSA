@@ -21,7 +21,11 @@ class Rally {
     public $RecognitionDates = '1970-01-01';
     public $RecognitionDates2 = '1970-01-01';
     public $RecognitionDates3 = '1970-01-01';
-
+    public $id_0108asap_typeofcompetition=0;
+    public $id_0108asap_categorycompetition=0;
+    public $id_0108asap_competiton=0;
+    public $id_0108asap_sportsevents=0;    
+    
     public function __construct() {
 //fonction de connexion a ma base de donnÃ©er 
 //ordi formation

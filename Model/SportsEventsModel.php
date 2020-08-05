@@ -16,6 +16,7 @@ class SportsEventsModel {
     public $pdo;
     public $NameOfTheTest = '';
     public $DateOfTeste = 0;
+    public $NumberDays=0;
     public $TypeOfAccommodation = '';
     public $Observation = '';
 
@@ -30,10 +31,22 @@ class SportsEventsModel {
     }
 
     public function ListSporsEvents() {
-        $query = 'SELECT  `NameOfTheTest`, `DateOfTeste`, `TypeOfAccommodation`, `Observation` FROM `0108asap_sportsevents`';
+        $query = 'SELECT  `NameOfTheTest`,DATE_FORMAT(`0108asap_sportsevents`. `DateOfTeste`,\'%d/%m/%Y\') AS `DateOfCompetition`, `Observation`'
+                . ' FROM `0108asap_sportsevents`';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->execute();
         return $queryResult->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function AddSorpEvents() {
+        $query = 'INSERT INTO `0108asap_sportsevents`(`NameOfTheTest`, `DateOfTeste`, `NumberDays`,  `Observation`) '
+                . 'VALUES (:NameOfTheTest, :DateOfTeste, :NumberDays, :Observation)';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':NameOfTheTest', $this->NameOfTheTest, PDO::PARAM_STR);
+        $queryResult->bindValue(':DateOfTeste', $this->DateOfTeste, PDO::PARAM_INT);
+        $queryResult->bindValue(':NumberDays', $this->NumberDays, PDO::PARAM_INT);
+        $queryResult->bindValue(':Observation', $this->Observation, PDO::PARAM_STR);
+        return $queryResult->execute();
     }
 
 }
