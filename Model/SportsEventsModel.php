@@ -14,12 +14,12 @@
 class SportsEventsModel {
 
     public $pdo;
+    public $id=0;
     public $NameOfTheTest = '';
     public $DateOfTeste = 0;
     public $NumberDays=0;
-    public $TypeOfAccommodation = '';
     public $Observation = '';
-
+public $Location_Circuit='';
     public function __construct() {
 //fonction de connexion a ma base de donnÃ©er 
         //ordi formation
@@ -29,9 +29,11 @@ class SportsEventsModel {
         // Sinon on affiche un message d'erreur
         //il les faut pour faire les transaction (3 prochaine methode)
     }
-
+    public function lastInsertIdSportEvents() {
+        return $this->pdo->db->lastInsertId();
+    }
     public function ListSporsEvents() {
-        $query = 'SELECT  `NameOfTheTest`,DATE_FORMAT(`0108asap_sportsevents`. `DateOfTeste`,\'%d/%m/%Y\') AS `DateOfCompetition`, `Observation`'
+        $query = 'SELECT  `NameOfTheTest`,`, `Observation`'
                 . ' FROM `0108asap_sportsevents`';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->execute();
@@ -39,13 +41,16 @@ class SportsEventsModel {
     }
 
     public function AddSorpEvents() {
-        $query = 'INSERT INTO `0108asap_sportsevents`(`NameOfTheTest`, `DateOfTeste`, `NumberDays`,  `Observation`) '
-                . 'VALUES (:NameOfTheTest, :DateOfTeste, :NumberDays, :Observation)';
+        $query = 'INSERT INTO `0108asap_sportsevents`(`NameOfTheTest`, `Location_Circuit`, `DateOfTeste`, `NumberDays`,  `Observation`) '
+                . 'VALUES (:NameOfTheTest, :Location_Circuit, :DateOfTeste, :NumberDays, :Observation)';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':NameOfTheTest', $this->NameOfTheTest, PDO::PARAM_STR);
-        $queryResult->bindValue(':DateOfTeste', $this->DateOfTeste, PDO::PARAM_INT);
+        $queryResult->bindValue(':Location_Circuit', $this->Location_Circuit, PDO::PARAM_STR);
+        $queryResult->bindValue(':DateOfTeste', $this->DateOfTeste, PDO::PARAM_STR);
         $queryResult->bindValue(':NumberDays', $this->NumberDays, PDO::PARAM_INT);
         $queryResult->bindValue(':Observation', $this->Observation, PDO::PARAM_STR);
+//          $queryResult->debugDumpParams();
+//    die();
         return $queryResult->execute();
     }
 

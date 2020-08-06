@@ -1,6 +1,6 @@
 <?php
-include_once '../Model/DataBase.php';
 include_once '../Config.php';
+include_once '../Controller/RallyOpenToRegistrationCtrl.php';
 include_once '../Include/Header.php';
 include_once '../Include/Navbar.php';
 
@@ -11,7 +11,8 @@ include_once '../Include/Navbar.php';
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
             </div>
             <div class="col-lg-6 ">
-                <h1></h1>
+                
+                <h1>Epreuve de Rallye / Rallye tout terrain </h1>
             </div>
             <div class="col-lg-3">
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
@@ -19,13 +20,17 @@ include_once '../Include/Navbar.php';
         </div>
         <div class="row">
             <div class="col-lg-3 leftColumm">
-              
+                <?php
+                include_once '../Include/LeftColum.php';
+                ?>
             </div>
             <div class="col-lg-6 centralColumm">
                
             </div>
             <div class="col-lg-3 rigthColumm">
-               
+                 <?php
+                include_once '../Include/RightColum.php';
+                ?>
             </div>
         </div>
 </div>

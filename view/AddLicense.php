@@ -19,7 +19,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
         </div>
         <div class="row">
             <div class="col-lg-3 leftColumm">
-
+                <?php
+                include_once '../Include/LeftColum.php';
+                ?> 
             </div>
             <div class="col-lg-6 centralColumm">
                 <div>
@@ -55,9 +57,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         }
                     }
                     ?>
-                            <div>
-                                <a href="HomeLogin.php"><button> Retour</button></a>
-                            </div>
+                    <div>
+                        <a href="HomeLogin.php"><button> Retour</button></a>
+                    </div>
                 </div>
 
                 <div class="Licences">
@@ -70,12 +72,11 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <label>Sélectionnez le type de licence dans la liste suivante :*</label><br>
                             <select class="custom-select custom-select-sm" name="TypeOfLicence" id="TypeOfLicence">
                                 <option selected=""></option>
-                                <?php foreach ($listerFunctions as $FunctionList) { 
-//                                if()){?>
+                                <?php foreach ($listerFunctions as $FunctionList) {
+                                    ?>
                                     <option value="<?= $FunctionList->id ?>"> <?= $FunctionList->TypeOfLicence ?></option>
                                     <?php
 //                                }
-                                
                                 }
                                 ?>
                             </select>
@@ -97,7 +98,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 </div>
             </div>
             <div class="col-lg-3 rigthColumm">
-
+                <?php
+                include_once '../Include/RightColum.php';
+                ?>
             </div>
         </div>
     </div>

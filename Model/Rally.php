@@ -18,9 +18,6 @@ class Rally {
     public $NumberOfSteps = 0;
     public $NumberOfEs = 0;
     public $NumberOfCompetitonDays = 0;
-    public $RecognitionDates = '1970-01-01';
-    public $RecognitionDates2 = '1970-01-01';
-    public $RecognitionDates3 = '1970-01-01';
     public $id_0108asap_typeofcompetition=0;
     public $id_0108asap_categorycompetition=0;
     public $id_0108asap_competiton=0;
@@ -35,5 +32,7 @@ class Rally {
 // Sinon on affiche un message d'erreur
 //il les faut pour faire les transaction (3 prochaine methode)
     }
-
+    public function AddRaly(){
+        $query='';
+    }
 }

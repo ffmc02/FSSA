@@ -20,6 +20,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
         </div>
         <div class="row">
             <div class="col-lg-3 leftColumm">
+                <?php
+                include_once '../Include/LeftColum.php';
+                ?>
             </div>
             <div class="col-lg-6 centralColumm">
                 <div>
@@ -51,7 +54,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         $IdProfile = $PrimaryLicencesList->IdMembers;
                         if ($IdProfile == $RegisteredId) {
                             ?>
-                    <p>Votre licence principal est : <?= $PrimaryLicencesList->TypeOfLicence ?> avec le numéro: <?= $PrimaryLicencesList->SecondaryLicense ?> </p>
+                            <p>Votre licence principal est : <?= $PrimaryLicencesList->TypeOfLicence ?> avec le numéro: <?= $PrimaryLicencesList->SecondaryLicense ?> </p>
                             <?php
                         }
                     }
@@ -74,6 +77,11 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 <div>
                     <a href="HomeLogin.php"><button>Retour à l'accueil de connexion</button></a>   
                 </div>
+            </div>
+            <div class="col-lg-3 rigthColumm">
+                <?php
+                include_once '../Include/RightColum.php';
+                ?>
             </div>
         </div>
     </div>

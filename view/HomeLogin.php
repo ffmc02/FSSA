@@ -20,7 +20,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
         </div>
         <div class="row">
             <div class="col-lg-3 leftColumm">
-                <p>Ajouter une licence <a href="AddLicense.php">ICI</a></p>
+               <?php 
+                   include_once '../Include/LeftColum.php';
+               ?>
 
             </div>
             <div class="col-lg-6 centralColumm">
@@ -52,7 +54,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                     }
                     ?>
                 </div>  
-                <p>Liste des rallyes ouvert à l'inscription <a href="RallyOpenToRegistration.php">ICI</a></p>
+                <p>Liste des Compétitions ouvert à l'inscription <a href="RegisterForACompetition.php">ICI</a></p>
                 <p>Liste des rallyes ou vous étes inscrit <a href="ParticipationAgreement.php">ICI</a></p>
                 <?php if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Pilote)) { ?>
                 <p>Ajouter votre ou vcs voiture <a href="AddCars.php">ICI</a></p>
@@ -64,12 +66,14 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                     ?>
                     <p>Listes des Voitures enregistré <a href="ListOfCars.php">ICI</a></p>
                     <p> ouvrire une compétition à l'inscription <a href="AddACompetition.php">ICI</a></p>
-                    <p>liste des compétitions <a href="SportsEvents.php">ICI</a></p>
+                    <p>liste des compétitions <a href="OpenCompetitions.php">ICI</a></p>
                 <?php }
                 ?>        
             </div>
             <div class="col-lg-3 rigthColumm">
-                <p>Votre profils <a href="MyProfiles.php">ICI</a></p>
+               <?php 
+                               include_once '../Include/RightColum.php';
+               ?>
             </div>
         </div>
     </div>

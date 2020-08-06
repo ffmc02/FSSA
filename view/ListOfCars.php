@@ -19,65 +19,69 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
         </div>
         <div class="row">
             <div class="col-lg-3 leftColumm">
-
+                <?php
+                include_once '../Include/LeftColum.php';
+                ?>
             </div>
             <div class="col-lg-6 centralColumm">
                 <div>
                     <h2>Liste des voitures et propiaitaire enregistré</h2>
                 </div>
                 <div>
-                  
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col">Nom</th>
-                                    <th scope="col">Prénom</th>
-                                    <th scope="col">Marque de la voiture</th>
-                                    <th scope="col">Model</th>
-                                    <th scope="col">Catégorie</th>
-                                    <th scope="col">Classe</th>
-                                    <th scope="col">Nombre d'occupant</th>
-                                    <th scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                foreach ($ListOfOwners AS $ListCars) {
-                                    ?>
-                                    <tr>
-                                        <th scope="row"></th>
-                                        <td><?= $ListCars->NomsPilote  ?></td>                                        
-                                        <td><?= $ListCars->PrenomPilote  ?></td>
-                                        <td><?= $ListCars->Marque  ?></td>
-                                        <td><?= $ListCars->Model  ?></td>
-                                        <td><?= $ListCars->Categorie  ?></td>
-                                        <td><?= $ListCars->Classe  ?></td>
-                                        <td><?= $ListCars->NombreDOccupant  ?></td>
-                                    </tr>
-                                    <?php
-                                }
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Prénom</th>
+                                <th scope="col">Marque de la voiture</th>
+                                <th scope="col">Model</th>
+                                <th scope="col">Catégorie</th>
+                                <th scope="col">Classe</th>
+                                <th scope="col">Nombre d'occupant</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            foreach ($ListOfOwners AS $ListCars) {
                                 ?>
-                            </tbody>
-                        </table>
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td><?= $ListCars->NomsPilote ?></td>                                        
+                                    <td><?= $ListCars->PrenomPilote ?></td>
+                                    <td><?= $ListCars->Marque ?></td>
+                                    <td><?= $ListCars->Model ?></td>
+                                    <td><?= $ListCars->Categorie ?></td>
+                                    <td><?= $ListCars->Classe ?></td>
+                                    <td><?= $ListCars->NombreDOccupant ?></td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
 
 
-                    </div>
-                    <div>
-                        <p>Ajouté une voiture <a href="AddCars.php">ICI</a></p>
-                    </div>
-                    <div>
-                        <a href="HomeLogin.php"><button>Retour</button></a>
-                    </div>
                 </div>
-                <div class="col-lg-3 rigthColumm">
-
+                <div>
+                    <p>Ajouté une voiture <a href="AddCars.php">ICI</a></p>
+                </div>
+                <div>
+                    <a href="HomeLogin.php"><button>Retour</button></a>
                 </div>
             </div>
+            <div class="col-lg-3 rigthColumm">
+                <?php
+                include_once '../Include/RightColum.php';
+                ?>
+            </div>
         </div>
-        <?php
-    } else {
-        include_once '../Include/RestrictedZone.php';
-    }
-    include_once '../include/footer.php';
-    ?>
+    </div>
+    <?php
+} else {
+    include_once '../Include/RestrictedZone.php';
+}
+include_once '../include/footer.php';
+?>

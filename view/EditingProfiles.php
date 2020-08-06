@@ -19,13 +19,15 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
         </div>
         <div class="row">
             <div class="col-lg-3 leftColumm">
-
+                <?php
+                include_once '../Include/LeftColum.php';
+                ?>
             </div>
             <div class="col-lg-6 centralColumm">
                 <form method="post" id="Edditing">
                     <?php
-                      foreach ($UserProfil as $UserProfils) {
-                    if($UserProfils->id ==$RegisteredId) {
+                    foreach ($UserProfil as $UserProfils) {
+                        if ($UserProfils->id == $RegisteredId) {
                             ?>
 
                             <div>  
@@ -36,38 +38,38 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <div>  
                                 <label for="FirstnameUser"> Votre prénom :</label> 
                                 <input id="FirstnameUser" type="text" name="FirstnameUser" value="<?= $UserProfils->Firstname ?>"/>
-                                       <p class="text-danger"><?= isset($formError['FirstnameUser']) ? $formError['FirstnameUser'] : '' ?></p>
+                                <p class="text-danger"><?= isset($formError['FirstnameUser']) ? $formError['FirstnameUser'] : '' ?></p>
                             </div>
                             <div>  
                                 <label for="EmailUser"> Votre Email :</label> 
                                 <input id="EmailUser" type="email" name="EmailUser" value="<?= $UserProfils->Email ?>" />
-                                       <p class="text-danger"><?= isset($formError['EmailUser']) ? $formError['EmailUser'] : '' ?></p>
+                                <p class="text-danger"><?= isset($formError['EmailUser']) ? $formError['EmailUser'] : '' ?></p>
                             </div>
                             <div>  
                                 <label for="AddressUser"> Votre adresse :</label> 
                                 <input id="AddressUser" type="text" name="AddressUser" value="<?= $UserProfils->Address ?>" />
-                                       <p class="text-danger"><?= isset($formError['AddressUser']) ? $formError['AddressUser'] : '' ?></p>
+                                <p class="text-danger"><?= isset($formError['AddressUser']) ? $formError['AddressUser'] : '' ?></p>
                             </div>
                             <div>  
                                 <label for="ZipCodeUser"> Votre code postale :</label> 
                                 <input id="ZipCodeUser" type="text" name="ZipCodeUser" value="<?= $UserProfils->ZipCode ?>" />
-                                       <p class="text-danger"><?= isset($formError['ZipCodeUser']) ? $formError['ZipCodeUser'] : '' ?></p>
+                                <p class="text-danger"><?= isset($formError['ZipCodeUser']) ? $formError['ZipCodeUser'] : '' ?></p>
                             </div>
                             <div>  
                                 <label for="City"> votre ville :</label> 
                                 <input id="City" type="text" name="City" value="<?= $UserProfils->City ?> "/>
-                                       <p class="text-danger"><?= isset($formError['City']) ? $formError['City'] : '' ?></p>
+                                <p class="text-danger"><?= isset($formError['City']) ? $formError['City'] : '' ?></p>
                             </div>
 
                             <div>  
                                 <label for="AsaCode">Numéro de votre ASA ou ASK :</label> 
                                 <input id="AsaCode" type="text" name="AsaCode" value="<?= $UserProfils->AsaCode ?> "/>
-                                       <p class="text-danger"><?= isset($formError['AsaCode']) ? $formError['AsaCode'] : '' ?></p>
+                                <p class="text-danger"><?= isset($formError['AsaCode']) ? $formError['AsaCode'] : '' ?></p>
                             </div>
                             <div>  
                                 <label for="AsaName">Nom de votre ASA ou ASK :</label> 
                                 <input id="AsaName" type="text" name="AsaName" value="<?= $UserProfils->AsaName ?>" />
-                                       <p class="text-danger"><?= isset($formError['AsaName']) ? $formError['AsaName'] : '' ?></p>
+                                <p class="text-danger"><?= isset($formError['AsaName']) ? $formError['AsaName'] : '' ?></p>
                             </div>
 
                             <div> 
@@ -82,7 +84,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 <a href="HomeLogin.php"><button>Retour à l'accueil de connexion</button></a>   
             </div>
             <div class="col-lg-3 rigthColumm">
-
+                <?php
+                include_once '../Include/RightColum.php';
+                ?>
             </div>
         </div>
     </div>

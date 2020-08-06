@@ -19,7 +19,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
         </div>
         <div class="row">
             <div class="col-lg-3 leftColumm">
-
+                <?php
+                include_once '../Include/LeftColum.php';
+                ?>
             </div>
             <div class="col-lg-6 centralColumm">
                 <div>
@@ -35,22 +37,22 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 <input id="Occupying" name="Occupying" type="text" />
                                 <p class="text-danger"><?= isset($formError['Occupying']) ? $formError['Occupying'] : '' ?></p>
                             </div>
-                             <div>
+                            <div>
                                 <label for="Mark">Marque :</label>
                                 <input id="Mark" name="Mark" type="text" />
                                 <p class="text-danger"><?= isset($formError['Mark']) ? $formError['Mark'] : '' ?></p>
                             </div>
-                             <div>
+                            <div>
                                 <label for="Model">Model :</label>
                                 <input id="Model" name="Model" type="text" />
                                 <p class="text-danger"><?= isset($formError['Model']) ? $formError['Model'] : '' ?></p>
                             </div>
-                             <div>
+                            <div>
                                 <label for="Category">Catégorie</label>
                                 <input id="Category" name="Category" type="text" />
                                 <p class="text-danger"><?= isset($formError['Category']) ? $formError['Category'] : '' ?></p>
                             </div>
-                             <div>
+                            <div>
                                 <label for="Classroom">Classe :</label>
                                 <input id="Classroom" name="Classroom" type="text" />
                                 <p class="text-danger"><?= isset($formError['Classroom']) ? $formError['Classroom'] : '' ?></p>
@@ -59,11 +61,14 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 <input type="submit" name="AddCars" value="Ajouter la voiture"/>
                             </div>
                         </form>
-                          <a href="HomeLogin.php"><button>Retour</button></a>
+                        <a href="HomeLogin.php"><button>Retour</button></a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 rigthColumm">
+                <?php
+                include_once '../Include/RightColum.php';
+                ?>
 
             </div>
         </div>

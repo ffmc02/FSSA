@@ -19,7 +19,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
         </div>
         <div class="row">
             <div class="col-lg-3 leftColumm">
-
+                <?php
+                include_once '../Include/LeftColum.php';
+                ?>
             </div>
             <div class="col-lg-6 centralColumm">
                 <?php
@@ -28,13 +30,13 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                     if ($Licences == $IdLicence) {
                         ?>
                         <p>Vous souhaitez suprimer  la licence de <?= $modelDetailListe->TypeOfLicence ?> avec le numéro <?= $modelDetailListe->SecondaryLicense ?> de votre profils </p>
-                      
-                            <p class="text-danger"><?= isset($formError['IdLicences']) ? $formError['IdLicences'] : '' ?></p>
+
+                        <p class="text-danger"><?= isset($formError['IdLicences']) ? $formError['IdLicences'] : '' ?></p>
                         <div>
                             <p class="text-danger">Attention si vous validez la license seras supprimer de la base de donnée de maniere définitive</p>
                             <form id="DeleteMyLicense" method="POST" name="DeleteMyLicense">
                                 <div>
-                                    <input type="hidden" name="IDLicense" id="IDLicense" value="<?=$Licences?>"/>
+                                    <input type="hidden" name="IDLicense" id="IDLicense" value="<?= $Licences ?>"/>
                                 </div>
                                 <div>
                                     <input value="supprimer" type="submit" name="DeleteMyLicense" />
@@ -50,7 +52,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 ?>
             </div>
             <div class="col-lg-3 rigthColumm">
-
+                <?php
+                include_once '../Include/RightColum.php';
+                ?>
             </div>
         </div>
     </div>
