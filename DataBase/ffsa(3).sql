@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : jeu. 06 août 2020 à 07:12
+-- Généré le : jeu. 06 août 2020 à 12:41
 -- Version du serveur :  5.7.24
 -- Version de PHP : 7.4.4
 
@@ -69,7 +69,8 @@ INSERT INTO `0108asap_categorycompetition` (`id`, `CategoryCompetition`) VALUES
 (2, 'Rallye tout terrain'),
 (3, 'Rallye cross'),
 (4, 'Slalom'),
-(5, 'Course de cote');
+(5, 'Course de cote'),
+(6, 'Drift');
 
 -- --------------------------------------------------------
 
@@ -85,13 +86,6 @@ CREATE TABLE `0108asap_competiton` (
   `Open` varchar(1) DEFAULT '0',
   `Close` varchar(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
-
---
--- Déchargement des données de la table `0108asap_competiton`
---
-
-INSERT INTO `0108asap_competiton` (`id`, `id_0108asap_categorycompetition`, `id_0108asap_sportsevents`, `id_0108asap_typeofcompetition`, `Open`, `Close`) VALUES
-(1, 1, 1, 1, '1', '0');
 
 -- --------------------------------------------------------
 
@@ -205,10 +199,11 @@ CREATE TABLE `0108asap_rally` (
   `NumberOfSteps` int(10) NOT NULL,
   `NumberOfEs` int(10) NOT NULL,
   `NumberOfCompetitonDays` int(10) NOT NULL,
-  `id_0108asap_typeofcompetition` int(11) NOT NULL,
-  `id_0108asap_categorycompetition` int(11) DEFAULT NULL,
-  `id_0108asap_competiton` int(11) NOT NULL,
-  `id_0108asap_sportsevents` int(11) DEFAULT NULL
+  `RecognitionDay` date DEFAULT '2020-05-02',
+  `RecognitionDay2` date DEFAULT NULL,
+  `RecognitionDay3` date DEFAULT NULL,
+  `AsaOrganizer` varchar(255) NOT NULL,
+  `id_0108asap_competiton` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
@@ -225,13 +220,6 @@ CREATE TABLE `0108asap_sportsevents` (
   `NumberDays` int(11) NOT NULL,
   `Observation` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `0108asap_sportsevents`
---
-
-INSERT INTO `0108asap_sportsevents` (`id`, `NameOfTheTest`, `Location_Circuit`, `DateOfTeste`, `NumberDays`, `Observation`) VALUES
-(1, 'rett', 'teste', '2020-08-19', 5, 'eeee');
 
 -- --------------------------------------------------------
 
@@ -312,10 +300,7 @@ ALTER TABLE `0108asap_membres`
 --
 ALTER TABLE `0108asap_rally`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_0108asap_typeofcompetition` (`id_0108asap_typeofcompetition`),
-  ADD KEY `id_0108asap_competiton` (`id_0108asap_competiton`),
-  ADD KEY `id_0108asap_categorycompetition` (`id_0108asap_categorycompetition`),
-  ADD KEY `id_0108asap_sportsevents` (`id_0108asap_sportsevents`);
+  ADD KEY `id_0108asap_competiton` (`id_0108asap_competiton`);
 
 --
 -- Index pour la table `0108asap_sportsevents`
@@ -343,13 +328,13 @@ ALTER TABLE `0108asap_cars`
 -- AUTO_INCREMENT pour la table `0108asap_categorycompetition`
 --
 ALTER TABLE `0108asap_categorycompetition`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `0108asap_competiton`
 --
 ALTER TABLE `0108asap_competiton`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `0108asap_comptitionregistration`
@@ -385,7 +370,7 @@ ALTER TABLE `0108asap_rally`
 -- AUTO_INCREMENT pour la table `0108asap_sportsevents`
 --
 ALTER TABLE `0108asap_sportsevents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `0108asap_typeofcompetition`
@@ -423,10 +408,7 @@ ALTER TABLE `0108asap_comptitionregistration`
 -- Contraintes pour la table `0108asap_rally`
 --
 ALTER TABLE `0108asap_rally`
-  ADD CONSTRAINT `0108asap_rally_ibfk_1` FOREIGN KEY (`id_0108asap_typeofcompetition`) REFERENCES `0108asap_typeofcompetition` (`id`),
-  ADD CONSTRAINT `0108asap_rally_ibfk_2` FOREIGN KEY (`id_0108asap_competiton`) REFERENCES `0108asap_competiton` (`id`),
-  ADD CONSTRAINT `0108asap_rally_ibfk_3` FOREIGN KEY (`id_0108asap_categorycompetition`) REFERENCES `0108asap_categorycompetition` (`id`),
-  ADD CONSTRAINT `0108asap_rally_ibfk_4` FOREIGN KEY (`id_0108asap_sportsevents`) REFERENCES `0108asap_sportsevents` (`id`);
+  ADD CONSTRAINT `0108asap_rally_ibfk_2` FOREIGN KEY (`id_0108asap_competiton`) REFERENCES `0108asap_competiton` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

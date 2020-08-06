@@ -20,14 +20,14 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
         </div>
         <div class="row">
             <div class="col-lg-3 leftColumm">
-               <?php 
-                   include_once '../Include/LeftColum.php';
-               ?>
+                <?php
+                include_once '../Include/LeftColum.php';
+                ?>
 
             </div>
             <div class="col-lg-6 centralColumm">
                 <div>
-                   <?php
+                    <?php
                     foreach ($PrmaryLicensesUsed as $PrimaryLicencesList) {
                         $IdProfile = $PrimaryLicencesList->IdMembers;
                         if ($IdProfile == $RegisteredId) {
@@ -36,9 +36,6 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <?php
                         }
                     }
-                    ?>
-
-                    <?php
                     foreach ($ListLicences as $MemberDetail) {
                         $IdProfile = $MemberDetail->IdMembers;
                         if ($IdProfile == $RegisteredId) {
@@ -55,25 +52,13 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                     ?>
                 </div>  
                 <p>Liste des Compétitions ouvert à l'inscription <a href="RegisterForACompetition.php">ICI</a></p>
-                <p>Liste des rallyes ou vous étes inscrit <a href="ParticipationAgreement.php">ICI</a></p>
-                <?php if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Pilote)) { ?>
-                <p>Ajouter votre ou vcs voiture <a href="AddCars.php">ICI</a></p>
-                <p>Mes voitures déja enregistré<a href="MyRaceCars.php">ICI</a></p>
+                <p>Liste des compeétitions ou vous étes inscrit <a href="ParticipationAgreement.php">ICI</a></p>
 
-                <?php
-                }
-                if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Responsible)) {
-                    ?>
-                    <p>Listes des Voitures enregistré <a href="ListOfCars.php">ICI</a></p>
-                    <p> ouvrire une compétition à l'inscription <a href="AddACompetition.php">ICI</a></p>
-                    <p>liste des compétitions <a href="OpenCompetitions.php">ICI</a></p>
-                <?php }
-                ?>        
             </div>
             <div class="col-lg-3 rigthColumm">
-               <?php 
-                               include_once '../Include/RightColum.php';
-               ?>
+                <?php
+                include_once '../Include/RightColum.php';
+                ?>
             </div>
         </div>
     </div>

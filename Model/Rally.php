@@ -18,11 +18,12 @@ class Rally {
     public $NumberOfSteps = 0;
     public $NumberOfEs = 0;
     public $NumberOfCompetitonDays = 0;
-    public $id_0108asap_typeofcompetition=0;
-    public $id_0108asap_categorycompetition=0;
-    public $id_0108asap_competiton=0;
-    public $id_0108asap_sportsevents=0;    
-    
+    public $RecognitionDay = '';
+    public $RecognitionDay2 = '';
+    public $RecognitionDay3 = '';
+    public $AsaOrganizer='';
+    public $id_0108asap_competiton = 0;
+
     public function __construct() {
 //fonction de connexion a ma base de donnÃ©er 
 //ordi formation
@@ -32,7 +33,26 @@ class Rally {
 // Sinon on affiche un message d'erreur
 //il les faut pour faire les transaction (3 prochaine methode)
     }
-    public function AddRaly(){
-        $query='';
+
+    public function AddRaly() {
+        $query = 'INSERT INTO `0108asap_rally`'
+                . '(`NumberOfSteps`, `NumberOfEs`, `NumberOfCompetitonDays`, '
+                . '`RecognitionDay`, `RecognitionDay2`, `RecognitionDay3`, `AsaOrganizer`, `id_0108asap_competiton` ) '
+                . 'VALUES '
+                . '(:NumberOfSteps, :NumberOfEs, :NumberOfCompetitonDays, '
+                . ' :RecognitionDay,  :RecognitionDay2, :RecognitionDay3, :AsaOrganizer, :id_0108asap_competiton )';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':NumberOfSteps', $this->NumberOfSteps, PDO::PARAM_INT);
+        $queryResult->bindValue(':NumberOfEs', $this->NumberOfEs, PDO::PARAM_INT);
+        $queryResult->bindValue(':NumberOfCompetitonDays', $this->NumberOfCompetitonDays, PDO::PARAM_INT);
+        $queryResult->bindValue(':RecognitionDay', $this->RecognitionDay, PDO::PARAM_STR);
+        $queryResult->bindValue(':RecognitionDay2', $this->RecognitionDay2, PDO::PARAM_STR);
+        $queryResult->bindValue(':RecognitionDay3', $this->RecognitionDay3, PDO::PARAM_STR);
+        $queryResult->bindValue(':AsaOrganizer', $this->AsaOrganizer, PDO::PARAM_STR);
+        $queryResult->bindValue(':id_0108asap_competiton', $this->id_0108asap_competiton, PDO::PARAM_INT);
+//        $queryResult->debugDumpParams();
+//        die();
+        return $queryResult->execute();
     }
+
 }

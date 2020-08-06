@@ -66,5 +66,8 @@ class Competiton {
         $queryResult->execute();
         return $queryResult->fetchAll(PDO::FETCH_OBJ);
     }
-
+ public function lastInsertIdCompetition() {
+ return $this->pdo->db->lastInsertId();
+ 
+ }
 }
