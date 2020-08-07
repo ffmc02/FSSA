@@ -21,13 +21,13 @@ class Rally {
     public $RecognitionDay = '';
     public $RecognitionDay2 = '';
     public $RecognitionDay3 = '';
-    public $AsaOrganizer='';
-    public $DatePcNeed1='';
-    public $DatePcNeed2='';
-    public $DatePcNeed3='';
-    public $DateNeedForTheCommissioner1='';
-    public $DateNeedForTheCommissioner2='';
-    public $DateNeedForTheCommissioner3='';
+    public $AsaOrganizer = '';
+    public $DatePcNeed1 = '';
+    public $DatePcNeed2 = '';
+    public $DatePcNeed3 = '';
+    public $DateNeedForTheCommissioner1 = '';
+    public $DateNeedForTheCommissioner2 = '';
+    public $DateNeedForTheCommissioner3 = '';
     public $id_0108asap_competiton = 0;
 
     public function __construct() {
@@ -67,6 +67,25 @@ class Rally {
 //        $queryResult->debugDumpParams();
 //        die();
         return $queryResult->execute();
+    }
+
+    public function DisplayRegistrationOfficial() {
+        $query = 'SELECT `id`, `NumberOfSteps`, `NumberOfEs`, `NumberOfCompetitonDays`, '
+                . ' DATE_FORMAT(`0108asap_rally`. `RecognitionDay`,\'%d/%m/%Y\') AS `1jour reco`,'
+                . ' DATE_FORMAT(`0108asap_rally`. `RecognitionDay2`,\'%d/%m/%Y\') AS `2 jour reco`, '
+                . 'DATE_FORMAT(`0108asap_rally`. `RecognitionDay3`,\'%d/%m/%Y\') AS `3 jour reco`, '
+                . '`AsaOrganizer`, `DatePcNeed1`, '
+                . ' DATE_FORMAT(`0108asap_rally`. `DatePcNeed1`,\'%d/%m/%Y\') AS `BesoinPC1`,'
+                . ' DATE_FORMAT(`0108asap_rally`. `DatePcNeed2`,\'%d/%m/%Y\') AS `BesoinPC2`, '
+                . 'DATE_FORMAT(`0108asap_rally`. `DatePcNeed3`,\'%d/%m/%Y\') AS `BesoinPC3`, '
+                . ' DATE_FORMAT(`0108asap_rally`. `DateNeedForTheCommissioner1`,\'%d/%m/%Y\') AS `BesoinSite1`,'
+                . ' DATE_FORMAT(`0108asap_rally`. `DateNeedForTheCommissioner2`,\'%d/%m/%Y\') AS `BesoinSite2`, '
+                . 'DATE_FORMAT(`0108asap_rally`. `DateNeedForTheCommissioner3`,\'%d/%m/%Y\') AS `BesoinSite3`, '
+                . ' `id_0108asap_competiton` '
+                . 'FROM `0108asap_rally` ';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
     }
 
 }

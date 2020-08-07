@@ -16,11 +16,13 @@ if (isset($_GET['IdCompet'])) {
         $IdCompetition = htmlspecialchars($_GET['IdCompet']);
     }
 }
-if($Demande=='Concurrent'){
+if ($Demande == 'Concurrent') {
     
 }
-if($Demande=='Officiel'){
+if ($Demande == 'Officiel') {
     
 }
 $FonctionList = new functions();
 $listerFunctions = $FonctionList->ListOfFunction();
+$DisplayRegistreurRally = new Rally();
+$ListRally = $DisplayRegistreurRally->DisplayRegistrationOfficial();

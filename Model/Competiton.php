@@ -95,10 +95,14 @@ class Competiton {
                 . 'INNER JOIN `0108asap_rally` '
                 . 'ON `0108asap_competiton`.`id`=`0108asap_rally`.`id_0108asap_competiton`  '
                 . 'WHERE `0108asap_competiton`.`Open`=1 ';
+           $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function lastInsertIdCompetition() {
  return $this->pdo->db->lastInsertId();
  
  }
+ 
 }

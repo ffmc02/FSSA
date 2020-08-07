@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 07 août 2020 à 08:40
+-- Généré le : ven. 07 août 2020 à 11:33
 -- Version du serveur :  5.7.24
 -- Version de PHP : 7.4.4
 
@@ -240,12 +240,12 @@ CREATE TABLE `0108asap_registrationforcompetitors` (
 
 CREATE TABLE `0108asap_registrationforofficials` (
   `id` int(11) NOT NULL,
-  `AvailableDate1` date NOT NULL,
-  `ResponseDateAvailable1` varchar(255) NOT NULL,
-  `AvailableDate2` date DEFAULT NULL,
-  `ResponseDateAvailable2` varchar(255) DEFAULT NULL,
-  `AvailableDate3` date DEFAULT NULL,
-  `ResponseDateAvailable3` varchar(255) DEFAULT NULL,
+  `ResponseDatePcNeed1` varchar(255) NOT NULL,
+  `ResponseDatePcNeed2` varchar(255) DEFAULT NULL,
+  `ResponseDatePcNeed3` varchar(255) DEFAULT NULL,
+  `AvaibleDateNeedForTheCommissioner1` varchar(255) DEFAULT 'NON',
+  `AvaibleDateNeedForTheCommissioner2` varchar(255) DEFAULT 'NON',
+  `AvaibleDateNeedForTheCommissioner3` varchar(255) DEFAULT 'NON',
   `Accommodation` varchar(255) DEFAULT 'Oui',
   `id_0108asap_competiton` int(11) DEFAULT NULL,
   `id_0108asap_membres` int(11) DEFAULT NULL,
