@@ -12,7 +12,7 @@
                     ?>
                     <p>Listes des Voitures enregistré <a href="ListOfCars.php">ICI</a></p>
                     <p> ouvrire une compétition à l'inscription <a href="ChoiceOfCompetition.php">ICI</a></p>
-                    <p>liste des compétitions <a href="OpenCompetitions.php">ICI</a></p>
+                    <p>liste des compétitions <a href="ListOfOpenCompetitons.php">ICI</a></p>
 
     <p></p>
     <?php } ?>

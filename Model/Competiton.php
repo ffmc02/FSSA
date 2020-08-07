@@ -19,6 +19,7 @@ class Competiton {
     public $id_0108asap_typeofcompetition = 0;
     public $Open = '0';
     public $Close = '1';
+    public $id=0;
 
     public function __construct() {
 //fonction de connexion a ma base de donnÃ©er 
@@ -45,28 +46,58 @@ class Competiton {
         return $queryResult->execute();
     }
 
-    public function DisplayCompetitionregistration() {
-        $query = 'SELECT `0108asap_comptitionregistration`.`id`, `id_0108asap_competiton`, `id_0108asap_membres`, '
-                . '`id_0108asap_functions`,  `TypeOfCompetiton`, `NameOfTheTest`, `NumberDays`, `Observation`, DATE_FORMAT(`0108asap_sportsevents`. `DateOfTeste`,\'%d/%m/%Y\') AS `DateOfCompetition '
-                . '`Name`, `Firstname`, `City`, `TypeOfLicence`   '
-                . 'FROM `0108asap_comptitionregistration`'
-                . 'INNER JOIN `0108asap_competiton` '
-                . 'ON `0108asap_competiton`.`id`=`0108asap_comptitionregistration`.`id_0108asap_competiton`'
-                . ' INNER JOIN  `0108asap_membres` '
-                . 'ON `0108asap_membres`.`id`=`0108asap_comptitionregistration`.`id_0108asap_membres` '
-                . 'INNER JOIN`0108asap_functions` '
-                . ' ON `0108asap_functions`.`id`= `0108asap_comptitionregistration`.`id_0108asap_functions` '
-                . 'INNER JOIN `0108asap_sportsevents`'
-                . ' ON `0108asap_sportsevents`.`id`=`0108asap_competiton`.`id_0108asap_sportsevents`'
-                . ' INNER JOIN `0108asap_typeofcompetition`'
-                . ' ON `0108asap_typeofcompetition`.`id`=`0108asap_competiton`.`id_0108asap_typeofcompetition` '
-                . 'INNER  JOIN `0108asap_categorycompetition` '
-                . 'ON `0108asap_categorycompetition`.`id`=`0108asap_competiton`.`id_0108asap_categorycompetition`';
+    public function DisplayCompetitionRegistration() {
+        $query = 'SELECT `0108asap_competiton`.`id`, `Open`, `Close`, `NameOfTheTest`, `Location_Circuit`, DATE_FORMAT(`0108asap_sportsevents`. `DateOfTeste`,\'%d/%m/%Y\') AS `DateOfCompetition`,'
+                . ' `NumberDays`, `Observation`,  `CategoryCompetition` '
+                . 'FROM `0108asap_competiton` '
+                . 'INNER JOIN `0108asap_sportsevents` '
+                . 'ON `0108asap_sportsevents`.`id`=`0108asap_competiton`.`id_0108asap_sportsevents` '
+                . 'INNER JOIN `0108asap_categorycompetition` '
+                . ' ON `0108asap_competiton`.`id_0108asap_categorycompetition`=`0108asap_categorycompetition`.`id` '
+                . 'WHERE `Open`=1 && `0108asap_sportsevents`.`DateOfTeste`>= CURDATE() ';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->execute();
         return $queryResult->fetchAll(PDO::FETCH_OBJ);
     }
- public function lastInsertIdCompetition() {
+    public function DisplayRallyRegistration(){    
+        $query='SELECT `0108asap_comptitionregistration`.`id`,'
+                . ' `0108asap_comptitionregistration`.`id_0108asap_competiton`,'
+                . ' `id_0108asap_membres`, '
+                . ' `id_0108asap_functions`,  '
+                . '`TypeOfCompetiton`, '
+                . '`NameOfTheTest`,'
+                . ' `NumberDays`, '
+                . '`0108asap_competiton`.`Open`, '
+                . '`Observation`, '
+                . 'DATE_FORMAT(`0108asap_sportsevents`. `DateOfTeste`,\'%d/%m/%Y\') AS `DateOfCompetition`,  '
+                . '`Name`, '
+                . '`Firstname`, '
+                . '`City`, `'
+                . 'TypeOfLicence`, '
+                . '`NumberOfSteps`,'
+                . ' `NumberOfEs`, '
+                . '`NumberOfCompetitonDays`,'
+                . ' DATE_FORMAT(`0108asap_rally`. `RecognitionDay`,\'%d/%m/%Y\') AS `1jour reco`,'
+                . ' DATE_FORMAT(`0108asap_rally`. `RecognitionDay2`,\'%d/%m/%Y\') AS `2 jour reco`, '
+                . 'DATE_FORMAT(`0108asap_rally`. `RecognitionDay3`,\'%d/%m/%Y\') AS `3 jour reco`, '
+                . ' `AsaOrganizer`'
+                . ' FROM `0108asap_comptitionregistration` '
+                . 'INNER JOIN `0108asap_competiton` '
+                . 'ON `0108asap_competiton`.`id`=`0108asap_comptitionregistration`.`id_0108asap_competiton`  '
+                . 'INNER JOIN  `0108asap_membres`  '
+                . 'ON `0108asap_membres`.`id`=`0108asap_comptitionregistration`.`id_0108asap_membres`  '
+                . 'INNER JOIN `0108asap_sportsevents` '
+                . 'ON `0108asap_sportsevents`.`id`=`0108asap_competiton`.`id_0108asap_sportsevents`  '
+                . 'INNER JOIN `0108asap_typeofcompetition`  '
+                . 'ON `0108asap_typeofcompetition`.`id`=`0108asap_competiton`.`id_0108asap_typeofcompetition` '
+                . ' INNER  JOIN `0108asap_categorycompetition` '
+                . ' ON `0108asap_categorycompetition`.`id`=`0108asap_competiton`.`id_0108asap_categorycompetition` '
+                . 'INNER JOIN `0108asap_rally` '
+                . 'ON `0108asap_competiton`.`id`=`0108asap_rally`.`id_0108asap_competiton`  '
+                . 'WHERE `0108asap_competiton`.`Open`=1 ';
+    }
+
+    public function lastInsertIdCompetition() {
  return $this->pdo->db->lastInsertId();
  
  }

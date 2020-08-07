@@ -97,40 +97,72 @@ if (isset($_POST['AddCompetition'])) {
         $formError['RecognitionDay'] = 'Merci de selectionner la date de la premiére journée de reconnaissance';
     }
     if (!empty($_POST['RecognitionDay2'])) {
-         $AddRally->RecognitionDay2 = htmlspecialchars($_POST['RecognitionDay2']);
+        $AddRally->RecognitionDay2 = htmlspecialchars($_POST['RecognitionDay2']);
     } else {
-        $AddRally->RecognitionDay2=null;
+        $AddRally->RecognitionDay2 = null;
     }
     if (!empty($_POST['RecognitionDay3'])) {
-         $AddRally->RecognitionDay3 = htmlspecialchars($_POST['RecognitionDay3']);
-      } else {
-        $AddRally->RecognitionDay3=null;
+        $AddRally->RecognitionDay3 = htmlspecialchars($_POST['RecognitionDay3']);
+    } else {
+        $AddRally->RecognitionDay3 = null;
     }
-       if (!empty($_POST['AsaOrganizer'])) {
-         $AddRally->AsaOrganizer = htmlspecialchars($_POST['AsaOrganizer']);
-      } else {
-        $formError['AsaOrganizer']='veuillez remplir le champs Asa organisatrice';
+    if (!empty($_POST['AsaOrganizer'])) {
+        $AddRally->AsaOrganizer = htmlspecialchars($_POST['AsaOrganizer']);
+    } else {
+        $formError['AsaOrganizer'] = 'veuillez remplir le champs Asa organisatrice';
     }
-    var_dump($formError);
+    if (!empty($_POST['RecognitionDay3'])) {
+        $AddRally->RecognitionDay3 = htmlspecialchars($_POST['RecognitionDay3']);
+    } else {
+        $AddRally->RecognitionDay3 = null;
+    }
+    if (!empty($_POST['DatePcNeed1'])) {
+        $AddRally->DatePcNeed1 = htmlspecialchars($_POST['DatePcNeed1']);
+    } else {
+        $AddRally->DatePcNeed1 = null;
+    }
+    if (!empty($_POST['DatePcNeed2'])) {
+        $AddRally->DatePcNeed2 = htmlspecialchars($_POST['DatePcNeed2']);
+    } else {
+        $AddRally->DatePcNeed2 = null;
+    }
+    if (!empty($_POST['DatePcNeed3'])) {
+        $AddRally->DatePcNeed3 = htmlspecialchars($_POST['DatePcNeed3']);
+    } else {
+        $AddRally->DatePcNeed3 = null;
+    }
+    if (!empty($_POST['DateNeedForTheCommissioner1'])) {
+        $AddRally->DateNeedForTheCommissioner1 = htmlspecialchars($_POST['DateNeedForTheCommissioner1']);
+    } else {
+        $AddRally->DateNeedForTheCommissioner1 = null;
+    }
+    if (!empty($_POST['DateNeedForTheCommissioner2'])) {
+        $AddRally->DateNeedForTheCommissioner2 = htmlspecialchars($_POST['DateNeedForTheCommissioner2']);
+    } else {
+        $AddRally->DateNeedForTheCommissioner2 = null;
+    }
+    if (!empty($_POST['DateNeedForTheCommissioner3'])) {
+        $AddRally->DateNeedForTheCommissioner3 = htmlspecialchars($_POST['DateNeedForTheCommissioner3']);
+    } else {
+        $AddRally->DateNeedForTheCommissioner3 = null;
+    }
     if (count($formError) == 0) {
         $CheckSportEvents = $SportEvent->AddSorpEvents();
         $LastIDSportEvents = new SportsEventsModel();
         $IdSportEvents = $LastIDSportEvents->lastInsertIdSportEvents();
         $AddCompetitionManger->id_0108asap_sportsevents = $IdSportEvents;
         $CheckAddCompetitioManager = $AddCompetitionManger->AddCompetitionManager();
-        $ListIDCompetition= new Competiton();
-        $LastIdCompetition=$ListIDCompetition->lastInsertIdCompetition();
-        $AddRally->id_0108asap_competiton= $LastIdCompetition;  
-        var_dump($AddRally);
-        $CheckAddRally=$AddRally->AddRaly();
+        $ListIDCompetition = new Competiton();
+        $LastIdCompetition = $ListIDCompetition->lastInsertIdCompetition();
+        $AddRally->id_0108asap_competiton = $LastIdCompetition;
+        $CheckAddRally = $AddRally->AddRaly();
         var_dump($CheckAddRally);
-        
+
         if ($CheckAddCompetitioManager == true) {
             if ($CheckSportEvents == true) {
-                if($CheckAddRally==true){
-                     header("Location: HomeLogin.php");
+                if ($CheckAddRally == true) {
+                    header("Location: HomeLogin.php");
                 }
-                   
             }
         }
     }

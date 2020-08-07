@@ -30,21 +30,29 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                     <table class="table">
                         <thead>
                             <tr>
+                                <th scope="col">Marque</th>
+                                <th scope="col">Modéle</th>
+                                <th scope="col">Groupe</th>
+                                <th scope="col">Classe</th>
+                                <th scope="col">Nombre d'occupants</th>
+                                <th scope="col"></th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             foreach ($ListOfOwners AS $ListMyCards) {
-                                if ($idUser == $ListMyCards->id_0108ASAP_membres) {
+                                if ($IdUserCars == $ListMyCards->id_0108ASAP_membres) {
                                     ?>              
                                     <tr>
-                                        <th scope="row"></th>
-                                        <td><?= $ListCars->Marque ?></td>
-                                        <td><?= $ListCars->Model ?></td>
-                                        <td><?= $ListCars->Categorie ?></td>
-                                        <td><?= $ListCars->Classe ?></td>
-                                        <td><?= $ListCars->NombreDOccupant ?></td>
+<!--                                        <th scope="row">Voiture</th>-->
+                                        <td><?= $ListMyCards->Marque ?></td>
+                                        <td><?= $ListMyCards->Model ?></td>
+                                        <td><?= $ListMyCards->Categorie ?></td>
+                                        <td><?= $ListMyCards->Classe ?></td>
+                                        <td><?= $ListMyCards->NombreDOccupant ?></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                     <?php
                                 }

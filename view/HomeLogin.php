@@ -51,7 +51,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                     }
                     ?>
                 </div>  
-                <p>Liste des Compétitions ouvert à l'inscription <a href="RegisterForACompetition.php">ICI</a></p>
+                <p>Liste des Compétitions ouvert à l'inscription <a href="ListOfOpenCompetitons.php">ICI</a></p>
                 <p>Liste des compeétitions ou vous étes inscrit <a href="ParticipationAgreement.php">ICI</a></p>
 
             </div>

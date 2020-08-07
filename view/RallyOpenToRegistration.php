@@ -121,6 +121,20 @@ include_once '../Include/Navbar.php';
                         <input type="text" name="AsaOrganizer" id="NumberOfEs" />
                         <p class="text-danger"><?= isset($formError['AsaOrganizer']) ? $formError['AsaOrganizer'] : '' ?></p>
                     </div>
+                      <div> 
+                        <label for="DatePcNeed1 ">date des Besoins au PC: </label>
+                        <input type="Date" name="DatePcNeed1" id="DatePcNeed1" />
+                        <input type="Date" name="DatePcNeed2" id="DatePcNeed2" />
+                        <input type="Date" name="DatePcNeed3" id="DatePcNeed3" />
+                        <p class="text-danger"><?= isset($formError['DatePcNeed']) ? $formError['DatePcNeed'] : '' ?></p>
+                    </div>
+                        <div> 
+                        <label for="DateNeedForTheCommissioner1 ">date des Besoins Sur le terrain: </label>
+                        <input type="Date" name="DateNeedForTheCommissioner1" id="DateNeedForTheCommissioner1" />
+                        <input type="Date" name="DateNeedForTheCommissioner2" id="DateNeedForTheCommissioner2" />
+                        <input type="Date" name="DateNeedForTheCommissioner3" id="DateNeedForTheCommissioner3" />
+                        <p class="text-danger"><?= isset($formError['DateNeedForTheCommissioner']) ? $formError['DateNeedForTheCommissioner'] : '' ?></p>
+                    </div>
                     <div>  
                         <input type="submit" name="AddCompetition" id="AddCompetition" value="Ajouter la compétition" />
                     </div>
