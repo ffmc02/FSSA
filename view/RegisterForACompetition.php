@@ -47,23 +47,20 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                     </div>
                                     <div id="CopilotDisplay" class="CopilotDisplay">
                                         <p>Selection du copilote</p>
-                                        <select name="CoPilotId">
+                                        <select name="CoPilot">
                                             <option value="0" selected="">Selectionnez votre copilote dans la liste suivante</option>
                                             <?php
                                             foreach ($DisplayMemers AS $ListMembers) {
-
                                                 if ($ListMembers->id_0108asap_function == 16) {
                                                     ?>            
-                                                    <option value="<?= $ListMembers->id ?>"><?php $copilotNAme = $ListMembers->Name ?> <?= $copilotNAme ?>, <?php $copilotFirname= $ListMembers->Firstname ?> <?=$copilotFirname ?></option>
+                                                    <option value="<?= $ListMembers->CopliotID ?>"><?= $ListMembers->Name ?>, <?=$ListMembers->Firstname ?></option>
                                                     <?php
-                                                    
                                                 }
                                             }
                                             ?>
                                         </select>
                                     </div>
                                     <div>
-
                                         <label>Sélectionnez Votre voiture pour la compétition:</label><br>
                                         <select class="custom-select custom-select-sm" name="Cars" id="Cars">
                                             <option selected="" value="0">Choissez dans la liste suivante </option>

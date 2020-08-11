@@ -43,14 +43,17 @@ if ($Demande == 'Concurrent') {
             }
         }
         if ($_POST['NumberOfOccupants'] == 2) {
-            if (!empty($_POST['CoPilotId'])) {
-                if (preg_match($regexId, $_POST['CoPilotId'])) {
-                    $Addcrew->Copilot = htmlspecialchars($_POST['CoPilotId']);
-                    $CopiloteId = htmlspecialchars($_POST['CoPilotId']);
+            if (!empty($_POST['CoPilot'])) {
+                echo 'proute3333333';
+                var_dump($_POST['CoPilot']);
+                if (preg_match($regexId, $_POST['CoPilot'])) {
+
+                    $Addcrew->Copilot = htmlspecialchars($_POST['CoPilot']);
+                } else {
+                    echo 'proute2';
                 }
             }
         }
-
         if (!empty($_POST['Cars'])) {
             if (preg_match($regexId, $_POST['Cars'])) {
                 $Addcrew->id_0108asap_cars = htmlspecialchars($_POST['Cars']);
@@ -58,11 +61,11 @@ if ($Demande == 'Concurrent') {
         } else {
             $formError['Cars'] = 'Veuillez selection votrte voiture pour la compétition';
         }
-        
+
         if (count($formError) == 0) {
             $CheckAddCompetitor = $Addcrew->AddCompetitorForRace();
         }
-        var_dump($Addcrew);
+//        var_dump($CheckAddCompetitor);
         if ($CheckAddCompetitor == true) {
             header("Location: HomeLogin.php");
         }

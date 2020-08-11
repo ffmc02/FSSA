@@ -26,29 +26,48 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
             <div class="col-lg-6 centralColumm">
                 <div>
                     <p>Vous êtes inscrit à la compétition </p>
-                    <?php
-                    foreach ($DisplayListCompetitors as $RegisteredForCompetition) {
-                        ?>
-                        <p><?= $RegisteredForCompetition->NameOfTheTest ?></p>
-                        <?php 
-                        if($RegisteredForCompetition->Copilot!=0){
-                          $CopilotId=$RegisteredForCompetition->Copilot;
-                          foreach ($CopilotInformation as $DiplayInformationCopilot){
-                          if($DiplayInformationCopilot->CopliotID==$RegisteredForCompetition->Copilot){
-                        ?>
-                        <p><?=$DiplayInformationCopilot->name ?></p>
-                        <?php
-                          }
-                        }
-                    }
-                    ?>
-                        <p>Avec comme copilote <?= $RegisteredForCompetition->Copilot ?></p>
-                        <p>et comme voiture <?= $RegisteredForCompetition->Mark ?></p>
-                        <p><?= $RegisteredForCompetition->Model ?></p>
-                        <?php
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Course</th>
+                                <th scope="col">Nom du copiote</th>
+                                <th scope="col">Prénom du copilote</th>
+                                <th scope="col">Marque de la voiture</th>
+                                <th scope="col">Model</th>
+                                <th scope="col">Groupe </th>
+                                <th scope="col">Classe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            foreach ($DisplayListCompetitors as $RegisteredForCompetition) {
+                                ?>
+                                <tr>
+                                    <td><?= $RegisteredForCompetition->NameOfTheTest ?></td>>
+                                    <?php
+                                    if ($RegisteredForCompetition->Copilot != 0) {
+                                        $CopilotId = $RegisteredForCompetition->Copilot;
+                                        foreach ($CopilotInformation as $DiplayInformationCopilot) {
+                                            if ($DiplayInformationCopilot->CopliotID == $RegisteredForCompetition->Copilot) {
+                                                ?>
+
+                                                <td><?= $DiplayInformationCopilot->Name ?></td> 
+                                                <td><?= $DiplayInformationCopilot->Firstname ?></td> 
+                                                <?php
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                    <td><?= $RegisteredForCompetition->Mark ?></td> 
+                                    <td><?= $RegisteredForCompetition->Model ?></td>
+                                    <td><?= $RegisteredForCompetition->Category ?></td> 
+                                    <td><?= $RegisteredForCompetition->Classroom ?></td>
+                                    <?php
 //                        }
-                    }
-                    ?>
+                                }
+                                ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="col-lg-3 rigthColumm">

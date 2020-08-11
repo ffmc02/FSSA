@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mar. 11 août 2020 à 12:57
+-- Généré le : mar. 11 août 2020 à 14:02
 -- Version du serveur :  5.7.24
 -- Version de PHP : 7.4.4
 
@@ -153,7 +153,7 @@ INSERT INTO `0108asap_functionsummary` (`id`, `LicenceNumber`, `id_0108asap_memb
 (6, '249498', 1, 2, 0),
 (7, '249498', 16, 16, 1),
 (8, '249498', 1, 15, 0),
-(9, '00000', 17, 16, 1);
+(9, '00000', 27, 16, 1);
 
 -- --------------------------------------------------------
 
@@ -183,7 +183,7 @@ CREATE TABLE `0108asap_membres` (
 INSERT INTO `0108asap_membres` (`id`, `Name`, `Firstname`, `Email`, `Password`, `Cle`, `Actif`, `Address`, `ZipCode`, `City`, `AsaCode`, `AsaName`) VALUES
 (1, 'Jonard', 'Gaetan', 'gaetan.jonard@outlook.fr', 0x243279243130247a4d307a6b4a66705a6a492f4d6a7361644d726e414f587a2e44666755314d6e386f623730505a4f423049536d5878723934584c71, 'NqYgwRC1fU3ACpO1593694866NqYgwRC1fU3ACpO', 'true', 'APT 31 26 parc des clairs Logis', '80290', 'Poix', '0108', 'picardie'),
 (16, 'Jonardg', 'ADrftg', 'aa@aa.aa', 0x243279243130244148514536506b6a2e4c634d793941784f6178716d2e35764370557048486b59364351775836616c524b63375271424d504c535447, 'UOxX4mYiNvIcGj81596478711UOxX4mYiNvIcGj8', 'true', 'APT 31 26 parc des clairs Logis', '2320', 'Prémontré    ', '0000    ', 'Rien'),
-(27, 'copilote ', 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(27, 'copilotet-est ', 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -239,7 +239,7 @@ CREATE TABLE `0108asap_registrationforcompetitors` (
 --
 
 INSERT INTO `0108asap_registrationforcompetitors` (`id`, `id_0108asap_cars`, `id_0108asap_competiton`, `id_0108asap_functionsPilot`, `id_0108asap_membres`, `Copilot`, `id_0108asap_functionsCopilote`) VALUES
-(9, 4, 1, 15, 1, 27, 16);
+(9, 4, 1, 15, 1, 16, 16);
 
 -- --------------------------------------------------------
 
@@ -445,7 +445,7 @@ ALTER TABLE `0108asap_rally`
 -- AUTO_INCREMENT pour la table `0108asap_registrationforcompetitors`
 --
 ALTER TABLE `0108asap_registrationforcompetitors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `0108asap_registrationforofficials`
