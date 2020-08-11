@@ -1,7 +1,6 @@
 <?php
 include_once 'Config.php';
 include_once 'Controller/IndexCtrl.php';
-var_dump($_SESSION['access']);
  ?>
 <!DOCTYPE html>
 <html lang="fr">

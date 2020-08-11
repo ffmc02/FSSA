@@ -116,5 +116,26 @@ class membres {
        // execution de la requette préparer:
         return $queryResult->execute();
     }
-
+    public function DisplayPilote(){
+        $query='SELECT `0108asap_membres`.`id`AS`CopliotID`, `Name`, `Firstname`, `Email`, `Address`, `ZipCode`, `City`, `AsaCode`, `AsaName`,  `TypeOfLicence`, `id_0108asap_function` '
+                . ' FROM `0108asap_membres` '
+                . 'INNER JOIN `0108asap_functionsummary` '
+                . 'ON `0108asap_functionsummary`.`id_0108asap_member`= `0108asap_membres`.`id` '
+                . 'INNER JOIN `0108asap_functions` '
+                . 'ON `0108asap_functions`.`id`=`0108asap_functionsummary`.`id_0108asap_function`'
+                . ' WHERE `id_0108asap_function`';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
+    }
+     public function DisplayCoPilote(){
+        $query='SELECT  `Name`, `Firstname`, `0108asap_functionsummary`.`id_0108asap_function` '
+                . 'FROM `0108asap_membres` '
+                . ' INNER JOIN `0108asap_functionsummary`'
+                . ' ON `0108asap_functionsummary`.`id_0108asap_member`=`0108asap_membres`.`id` '
+                . 'WHERE `0108asap_functionsummary`.`id_0108asap_function`=16';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
+    }
 }

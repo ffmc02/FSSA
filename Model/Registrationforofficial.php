@@ -20,11 +20,11 @@ class Registrationforofficial {
     public $AvaibleDateNeedForTheCommissioner1 = '';
     public $AvaibleDateNeedForTheCommissioner2 = '';
     public $AvaibleDateNeedForTheCommissioner3 = '';
-    public $Accommodation='';
-    public $id_0108asap_competiton=0;
-    public $id_0108asap_membres=0;
-    public $id_0108asap_functions=0;
-    
+    public $Accommodation = '';
+    public $id_0108asap_competiton = 0;
+    public $id_0108asap_membres = 0;
+    public $id_0108asap_functions = 0;
+
     public function __construct() {
 //fonction de connexion a ma base de donnÃ©er 
 //ordi formation
@@ -36,10 +36,11 @@ class Registrationforofficial {
     }
 
     public function AddOffical() {
-        $query = 'INSERT INTO `0108asap_registrationforofficials`(`ResponseDatePcNeed1`, `ResponseDatePcNeed2`, `ResponseDatePcNeed3`, '
-                . '`AvaibleDateNeedForTheCommissioner1`, `AvaibleDateNeedForTheCommissioner2`, `AvaibleDateNeedForTheCommissioner3`, '
-                . '`Accommodation`, `id_0108asap_competiton`, `id_0108asap_membres`, `id_0108asap_functions`)'
-                . ' VALUES(:ResponseDatePcNeed1, :ResponseDatePcNeed2, ResponseDatePcNeed3, '
+        $query = 'INSERT INTO `0108asap_registrationforofficials`'
+                . '( `ResponseDatePcNeed1`, `ResponseDatePcNeed2`, `ResponseDatePcNeed3`, '
+                . '`AvaibleDateNeedForTheCommissioner1`, `AvaibleDateNeedForTheCommissioner2`, `AvaibleDateNeedForTheCommissioner3`,'
+                . ' `Accommodation`, `id_0108asap_competiton`, `id_0108asap_membres`, `id_0108asap_functions`) '
+                . 'VALUES (:ResponseDatePcNeed1, :ResponseDatePcNeed2, :ResponseDatePcNeed3, '
                 . ':AvaibleDateNeedForTheCommissioner1, :AvaibleDateNeedForTheCommissioner2, :AvaibleDateNeedForTheCommissioner3, '
                 . ':Accommodation, :id_0108asap_competiton, :id_0108asap_membres, :id_0108asap_functions)';
         $queryResult = $this->pdo->db->prepare($query);
@@ -53,6 +54,17 @@ class Registrationforofficial {
         $queryResult->bindValue(':id_0108asap_competiton', $this->id_0108asap_competiton, PDO::PARAM_INT);
         $queryResult->bindValue(':id_0108asap_membres', $this->id_0108asap_membres, PDO::PARAM_INT);
         $queryResult->bindValue(':id_0108asap_functions', $this->id_0108asap_functions, PDO::PARAM_INT);
+        return $queryResult->execute();
+    }
+
+    public function CheckRegistrerOfficial() {
+        $query = 'SELECT  `id_0108asap_membres` AS `OfficialExists`, `id`, `id_0108asap_competiton`'
+                . ' FROM `0108asap_registrationforofficials`'
+                . ' WHERE `id_0108asap_membres`=:id_0108asap_membres'
+                . ' GROUP BY `id_0108asap_membres`, `id`, `id_0108asap_competiton`';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':id_0108asap_membres', $this->id_0108asap_membres, PDO::PARAM_INT);
+        return $queryResult->execute();
     }
 
 }

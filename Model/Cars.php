@@ -32,7 +32,7 @@ class cars {
     }
 
     public function ListOfCars() {
-        $query = 'SELECT `NomberOfOccupant` AS `NombreDOccupant`, `Mark` AS `Marque`, `Model`,'
+        $query = 'SELECT `0108asap_cars`.`id`, `NomberOfOccupant` AS `NombreDOccupant`, `Mark` AS `Marque`, `Model`,'
                 . ' `Category`AS `Categorie`, `Classroom`AS `Classe`, `id_0108ASAP_membres`, `0108asap_membres`.`Name`AS `NomsPilote`, '
                 . '`0108asap_membres`.`Firstname` AS `PrenomPilote` '
                 . 'FROM `0108asap_cars` '
