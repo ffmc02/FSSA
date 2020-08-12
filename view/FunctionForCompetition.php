@@ -25,25 +25,35 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 ?>
             </div>
             <div class="col-lg-6 centralColumm">
-                    <?php
-                     foreach ($ListOfOpenCompetitons AS $OpenCompetition) {
-                         if($IdCompetition== $OpenCompetition->id ){
-                            ?> 
-                <div>
-                    <p>VOus shaitez participez aux  <?= $OpenCompetition->NameOfTheTest?> compétition de <?= $OpenCompetition->CategoryCompetition?>  </p>
-                    <p>qui auras lieux à partire du <?= $OpenCompetition->DateOfCompetition?> à/ aux <?= $OpenCompetition->Location_Circuit?>. </p>
-                  
-                </div>
-                <div>
-                    <p>Vous êtes un concurant cliquez <a href="RegisterForACompetition.php?Function=Concurrent&IdCompet=<?= $OpenCompetition->id ?>">ICI</a></p>
-                </div>
-                <div>
-                    <p>Vous êtes un officiel(commissaire, directeur D'ES, chrono etc) c'est par <a href="RegisterForACompetition.php?Function=Officiel&IdCompet=<?= $OpenCompetition->id ?>">ICI</a></p>
-                </div>
-                   <?php 
-                         }
-                     }
-                     ?>
+                <?php
+                foreach ($ListOfOpenCompetitons AS $OpenCompetition) {
+                    if ($IdCompetition == $OpenCompetition->id) {
+                        ?> 
+                        <div>
+                            <p>VOus shaitez participez aux  <?= $OpenCompetition->NameOfTheTest ?> compétition de <?= $OpenCompetition->CategoryCompetition ?>  </p>
+                            <p>qui auras lieux à partire du <?= $OpenCompetition->DateOfCompetition ?> à/ aux <?= $OpenCompetition->Location_Circuit ?>. </p>
+
+                        </div>
+                        <div>
+                            <?php
+                            if (isset($_SESSION['access']) && in_array($_SESSION['access'], $Pilote)) {
+                                ?>
+                                <p>Vous êtes un concurant cliquez <a href="RegisterForACompetition.php?Function=Concurrent&IdCompet=<?= $OpenCompetition->id ?>">ICI</a></p>
+                            <?php }
+                            ?>         
+                        </div>
+                        <div>    
+                            <?php
+                            if (isset($_SESSION['access']) && in_array($_SESSION['access'], $Officiel)) {
+                                ?>
+                                <p>Vous êtes un officiel(commissaire, directeur D'ES, chrono etc) c'est par <a href="RegisterForACompetition.php?Function=Officiel&IdCompet=<?= $OpenCompetition->id ?>">ICI</a></p>
+                            <?php }
+                            ?>         
+                        </div>
+                        <?php
+                    }
+                }
+                ?>
                 <div>
                     <a href="HomeLogin.php"><button> Retour</button></a>
                 </div>

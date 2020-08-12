@@ -21,8 +21,8 @@ class membres {
     public $AsaName = '0';
     public $Actif = false;
     public $id_0108asap_functions = 0;
+    public $PliotID = 0;
     public $TypeOfLicence = '';
-    
 
     public function __construct() {
 //fonction de connexion a ma base de donnéer 
@@ -89,13 +89,14 @@ class membres {
     public function UserProfil() {
         $query = 'SELECT `id`, `Name`, `Firstname`, `Email`, `Address`, `ZipCode`, `City`, `AsaCode`, `AsaName` '
                 . 'FROM `0108asap_membres`'
-                       . '';
+                . '';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->execute();
         return $queryResult->fetchAll(PDO::FETCH_OBJ);
     }
-    public function ProfilEdditing(){
-        $query='UPDATE `0108asap_membres` '
+
+    public function ProfilEdditing() {
+        $query = 'UPDATE `0108asap_membres` '
                 . ''
                 . 'SET `Name`=:Name, `Firstname`=:Firstname,`Email`=:Email, `Address`=:Address, `ZipCode`=:ZipCode,`City`=:City,`AsaCode`=:AsaCode,`AsaName`=:AsaName '
                 . 'WHERE `id`=:id'
@@ -110,14 +111,15 @@ class membres {
         $queryResult->bindValue(':City', $this->City, PDO::PARAM_STR);
         $queryResult->bindValue(':AsaCode', $this->AsaCode, PDO::PARAM_STR);
         $queryResult->bindValue(':AsaName', $this->AsaName, PDO::PARAM_STR);
-          //permet d'afficher la reguette excuter
+        //permet d'afficher la reguette excuter
 //          $queryResult->debugDumpParams();
 //    die();
-       // execution de la requette préparer:
+        // execution de la requette préparer:
         return $queryResult->execute();
     }
-    public function DisplayPilote(){
-        $query='SELECT `0108asap_membres`.`id`AS`CopliotID`, `Name`, `Firstname`, `Email`, `Address`, `ZipCode`, `City`, `AsaCode`, `AsaName`,  `TypeOfLicence`, `id_0108asap_function` '
+
+    public function DisplayPilote() {
+        $query = 'SELECT `0108asap_membres`.`id`AS`CopliotID`, `Name`, `Firstname`, `Email`, `Address`, `ZipCode`, `City`, `AsaCode`, `AsaName`,  `TypeOfLicence`, `id_0108asap_function` '
                 . ' FROM `0108asap_membres` '
                 . 'INNER JOIN `0108asap_functionsummary` '
                 . 'ON `0108asap_functionsummary`.`id_0108asap_member`= `0108asap_membres`.`id` '
@@ -128,8 +130,9 @@ class membres {
         $queryResult->execute();
         return $queryResult->fetchAll(PDO::FETCH_OBJ);
     }
-     public function DisplayCoPilote(){
-        $query='SELECT  `0108asap_membres`.`id` AS `CopliotID`, `Name`, `Firstname`, `0108asap_functionsummary`.`id_0108asap_function` '
+
+    public function DisplayCoPilote() {
+        $query = 'SELECT  `0108asap_membres`.`id` AS `CopliotID`, `Name`, `Firstname`, `0108asap_functionsummary`.`id_0108asap_function` '
                 . 'FROM `0108asap_membres` '
                 . ' INNER JOIN `0108asap_functionsummary`'
                 . ' ON `0108asap_functionsummary`.`id_0108asap_member`=`0108asap_membres`.`id` '
@@ -139,4 +142,16 @@ class membres {
         $queryResult->execute();
         return $queryResult->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public function ArrayPilot() {
+        $query = 'SELECT  `0108asap_membres`.`id` AS `PliotID`,  `0108asap_functionsummary`.`id_0108asap_function`  '
+                . 'FROM `0108asap_membres`  '
+                . 'INNER JOIN `0108asap_functionsummary` '
+                . ' ON `0108asap_functionsummary`.`id_0108asap_member`=`0108asap_membres`.`id`'
+                . ' ';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
+    }
+
 }

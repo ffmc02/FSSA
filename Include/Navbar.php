@@ -40,4 +40,4 @@
         </ul>
     </div>
 </nav>
-<mai>
+<main>

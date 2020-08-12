@@ -24,7 +24,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 include_once '../Include/LeftColum.php';
                 ?>
             </div>
-            <div class="col-lg-6 centralColumm">
+            <div class="col-lg-7 centralColumm">
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -35,6 +35,12 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <th scope="col">Durée</th>
                             <th scope="col">Observation </th>
                             <th scope="col">S'inscrire </th>
+                            <?php if (in_array($_SESSION['access'], $Responsible)) { ?>
+                                <th scope="col">Modifier</th>
+                                <th scope="col">Fermér </th>
+                                <?php
+                            }
+                            ?>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,6 +56,12 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 <td><?= $OpenCompetition->NumberDays ?></td>
                                 <td><?= $OpenCompetition->Observation ?></td>
                                 <td><a href="FunctionForCompetition.php?IdCompet=<?= $OpenCompetition->id ?>">sur cette épreuves</a></td>
+                                <?php if (in_array($_SESSION['access'], $Responsible)) { ?>
+                                    <td> <a href="EditACompetiton.php?IdCompet=<?= $OpenCompetition->id ?>">ICI</a></td>
+                                    <td> <a href="ClosedCompetition.php?IdCompet=<?= $OpenCompetition->id ?>">ICI</a></td>
+                                    <?php
+                                }
+                                ?>
                             </tr>
                             <?php
                         }
@@ -57,8 +69,12 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         ?>
                     </tbody>
                 </table>
+
+                <div>
+                    <a href="HomeLogin.php"><button> Retour</button></a>
+                </div>
             </div>
-            <div class="col-lg-3 rigthColumm">
+            <div class="col-lg-2 rigthColumm">
                 <?php
                 include_once '../Include/RightColum.php';
                 ?>

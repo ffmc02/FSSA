@@ -14,6 +14,6 @@
                     <p> ouvrire une compétition à l'inscription <a href="ChoiceOfCompetition.php">ICI</a></p>
                     <p>liste des compétitions <a href="ListOfOpenCompetitons.php">ICI</a></p>
 
-    <p></p>
+                    <p>Liste des concurrents inscrit aux compétitions <a href="ListOfRegisteredCompetitors.php">ICI</a></p>
     <?php } ?>
 </div>

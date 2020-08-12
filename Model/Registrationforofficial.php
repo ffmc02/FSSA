@@ -66,5 +66,30 @@ class Registrationforofficial {
         $queryResult->bindValue(':id_0108asap_membres', $this->id_0108asap_membres, PDO::PARAM_INT);
         return $queryResult->execute();
     }
+    public function DisplayRegistredOfficial(){
+        $query='SELECT `0108asap_registrationforofficials`.`id`, `ResponseDatePcNeed1`, `ResponseDatePcNeed2`, `ResponseDatePcNeed3`, '
+                . '`AvaibleDateNeedForTheCommissioner1`, `AvaibleDateNeedForTheCommissioner2`, `AvaibleDateNeedForTheCommissioner3`, '
+                . '`Accommodation`, `id_0108asap_competiton`, `id_0108asap_membres`, `id_0108asap_functions`, `0108asap_sportsevents`.`NameOfTheTest`,  '
+                . '`0108asap_membres`.`Name`, `0108asap_membres`.`Firstname`, `0108asap_sportsevents`.`Location_Circuit`, `0108asap_categorycompetition`.`CategoryCompetition`,  `0108asap_sportsevents`.`DateOfTeste`,'
+                . ' `0108asap_sportsevents`.`Observation` '
+                . 'FROM `0108asap_registrationforofficials` '
+                . 'INNER JOIN `0108asap_membres` '
+                . 'ON `0108asap_membres`.`id`=`0108asap_registrationforofficials`.`id_0108asap_membres` '
+                . 'INNER JOIN `0108asap_competiton`'
+                . ' ON `0108asap_competiton`.`id`=`0108asap_registrationforofficials`.`id_0108asap_competiton` '
+                . 'INNER JOIN `0108asap_functions` '
+                . 'ON `0108asap_registrationforofficials`.`id_0108asap_functions` '
+                . 'INNER JOIN `0108asap_categorycompetition` '
+                . 'ON `0108asap_categorycompetition`.`id`= `0108asap_competiton`.`id_0108asap_categorycompetition`'
+                . ' INNER JOIN `0108asap_sportsevents` '
+                . 'ON `0108asap_sportsevents`.`id`=`0108asap_competiton`.`id_0108asap_sportsevents` '
+                . 'INNER JOIN `0108asap_typeofcompetition` '
+                . 'ON `0108asap_typeofcompetition`.`id`=`0108asap_competiton`.`id_0108asap_typeofcompetition` '
+                . 'WHERE `0108asap_registrationforofficials`.`id`';
+        
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
+    }
 
 }
