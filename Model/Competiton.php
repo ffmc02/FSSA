@@ -104,8 +104,9 @@ class Competiton {
     public function lastInsertIdCompetition() {
         return $this->pdo->db->lastInsertId();
     }
-    public function DisplayClosedCompetiton(){
-        $query='SELECT `0108asap_competiton`.`id` AS `IdCompetition`,  `id_0108asap_sportsevents`, `NameOfTheTest` '
+
+    public function DisplayClosedCompetiton() {
+        $query = 'SELECT `0108asap_competiton`.`id` AS `IdCompetition`,  `id_0108asap_sportsevents`, `NameOfTheTest` '
                 . 'FROM `0108asap_competiton` '
                 . 'INNER JOIN `0108asap_sportsevents` '
                 . 'ON `0108asap_sportsevents`.`id`=`0108asap_competiton`.`id_0108asap_sportsevents`'
@@ -114,7 +115,33 @@ class Competiton {
         $queryResult->execute();
         return $queryResult->fetchAll(PDO::FETCH_OBJ);
     }
+
     public function ClosedCompetiton() {
+        $query = 'UPDATE `0108asap_competiton` SET `Open`=:Open, `Close`=:Close WHERE `id`=:id ';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $queryResult->bindValue(':Open', $this->Open, PDO::PARAM_STR);
+        $queryResult->bindValue(':Close', $this->Close, PDO::PARAM_STR);
+        return $queryResult->execute();
+    }
+
+    public function DisplayReopenCompetition() {
+        $query = 'SELECT `0108asap_competiton`.`id`, `0108asap_competiton`.`id_0108asap_sportsevents`, `0108asap_competiton`.`Open`, '
+                . '`0108asap_competiton`.`Close`, `0108asap_sportsevents`.`NameOfTheTest`, `0108asap_sportsevents`.`Location_Circuit`, '
+                . 'DATE_FORMAT(`0108asap_sportsevents`.`DateOfTeste`,\'%d/%m/%Y\') AS `DateOfCompetition`, `0108asap_categorycompetition`.`CategoryCompetition` '
+                . 'FROM `0108asap_competiton` '
+                . 'INNER JOIN `0108asap_categorycompetition` '
+                . 'ON `0108asap_categorycompetition`.`id`=`0108asap_competiton`.`id_0108asap_categorycompetition` '
+                . 'INNER JOIN `0108asap_sportsevents` '
+                . 'ON `0108asap_sportsevents`.`id`=`0108asap_competiton`.`id_0108asap_sportsevents`'
+                . ' WHERE `0108asap_competiton`.`Open`=0 '
+                . ' ';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function ReopenCompetiton() {
         $query = 'UPDATE `0108asap_competiton` SET `Open`=:Open, `Close`=:Close WHERE `id`=:id ';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':id', $this->id, PDO::PARAM_INT);
