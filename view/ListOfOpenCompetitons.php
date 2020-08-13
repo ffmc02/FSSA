@@ -56,7 +56,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 <td><?= $OpenCompetition->Observation ?></td>
                                 <td><a href="FunctionForCompetition.php?IdCompet=<?= $OpenCompetition->id ?>">sur cette épreuves</a></td>
                                 <?php if (in_array($_SESSION['access'], $Responsible)) { ?>
-                                    <td> <a href="EditACompetiton.php?IdCompet=<?= $OpenCompetition->id ?>">ICI</a></td>
+                                    <td> <a href="EditACompetiton.php?IdCompet=<?= $OpenCompetition->id ?>&TypeCompet=<?= $OpenCompetition->id_0108asap_categorycompetition ?>">ICI</a></td>
                                     <td> <a href="ClosedCompetition.php?IdCompet=<?= $OpenCompetition->id ?>">ICI</a></td>
                                     <?php
                                 }

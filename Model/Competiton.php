@@ -47,8 +47,9 @@ class Competiton {
     }
 
     public function DisplayCompetitionRegistration() {
-        $query = 'SELECT `0108asap_competiton`.`id`, `Open`, `Close`, `NameOfTheTest`, `Location_Circuit`, DATE_FORMAT(`0108asap_sportsevents`. `DateOfTeste`,\'%d/%m/%Y\') AS `DateOfCompetition`,'
-                . ' `NumberDays`, `Observation`,  `CategoryCompetition` '
+        $query = 'SELECT `0108asap_competiton`.`id`, `Open`, `Close`, `NameOfTheTest`, `Location_Circuit`,'
+                . ' DATE_FORMAT(`0108asap_sportsevents`. `DateOfTeste`,\'%d/%m/%Y\') AS `DateOfCompetition`,'
+                . ' `NumberDays`, `Observation`,  `CategoryCompetition`, `0108asap_competiton`.`id_0108asap_categorycompetition`'
                 . 'FROM `0108asap_competiton` '
                 . 'INNER JOIN `0108asap_sportsevents` '
                 . 'ON `0108asap_sportsevents`.`id`=`0108asap_competiton`.`id_0108asap_sportsevents` '
@@ -148,6 +149,36 @@ class Competiton {
         $queryResult->bindValue(':Open', $this->Open, PDO::PARAM_STR);
         $queryResult->bindValue(':Close', $this->Close, PDO::PARAM_STR);
         return $queryResult->execute();
+    }
+
+    public function ListCompetitionOustidRally() {
+        $query = 'SELECT `0108asap_competiton`.`id`, `0108asap_competiton`.`id_0108asap_sportsevents`,'
+                . ' `0108asap_typeofcompetition`.`TypeOfCompetiton`, `0108asap_categorycompetition`.`id` AS `IdRaceType`, '
+                . '`0108asap_typeofcompetition`.`id` AS `idTypeCompetition`, `0108asap_competiton`.`Open`, '
+                . '`0108asap_sportsevents`.`NumberDays`, '
+                . '`0108asap_sportsevents`.`Observation`, '
+                . '`0108asap_competiton`.`Close`, `0108asap_sportsevents`.`NameOfTheTest`, '
+                . 'DATE_FORMAT(`0108asap_raceoutsiderally`.`CompetitionStarDay`,\'%d/%m/%Y\') AS `Start`,'
+                . ' DATE_FORMAT(`0108asap_raceoutsiderally`.`CompetitionEndDay`,\'%d/%m/%Y\') AS `End`, '
+                . 'DATE_FORMAT(`0108asap_raceoutsiderally`.`RequirementDate1`,\'%d/%m/%Y\') AS `Day1`, '
+                . 'DATE_FORMAT(`0108asap_raceoutsiderally`.`RequirementDate2`,\'%d/%m/%Y\') AS `Day2`,'
+                . ' DATE_FORMAT(`0108asap_raceoutsiderally`.`RequirementDate3`,\'%d/%m/%Y\') AS `day3`,'
+                . ' `0108asap_raceoutsiderally`.`IdCompetition` ,  `0108asap_sportsevents`.`Location_Circuit`,'
+                . ' DATE_FORMAT(`0108asap_sportsevents`.`DateOfTeste`,\'%d/%m/%Y\') AS `DateDebut`, '
+                . '`0108asap_categorycompetition`.`CategoryCompetition`'
+                . ' FROM `0108asap_competiton`'
+                . ' INNER JOIN `0108asap_categorycompetition` '
+                . 'ON '
+                . '`0108asap_categorycompetition`.`id`=`0108asap_competiton`.`id_0108asap_categorycompetition`'
+                . ' INNER JOIN `0108asap_sportsevents`'
+                . ' ON `0108asap_sportsevents`.`id`=`0108asap_competiton`.`id_0108asap_sportsevents` '
+                . 'INNER JOIN `0108asap_typeofcompetition` '
+                . 'ON `0108asap_typeofcompetition`.`id`= `0108asap_competiton`.`id_0108asap_typeofcompetition`'
+                . ' INNER JOIN `0108asap_raceoutsiderally`  '
+                . 'ON `0108asap_raceoutsiderally`.`IdCompetition`=`0108asap_competiton`.`id`';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
     }
 
 }

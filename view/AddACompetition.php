@@ -91,6 +91,35 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <input type="text" name="Observation" id="Observation" />
                             <p class="text-danger"><?= isset($formError['Observation']) ? $formError['Observation'] : '' ?></p>
                         </div>
+                        <div>
+                            <label for="CompetitionStarDay">date à la quelle débute la compétition</label>
+                            <input type="date" name="CompetitionStarDay" id="CompetitionStarDay" />
+                            <p class="text-danger"><?= isset($formError['NameOfCompetion']) ? $formError['NameOfCompetion'] : '' ?></p>
+                        </div>
+
+                        <div>
+                            <label for="CompetitionEndDay">date à la quelle se finie la compétition</label>
+                            <input type="date" name="CompetitionEndDay" id="CompetitionStarDay" />
+                            <p class="text-danger"><?= isset($formError['NameOfCompetion']) ? $formError['NameOfCompetion'] : '' ?></p>
+                        </div>
+                        <div>
+                            <p>Dates des besoins des officiels </p>
+                        </div>
+                        <div>
+                            <label for="RequirementDate1">date des besoins 1</label>
+                            <input type="date" name="RequirementDate1" id="RequirementDate1" />
+                            <p class="text-danger"><?= isset($formError['NameOfCompetion']) ? $formError['NameOfCompetion'] : '' ?></p>
+                        </div>
+                           <div>
+                            <label for="RequirementDate2">date des besoins 2</label>
+                            <input type="date" name="RequirementDate2" id="RequirementDate2" />
+                            <p class="text-danger"><?= isset($formError['NameOfCompetion']) ? $formError['NameOfCompetion'] : '' ?></p>
+                        </div>
+                           <div>
+                            <label for="RequirementDate3">date des besoins 3</label>
+                            <input type="date" name="RequirementDate3" id="RequirementDate3" />
+                            <p class="text-danger"><?= isset($formError['NameOfCompetion']) ? $formError['NameOfCompetion'] : '' ?></p>
+                        </div>
                         <div> 
                             <input type="submit" name="AddCompetition" id="AddCompetition" value="Ajouter la compétition" />
                         </div>

@@ -5,6 +5,7 @@ $formError = array();
 $regexId = '/^\d+$/';
 $SportEvent = new SportsEventsModel();
 $AddCompetitionManger = new Competiton();
+$AddRace = new RaceOutsideRally();
 if (isset($_POST['AddCompetition'])) {
     if (!empty($_POST['CatgoryCompetition'])) {
         if (preg_match($regexId, $_POST['CatgoryCompetition'])) {
@@ -63,6 +64,32 @@ if (isset($_POST['AddCompetition'])) {
             }
         }
     }
+    if (!empty($_POST['CompetitionStarDay'])) {
+        $AddRace->CompetitionStarDay = htmlspecialchars($_POST['CompetitionStarDay']);
+    } else {
+        $formError['CompetitionStarDay'] = 'Merci de mettre la date début de de la compétition ';
+    }
+    if (!empty($_POST['CompetitionEndDay'])) {
+        $AddRace->CompetitionEndDay = htmlspecialchars($_POST['CompetitionEndDay']);
+    } else {
+        $formError['CompetitionEndDay'] = 'Merci de mettre la date  de fin de la compétition ';
+    }
+
+    if (!empty($_POST['RequirementDate1'])) {
+        $AddRace->RequirementDate1 = htmlspecialchars($_POST['RequirementDate1']);
+    } else {
+        $formError['RequirementDate1'] = 'Merci de mettre la date  de fin de la compétition ';
+    }
+    if (!empty($_POST['RequirementDate2'])) {
+        $AddRace->RequirementDate2 = htmlspecialchars($_POST['RequirementDate2']);
+    } else {
+        $formError['RequirementDate2'] = 'Merci de mettre la date  de fin de la compétition ';
+    }
+    if (!empty($_POST['RequirementDate3'])) {
+        $AddRace->RequirementDate3 = htmlspecialchars($_POST['RequirementDate3']);
+    } else {
+        $formError['RequirementDate3'] = 'Merci de mettre la date  de fin de la compétition ';
+    }
 //    var_dump($SportEvent);
     if (count($formError) == 0) {
         $CheckSportEvents = $SportEvent->AddSorpEvents();
@@ -70,9 +97,15 @@ if (isset($_POST['AddCompetition'])) {
         $IdSportEvents = $LastIDSportEvents->lastInsertIdSportEvents();
         $AddCompetitionManger->id_0108asap_sportsevents = $IdSportEvents;
         $CheckAddCompetitioManager = $AddCompetitionManger->AddCompetitionManager();
+        $CompetitionLastId = new Competiton();
+        $LastInsertIdCompetion = $CompetitionLastId->lastInsertIdCompetition();
+        $AddRace->IdCompetition = htmlspecialchars($LastInsertIdCompetion);
+        $CheckAddRace = $AddRace->AddRaceOutsideRally();
         if ($CheckAddCompetitioManager == true) {
             if ($CheckSportEvents == true) {
+                if ($CheckAddRace == true) {
                     header("Location: HomeLogin.php");
+                }
             }
         }
     }
