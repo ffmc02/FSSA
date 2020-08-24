@@ -160,17 +160,8 @@ if (isset($_POST['connection'])) {
     } else {
         $formError['LoginPasswordUser'] = 'Merci de remplir les champs password';
     }
-    if (!empty($_POST['LoginNameUseer'])) {
-        $NameUser = htmlspecialchars($_POST['LoginNameUseer']);
-    } else {
-        $formError['LoginNameUseer'] = 'Merci de remplir votre nom';
-    }
-    if (!empty($_POST['LoginLicenceNumber'])) {
-        $LicenceNumber = htmlspecialchars($_POST['LoginLicenceNumber']);
-    } else {
-        $formError['LoginLicenceNumber'] = 'Merci de remplir votre numéro de licences';
-    }
-
+  
+    
     if (count($formError) == 0) {
         $verif = $MembersExist->ConnexionMembers();
         if ($verif->CountMembers == 1) {

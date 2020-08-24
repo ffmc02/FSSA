@@ -24,19 +24,31 @@
             ?>
 
             <?php ?>
-            <!--       <li class="nav-item">
-                  <a class="nav-link" href="#">Pricing</a>
-                </li>
+               
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown link
+                   <img src="https://img.icons8.com/dusk/64/000000/contract-job.png"/>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>-->
+                    <a class="dropdown-item" href="MyProfiles.php">Mon profils</a>
+                    <a class="dropdown-item" href="AddLicense.php">License complémentaire</a>
+                    <!--<a class="dropdown-item" href="#">Something else here</a>-->
+                  </div>
             </li>
+             <?php if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Responsible)) {
+                    ?>
+             <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   <img src="https://img.icons8.com/ios/50/000000/add-administrator.png"/>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="ChoiceOfCompetition.php">Ouvrir une compétition</a>
+                    <a class="dropdown-item"  href="ListOfOpenCompetitons.php">Liste des compétition ouverte</a>
+                    <a class="dropdown-item" href="ListOfcloseCompetition.php">Réouvrir une Compétition</a>
+                    <a class="dropdown-item" href="ListOfRegisteredCompetitors.php">Concurrent insrit</a>
+                  </div>
+            </li>
+              <?php } ?>
         </ul>
     </div>
 </nav>

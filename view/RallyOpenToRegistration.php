@@ -95,7 +95,7 @@ include_once '../Include/Navbar.php';
                     </div>
                        <div> 
                         <label for="NumberOfSteps">Nombre d'étapes: </label>
-                        <input type="text" name="NumberOfSteps" id="Observation" />
+                        <input type="text" name="NumberOfSteps" id="NumberOfSteps" />
                         <p class="text-danger"><?= isset($formError['NumberOfSteps']) ? $formError['NumberOfSteps'] : '' ?></p>
                     </div>
                        <div> 

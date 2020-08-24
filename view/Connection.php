@@ -29,19 +29,9 @@ include_once '../Include/Navbar.php';
                 </div>
                 <form method="post" id="connexionForm">
                     <div>
-                        <label for="LoginNameUseer" > Votre nom :</label>
-                        <input id="LoginNameUseer" type="text" name="LoginNameUseer" value=" <?= isset($_SESSION['TemporyName']) ? $_SESSION['TemporyName'] : '' ?>"/>
-                        <p class="text-danger"><?= isset($formError['LoginNameUseer']) ? $formError['LoginNameUseer'] : '' ?></p>
-                    </div>
-                    <div>
                         <label for="LoginMailUser" > Votre Mail :</label>
                         <input id="LoginMailUser" type="text" name="LoginMailUser" value=" <?= isset($_SESSION['TemporyloginMail']) ? $_SESSION['TemporyloginMail'] : '' ?>" />
                         <p class="text-danger"><?= isset($formError['LoginMailUser']) ? $formError['LoginMailUser'] : '' ?></p>
-                    </div>
-                    <div>
-                        <label for="LoginLicenceNumber"> votre numéro de licence :</label> 
-                        <input id="LoginLicenceNumber" type="text"  name="LoginLicenceNumber" value=" <?= isset($_SESSION['TemporyLicenceNumber']) ? $_SESSION['TemporyLicenceNumber'] : '' ?>"/>
-                        <p class="text-danger"><?= isset($formError['LoginLicenceNumber']) ? $formError['LoginLicenceNumber'] : '' ?></p>
                     </div>
                     <div>
                         <label for="LoginPasswordUser">votre mot de passe :</label> 
@@ -126,8 +116,7 @@ include_once '../Include/Navbar.php';
                             <option selected="">Choissez dans la liste suivante </option>
                             <?php
                             foreach ($listerFunctions as $FunctionList) {
-                                if ($FunctionList->id !=155 && $FunctionList->id !=14 && $FunctionList->id !=13 && $FunctionList->id !=13 && $FunctionList->id !=11 
-                                        && $FunctionList->id !=12) {
+                                if ($FunctionList->id != 155 && $FunctionList->id != 14 && $FunctionList->id != 13 && $FunctionList->id != 13 && $FunctionList->id != 11 && $FunctionList->id != 12) {
                                     ?>
                                     <option value="<?= $FunctionList->id ?>"> <?= $FunctionList->TypeOfLicence ?></option>
                                     <?php

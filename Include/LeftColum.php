@@ -1,19 +1,10 @@
+
 <div>
-    <h2>Votre profil vos licences</h2>
-</div>
-<div>
-     <p>Votre profils <a href="MyProfiles.php">ICI</a></p>
-</div>
-<div>
-    <p>Ajouter une licence <a href="AddLicense.php">ICI</a></p>
+     <p>Profils <a href="ProfilsManagement.php"><img src="https://img.icons8.com/dusk/64/000000/contract-job.png"/></a></p>
 </div>
 <div>
     <?php if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Responsible)) {
                     ?>
-                    <p>Listes des Voitures enregistré <a href="ListOfCars.php">ICI</a></p>
-                    <p> ouvrire une compétition à l'inscription <a href="ChoiceOfCompetition.php">ICI</a></p>
-                    <p>liste des compétitions <a href="ListOfOpenCompetitons.php">ICI</a></p>
-                    <p>Réouvrir une compétition <a href="ListOfcloseCompetition.php">Par ICI</a></p>
-                    <p>Liste des concurrents inscrit aux compétitions <a href="ListOfRegisteredCompetitors.php">ICI</a></p>
+    <a href="AdministrativeManagement.php"><img src="https://img.icons8.com/ios/50/000000/add-administrator.png"/></a>
     <?php } ?>
 </div>

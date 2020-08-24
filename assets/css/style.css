@@ -34,3 +34,8 @@ nav
     background-color: grey;
 
 }
+.IconeMyCar, #IconeMyCar1
+{
+ width:auto;
+     height: 400px;
+}

@@ -57,10 +57,8 @@ class SportsEventsModel {
         return $queryResult->execute();
     }
 
-    public function UpdateSportEvents() {
-    $query='UPDATE `0108asap_sportsevents` SET `NameOfTheTest`=:NameOfTheTest, `Location_Circuit`=:Location_Circuit, '
-            . '`DateOfTeste`=:DateOfTeste, `NumberDays`=:NumberDays, `Observation`=:Observation'
-            . 'WHERE `id`=:id'; 
+    public function EdditSportEvents() {
+    $query='UPDATE `0108asap_sportsevents` SET `NameOfTheTest`=:NameOfTheTest, `Location_Circuit`=:Location_Circuit, `DateOfTeste`=:DateOfTeste, `NumberDays`=:NumberDays, `Observation`=:Observation WHERE `id`=:id'; 
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':NameOfTheTest', $this->NameOfTheTest, PDO::PARAM_STR);
         $queryResult->bindValue(':Location_Circuit', $this->Location_Circuit, PDO::PARAM_STR);
@@ -68,6 +66,7 @@ class SportsEventsModel {
         $queryResult->bindValue(':NumberDays', $this->NumberDays, PDO::PARAM_INT);
         $queryResult->bindValue(':Observation', $this->Observation, PDO::PARAM_STR); 
         $queryResult->bindValue(':id', $this->id, PDO::PARAM_INT);  
+        return $queryResult->execute();
     }
 public function ListSportEvents(){
     $query='SELECT  `NameOfTheTest`, `Location_Circuit`, `DateOfTeste`, `NumberDays`, `Observation` FROM `0108asap_sportsevents`';

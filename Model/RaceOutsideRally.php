@@ -52,4 +52,18 @@ class RaceOutsideRally {
         $queryResult->execute();
         return $queryResult->fetchAll(PDO::FETCH_OBJ);
    }
+   public function EdditRaceOutsideRally(){
+       $query='UPDATE `0108asap_raceoutsiderally` SET `CompetitionStarDay`=:CompetitionStarDay, `CompetitionEndDay`=:CompetitionEndDay, '
+               . '`RequirementDate1`=:RequirementDate1, `RequirementDate2`=:RequirementDate2, `RequirementDate3`=:RequirementDate3 '
+               . 'WHERE `id`=:id'
+               . '';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $queryResult->bindValue(':CompetitionStarDay', $this->CompetitionStarDay, PDO::PARAM_STR);
+        $queryResult->bindValue(':CompetitionEndDay', $this->CompetitionEndDay, PDO::PARAM_STR);
+        $queryResult->bindValue(':RequirementDate1', $this->RequirementDate1, PDO::PARAM_STR);
+        $queryResult->bindValue(':RequirementDate2', $this->RequirementDate2, PDO::PARAM_STR);
+        $queryResult->bindValue(':RequirementDate3', $this->RequirementDate3, PDO::PARAM_STR);
+        return $queryResult->execute();
+   }
 }
