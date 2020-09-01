@@ -143,7 +143,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                                         <select class="custom-select custom-select-sm" name="BesoinPC1">
                                                             <option selected=""<option selected="">Choissez dans la liste suivante </option>
                                                             <option value="Oui">Oui</option>
-                                                            <option value="Oui">NON</option>
+                                                            <option value="NON">NON</option>
                                                         </select>
                                                         <p class="text-danger"><?= isset($formError['BesoinPC1']) ? $formError['BesoinPC1'] : '' ?></p>
                                                     </div>
@@ -153,7 +153,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                                             <select class="custom-select custom-select-sm" name="BesoinPC2">
                                                                 <option selected=""<option selected="">Choissez dans la liste suivante </option>
                                                                 <option value="Oui">Oui</option>
-                                                                <option value="Oui">NON</option>
+                                                                <option value="NON">NON</option>
                                                             </select>
                                                         <?php } ?>
                                                     </div>
@@ -163,7 +163,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                                             <select class="custom-select custom-select-sm" name="BesoinPC3">
                                                                 <option selected=""<option selected="">Choissez dans la liste suivante </option>
                                                                 <option value="Oui">Oui</option>
-                                                                <option value="Oui">NON</option>
+                                                                <option value="NON">NON</option>
                                                             </select>
                                                         <?php } ?>
                                                     </div>
@@ -174,7 +174,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                                         <select class="custom-select custom-select-sm" name="NeedLand1">
                                                             <option selected=""<option selected="">Choissez dans la liste suivante </option>
                                                             <option value="Oui">Oui</option>
-                                                            <option value="Oui">NON</option>
+                                                            <option value="NON">NON</option>
                                                         </select>
                                                         <p class="text-danger"><?= isset($formError['NeedLand1']) ? $formError['NeedLand1'] : '' ?></p>
                                                     </div>
@@ -184,7 +184,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                                             <select class="custom-select custom-select-sm" name="NeedLand2">
                                                                 <option selected=""<option selected="">Choissez dans la liste suivante </option>
                                                                 <option value="Oui">Oui</option>
-                                                                <option value="Non">NON</option>
+                                                                <option value="NON">NON</option>
                                                             </select>
                                                         <?php } ?>
                                                     </div>
@@ -194,7 +194,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                                             <select class="custom-select custom-select-sm" name="NeedLand3">
                                                                 <option selected=""<option selected="">Choissez dans la liste suivante </option>
                                                                 <option value="Oui">Oui</option>
-                                                                <option value="Oui">NON</option>
+                                                                <option value="NON">NON</option>
                                                             </select>
                                                         <?php } ?>
                                                     </div>
@@ -203,7 +203,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                                         <select class="custom-select custom-select-sm" name="Accommodation" id="Accommodation">
                                                             <option selected=""<option selected="">Choissez dans la liste suivante </option>
                                                             <option value="Oui">Oui</option>
-                                                            <option value="Oui">NON</option>
+                                                            <option value="NON">NON</option>
                                                         </select>
                                                         <p class="text-danger"><?= isset($formError['Accommodation']) ? $formError['Accommodation'] : '' ?></p>
                                                     </div>

@@ -219,7 +219,7 @@ if ($CompetitionCategory == 1 || $CompetitionCategory == 2) {
             header("Location: ListOfOpenCompetitons.php");
         }
     }
-}
+}var_dump($EdditRally);
 //liste des type de compétition 
 $ListOfCompetitions = new TypeOfCompetition();
 $DisplayListOfCompetitions = $ListOfCompetitions->ListTypeOfCompetiton();

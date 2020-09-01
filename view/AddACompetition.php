@@ -94,13 +94,13 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         <div>
                             <label for="CompetitionStarDay">date à la quelle débute la compétition</label>
                             <input type="date" name="CompetitionStarDay" id="CompetitionStarDay" />
-                            <p class="text-danger"><?= isset($formError['NameOfCompetion']) ? $formError['NameOfCompetion'] : '' ?></p>
+                            <p class="text-danger"><?= isset($formError['CompetitionStarDay']) ? $formError['CompetitionStarDay'] : '' ?></p>
                         </div>
 
                         <div>
                             <label for="CompetitionEndDay">date à la quelle se finie la compétition</label>
                             <input type="date" name="CompetitionEndDay" id="CompetitionStarDay" />
-                            <p class="text-danger"><?= isset($formError['NameOfCompetion']) ? $formError['NameOfCompetion'] : '' ?></p>
+                            <p class="text-danger"><?= isset($formError['CompetitionEndDay']) ? $formError['CompetitionEndDay'] : '' ?></p>
                         </div>
                         <div>
                             <p>Dates des besoins des officiels </p>

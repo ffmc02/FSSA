@@ -32,9 +32,9 @@ class RaceOutsideRally {
     }
     
    public function AddRaceOutsideRally(){
-       $query='INSERT INTO `0108asap_raceoutsiderally`'
-               . '( `CompetitionStarDay`, `CompetitionEndDay`, `RequirementDate1`, `RequirementDate2`, `RequirementDate3`, `IdCompetition`)'
-               . ' VALUES (:CompetitionStarDay, :CompetitionEndDay, :RequirementDate1, :RequirementDate2, :RequirementDate3, :IdCompetition)';
+       $query='INSERT INTO `0108asap_raceoutsiderally`( `CompetitionStarDay`, `CompetitionEndDay`, `RequirementDate1`, `RequirementDate2`, `RequirementDate3`, `IdCompetition`)'
+               . ''
+               . ' VALUES  (:CompetitionStarDay, :CompetitionEndDay, :RequirementDate1, :RequirementDate2, :RequirementDate3, :IdCompetition)';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':IdCompetition', $this->IdCompetition, PDO::PARAM_INT);
         $queryResult->bindValue(':CompetitionStarDay', $this->CompetitionStarDay, PDO::PARAM_STR);

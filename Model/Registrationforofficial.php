@@ -24,6 +24,7 @@ class Registrationforofficial {
     public $id_0108asap_competiton = 0;
     public $id_0108asap_membres = 0;
     public $id_0108asap_functions = 0;
+    public $idCompet = 0;
 
     public function __construct() {
 //fonction de connexion a ma base de donnÃ©er 
@@ -66,30 +67,100 @@ class Registrationforofficial {
         $queryResult->bindValue(':id_0108asap_membres', $this->id_0108asap_membres, PDO::PARAM_INT);
         return $queryResult->execute();
     }
-    public function DisplayRegistredOfficial(){
-        $query='SELECT `0108asap_registrationforofficials`.`id`, `ResponseDatePcNeed1`, `ResponseDatePcNeed2`, `ResponseDatePcNeed3`, '
-                . '`AvaibleDateNeedForTheCommissioner1`, `AvaibleDateNeedForTheCommissioner2`, `AvaibleDateNeedForTheCommissioner3`, '
-                . '`Accommodation`, `id_0108asap_competiton`, `id_0108asap_membres`, `id_0108asap_functions`, `0108asap_sportsevents`.`NameOfTheTest`,  '
-                . '`0108asap_membres`.`Name`, `0108asap_membres`.`Firstname`, `0108asap_sportsevents`.`Location_Circuit`, `0108asap_categorycompetition`.`CategoryCompetition`,  `0108asap_sportsevents`.`DateOfTeste`,'
-                . ' `0108asap_sportsevents`.`Observation` '
-                . 'FROM `0108asap_registrationforofficials` '
+
+    public function DisplayRegistredOfficial() {
+        $query = 'SELECT `0108asap_registrationforofficials`.`id`, '
+                . ' DATE_FORMAT(`0108asap_rally`. `DatePcNeed1`,\'%d/%m/%Y\') AS `BesoinPC1`,'
+                . ' DATE_FORMAT(`0108asap_rally`. `DatePcNeed2`,\'%d/%m/%Y\') AS `BesoinPC2`, '
+                . 'DATE_FORMAT(`0108asap_rally`. `DatePcNeed3`,\'%d/%m/%Y\') AS `BesoinPC3`, '
+                . ' DATE_FORMAT(`0108asap_rally`. `DateNeedForTheCommissioner1`,\'%d/%m/%Y\') AS `BesoinSite1`,'
+                . ' DATE_FORMAT(`0108asap_rally`. `DateNeedForTheCommissioner2`,\'%d/%m/%Y\') AS `BesoinSite2`, '
+                . 'DATE_FORMAT(`0108asap_rally`. `DateNeedForTheCommissioner3`,\'%d/%m/%Y\') AS `BesoinSite3`, '
+                . ' `ResponseDatePcNeed1`, '
+                . '`ResponseDatePcNeed2`, '
+                . '`ResponseDatePcNeed3`, '
+                . '`AvaibleDateNeedForTheCommissioner1`, '
+                . '`AvaibleDateNeedForTheCommissioner2`, '
+                . '`AvaibleDateNeedForTheCommissioner3`, '
+                . '`Accommodation`, '
+                . '`0108asap_functions`.`TypeOfLicence`, '
+                . '`0108asap_registrationforofficials`.`id_0108asap_competiton`, '
+                . ' `0108asap_sportsevents`.`NameOfTheTest`, '
+                . '`0108asap_membres`.`Name`,'
+                . ' `0108asap_membres`.`Firstname`, '
+                . '`0108asap_sportsevents`.`Location_Circuit`,'
+                . ' `0108asap_categorycompetition`.`CategoryCompetition`, '
+                . ' `0108asap_sportsevents`.`DateOfTeste` '
+                . 'FROM `0108asap_registrationforofficials`'
+                . ' INNER JOIN `0108asap_competiton`'
+                . ' ON `0108asap_competiton`.`id` = `0108asap_registrationforofficials`.`id_0108asap_competiton` '
+                . ' INNER JOIN `0108asap_functions` '
+                . 'ON `0108asap_functions`.`id`= `0108asap_registrationforofficials`.`id_0108asap_functions`  '
                 . 'INNER JOIN `0108asap_membres` '
-                . 'ON `0108asap_membres`.`id`=`0108asap_registrationforofficials`.`id_0108asap_membres` '
-                . 'INNER JOIN `0108asap_competiton`'
-                . ' ON `0108asap_competiton`.`id`=`0108asap_registrationforofficials`.`id_0108asap_competiton` '
-                . 'INNER JOIN `0108asap_functions` '
-                . 'ON `0108asap_registrationforofficials`.`id_0108asap_functions` '
-                . 'INNER JOIN `0108asap_categorycompetition` '
-                . 'ON `0108asap_categorycompetition`.`id`= `0108asap_competiton`.`id_0108asap_categorycompetition`'
-                . ' INNER JOIN `0108asap_sportsevents` '
-                . 'ON `0108asap_sportsevents`.`id`=`0108asap_competiton`.`id_0108asap_sportsevents` '
-                . 'INNER JOIN `0108asap_typeofcompetition` '
-                . 'ON `0108asap_typeofcompetition`.`id`=`0108asap_competiton`.`id_0108asap_typeofcompetition` '
-                . 'WHERE `0108asap_registrationforofficials`.`id`';
-        
+                . 'ON `0108asap_registrationforofficials`.`id_0108asap_membres`= `0108asap_membres`.`id` '
+                . 'INNER JOIN `0108asap_categorycompetition`'
+                . ' ON `0108asap_categorycompetition`.`id`= `0108asap_competiton`.`id_0108asap_categorycompetition`'
+                . ' INNER JOIN `0108asap_sportsevents`'
+                . ' ON `0108asap_sportsevents`.`id`=`0108asap_competiton`.`id_0108asap_sportsevents` '
+                . 'INNER JOIN `0108asap_typeofcompetition`'
+                . ' ON `0108asap_typeofcompetition`.`id`=`0108asap_competiton`.`id_0108asap_typeofcompetition`'
+                . ' INNER JOIN `0108asap_rally` '
+                . 'ON `0108asap_rally`.`id_0108asap_competiton`= `0108asap_competiton`.`id`';
+
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->execute();
         return $queryResult->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function DisplayListOfficialsByCompetition() {
+        $query = 'SELECT  `0108asap_competiton`.`id`,'
+                . '`0108asap_registrationforofficials`.`id` AS `IdRegistrationforofficials`,'
+                . '`ResponseDatePcNeed1`, '
+                . '`ResponseDatePcNeed2`, '
+                . '`ResponseDatePcNeed3`, '
+                . '`AvaibleDateNeedForTheCommissioner1`, '
+                . '`AvaibleDateNeedForTheCommissioner2`, '
+                . ' `AvaibleDateNeedForTheCommissioner3`, '
+                . ' `Accommodation`, '
+                . '`0108asap_functions`.`TypeOfLicence`, '
+                . ' `0108asap_sportsevents`.`NameOfTheTest`,'
+                . ' `0108asap_membres`.`Name`, '
+                . '`0108asap_membres`.`Firstname` '
+                . 'FROM `0108asap_registrationforofficials` '
+                . 'INNER JOIN `0108asap_competiton` '
+                . 'ON `0108asap_competiton`.`id` = `0108asap_registrationforofficials`.`id_0108asap_competiton` '
+                . ' INNER JOIN `0108asap_functions` '
+                . 'ON `0108asap_functions`.`id`= `0108asap_registrationforofficials`.`id_0108asap_functions`  '
+                . 'INNER JOIN `0108asap_membres` '
+                . 'ON `0108asap_registrationforofficials`.`id_0108asap_membres`= `0108asap_membres`.`id` '
+                . 'INNER JOIN `0108asap_categorycompetition` '
+                . ' ON `0108asap_categorycompetition`.`id`= `0108asap_competiton`.`id_0108asap_categorycompetition` '
+                . 'INNER JOIN `0108asap_sportsevents` '
+                . 'ON `0108asap_sportsevents`.`id`=`0108asap_competiton`.`id_0108asap_sportsevents` '
+                . 'INNER JOIN `0108asap_typeofcompetition` '
+                . 'ON `0108asap_typeofcompetition`.`id`=`0108asap_competiton`.`id_0108asap_typeofcompetition` '
+                . 'INNER JOIN `0108asap_rally` '
+                . 'ON `0108asap_rally`.`id_0108asap_competiton`= `0108asap_competiton`.`id`'
+                . 'WHERE `0108asap_competiton`.`id`=:idCompet ';
+
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':idCompet', $this->idCompet, PDO::PARAM_INT);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
+    }
+public function NameOfTest(){
+    $query = 'SELECT `id_0108asap_competiton`,'
+            . ' `0108asap_sportsevents`.`NameOfTheTest` '
+            . ' FROM `0108asap_registrationforofficials`'
+            . ' INNER JOIN `0108asap_competiton`'
+            . ' ON  `0108asap_competiton`.`id`=`0108asap_registrationforofficials`.`id_0108asap_competiton` '
+            . 'INNER JOIN `0108asap_sportsevents` '
+            . 'ON `0108asap_sportsevents`.`id`= `0108asap_competiton`.`id_0108asap_sportsevents`'
+            .'WHERE `0108asap_competiton`.`id`=:idCompet ';
+
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':idCompet', $this->idCompet, PDO::PARAM_INT);
+        $queryResult->execute();
+        return $queryResult->fetch(PDO::FETCH_OBJ);
+}
 }

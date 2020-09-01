@@ -82,15 +82,10 @@ if (isset($_POST['AddCompetition'])) {
     }
     if (!empty($_POST['RequirementDate2'])) {
         $AddRace->RequirementDate2 = htmlspecialchars($_POST['RequirementDate2']);
-    } else {
-        $formError['RequirementDate2'] = 'Merci de mettre la date  de fin de la compétition ';
     }
     if (!empty($_POST['RequirementDate3'])) {
         $AddRace->RequirementDate3 = htmlspecialchars($_POST['RequirementDate3']);
-    } else {
-        $formError['RequirementDate3'] = 'Merci de mettre la date  de fin de la compétition ';
-    }
-//    var_dump($SportEvent);
+    } 
     if (count($formError) == 0) {
         $CheckSportEvents = $SportEvent->AddSorpEvents();
         $LastIDSportEvents = new SportsEventsModel();
@@ -102,15 +97,23 @@ if (isset($_POST['AddCompetition'])) {
         $AddRace->IdCompetition = htmlspecialchars($LastInsertIdCompetion);
         $CheckAddRace = $AddRace->AddRaceOutsideRally();
         if ($CheckAddCompetitioManager == true) {
+            
             if ($CheckSportEvents == true) {
                 if ($CheckAddRace == true) {
                     header("Location: HomeLogin.php");
+                } else {
+                    echo 'erreur $CheckAddRace';
                 }
+            } else {
+                echo 'erreur $CheckSportEvents';
             }
+        } else {
+            echo 'erreur $CheckSportEvents';
         }
+    } else {
+        echo 'erreur majeur';    
     }
 }
-//var_dump($AddCompetitionManger);
 //lisste des tyoe de compétitions
 $ListOfCompetitions = new TypeOfCompetition();
 $DisplayListOfCompetitions = $ListOfCompetitions->ListTypeOfCompetiton();

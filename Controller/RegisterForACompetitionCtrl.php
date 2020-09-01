@@ -103,12 +103,12 @@ if ($Demande == 'Officiel') {
             if (!empty($_POST['BesoinPC2'])) {
                 $AddOfficalForCompetition->ResponseDatePcNeed2 = htmlspecialchars($_POST['BesoinPC2']);
             } else {
-                $AddOfficalForCompetition->ResponseDatePcNeed2 = null;
+                $AddOfficalForCompetition->ResponseDatePcNeed2 = 'NON';
             }
             if (!empty($_POST['BesoinPC3'])) {
                 $AddOfficalForCompetition->ResponseDatePcNeed3 = htmlspecialchars($_POST['BesoinPC3']);
             } else {
-                $AddOfficalForCompetition->ResponseDatePcNeed3 = null;
+                $AddOfficalForCompetition->ResponseDatePcNeed3 = 'NON';
             }
             if (!empty($_POST['NeedLand1'])) {
                 $AddOfficalForCompetition->AvaibleDateNeedForTheCommissioner1 = htmlspecialchars($_POST['NeedLand1']);
@@ -118,12 +118,12 @@ if ($Demande == 'Officiel') {
             if (!empty($_POST['NeedLand2'])) {
                 $AddOfficalForCompetition->AvaibleDateNeedForTheCommissioner2 = htmlspecialchars($_POST['NeedLand2']);
             } else {
-                $AddOfficalForCompetition->AvaibleDateNeedForTheCommissioner2 = null;
+                $AddOfficalForCompetition->AvaibleDateNeedForTheCommissioner2 = 'NON';
             }
             if (!empty($_POST['NeedLand3'])) {
                 $AddOfficalForCompetition->AvaibleDateNeedForTheCommissioner3 = htmlspecialchars($_POST['NeedLand3']);
             } else {
-                $AddOfficalForCompetition->AvaibleDateNeedForTheCommissioner3 = null;
+                $AddOfficalForCompetition->AvaibleDateNeedForTheCommissioner3 = 'NON';
             }
             if (!empty($_POST['Accommodation'])) {
                 $AddOfficalForCompetition->Accommodation = htmlspecialchars($_POST['BesoinPC3']);

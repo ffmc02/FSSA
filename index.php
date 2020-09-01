@@ -18,38 +18,46 @@ include_once 'Controller/IndexCtrl.php';
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-         <?php if (isset($_SESSION['connect'])) { ?>
-          <li class="nav-item active">
-          <a class="nav-link" href="index.php">pages D'accueil Principal <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" href="view/HomeLogin.php">Page d'accueil de connexion </a>
-      </li> 
-      <li class="nav-item">
-          <a class="nav-link" href="view/Logout.php">Déconnexion </a>
-      </li>
-        <?php } else { ?>
-      <li class="nav-item active">
-          <a class="nav-link" href="index.php">pages D'accueil <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" href="view/Connection.php">Connexion</a>
-      </li>
-        <?php }
-            ?>
- <!--     <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown link
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>-->
-      </li>
+    <?php if (isset($_SESSION['connect'])) { ?>
+                <li class="nav-item active">
+                    <a class="nav-link" href="view/HomeLogin.php"> Accueil de connexion <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.php"> Accueil Du site <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="https://img.icons8.com/ios/50/000000/user-menu-male.png"/>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="view/MyProfiles.php">Mon profils</a>
+                        <a class="dropdown-item" href="view/AddLicense.php">License complémentaire</a>
+                        <!--<a class="dropdown-item" href="#">Something else here</a>-->
+                    </div>
+                </li>
+                <?php if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Responsible)) {
+                    ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="https://img.icons8.com/ios/50/000000/add-administrator.png"/>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="view/ChoiceOfCompetition.php">Ouvrir une compétition</a>
+                            <a class="dropdown-item"  href="view/ListOfOpenCompetitons.php">Liste des compétition ouverte</a>
+                            <a class="dropdown-item" href="view/ListOfcloseCompetition.php">Réouvrir une Compétition</a>
+                            <a class="dropdown-item" href="view/ListOfRegisteredCompetitors.php">Concurrent insrit</a>
+                        </div>
+                    </li>
+                <?php } ?>
+                <li class="nav-item active">
+                    <a class="nav-link" href="logout.php"> <img src="https://img.icons8.com/metro/26/000000/logout-rounded-up.png"/> <span class="sr-only">(current)</span></a>
+                </li>
+            <?php } else { ?>
+                <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="view/Connection.php">connexion</a>
+                </li>
+            <?php }?>
     </ul>
   </div>
 </nav>

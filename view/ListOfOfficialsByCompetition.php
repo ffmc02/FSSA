@@ -1,6 +1,7 @@
+
 <?php
 include_once '../Config.php';
-include_once '../Controller/ParticipationAgreementCtrl.php';
+include '../Controller/ListOfOfficialsByCompetitionCtrl.php';
 include_once '../Include/Header.php';
 include_once '../Include/Navbar.php';
 if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Function)) {
@@ -11,7 +12,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
             </div>
             <div class="col-lg-6 ">
-                <h1>Epreuve où je suis inscrit</h1>
+                <h1>Liste des officiels inscrtits sur <?= $ListeOfficialByCompetition ?> </h1>
             </div>
             <div class="col-lg-3">
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
@@ -19,12 +20,10 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
         </div>
         <div class="row">
             <div class="col-lg-1 leftColumm">
-                <?php
-                include_once '../Include/LeftColum.php';
-                ?>
+               
             </div>
-            <div class="col-lg-9 centralColumm">
-                <table class="table table-striped">
+            <div class="col-lg-10 centralColumm">
+                  <table class="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">Nom de l'épreuve </th>
@@ -42,28 +41,27 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($DisplayListOfficial AS $ListOfRegisteredOfficials) { ?>
+                        <?php  foreach ($DisplayListOfficialByCompetition AS $DisplayOFficialByCompetiton) { ?>
                             <tr>
-                                <th scope="row"><?= $ListOfRegisteredOfficials->NameOfTheTest ?></th>
-                                <td><?= $ListOfRegisteredOfficials->Name ?></td>
-                                <td><?= $ListOfRegisteredOfficials->Firstname ?></td>
-                                <td><?= $ListOfRegisteredOfficials->TypeOfLicence ?></td>
-                                <td><?= $ListOfRegisteredOfficials->ResponseDatePcNeed1 ?></td>
-                                <td><?= $ListOfRegisteredOfficials->ResponseDatePcNeed2 ?></td>
-                                <td><?= $ListOfRegisteredOfficials->ResponseDatePcNeed3 ?></td>
-                                <td><?= $ListOfRegisteredOfficials->AvaibleDateNeedForTheCommissioner1 ?></td>
-                                <td><?= $ListOfRegisteredOfficials->AvaibleDateNeedForTheCommissioner2 ?></td>
-                                <td><?= $ListOfRegisteredOfficials->AvaibleDateNeedForTheCommissioner3 ?></td>
-                                <td><?= $ListOfRegisteredOfficials->Accommodation ?></td>
-                            </tr>
-                        <?php } ?>  
+                                <th scope="row"><?= $DisplayOFficialByCompetiton->NameOfTheTest ?></th>
+                                <th scope="row"><?= $DisplayOFficialByCompetiton->Name ?></th>
+                                <th scope="row"><?= $DisplayOFficialByCompetiton->Firstname ?></th>
+                                <th scope="row"><?= $DisplayOFficialByCompetiton->TypeOfLicence ?></th>
+                                <th scope="row"><?= $DisplayOFficialByCompetiton->ResponseDatePcNeed1 ?></th>
+                                <th scope="row"><?= $DisplayOFficialByCompetiton->ResponseDatePcNeed2 ?></th>
+                                <th scope="row"><?= $DisplayOFficialByCompetiton->ResponseDatePcNeed3 ?></th>
+                                <th scope="row"><?= $DisplayOFficialByCompetiton->AvaibleDateNeedForTheCommissioner1 ?></th>
+                                <th scope="row"><?= $DisplayOFficialByCompetiton->AvaibleDateNeedForTheCommissioner2 ?></th>
+                                <th scope="row"><?= $DisplayOFficialByCompetiton->AvaibleDateNeedForTheCommissioner3 ?></th>                            
+                                <th scope="row"><?= $DisplayOFficialByCompetiton->Accommodation ?></th>
+                        <?php  } ?>  
                     </tbody>
                 </table>
             </div>
-            <div class="col-lg-2 rigthColumm">
-                <?php
-                include_once '../Include/RightColum.php';
-                ?>
+            <div class="col-lg-1 rigthColumm">
+                <div>
+                    <a href="ListOfOpenCompetitons.php"><button>Retour</button></a>
+                </div>
             </div>
         </div>
     </div>

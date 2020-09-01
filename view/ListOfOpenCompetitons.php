@@ -19,12 +19,12 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 leftColumm">
+            <div class="col-lg-2 leftColumm">
                 <?php
                 include_once '../Include/LeftColum.php';
                 ?>
             </div>
-            <div class="col-lg-7 centralColumm">
+            <div class="col-lg-8 centralColumm">
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -36,6 +36,8 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <th scope="col">Observation </th>
                             <th scope="col">S'inscrire </th>
                             <?php if (in_array($_SESSION['access'], $Responsible)) { ?>
+                                <th scope="col">Concurrent inscrit</th>
+                                <th scope="col">Officiel inscrit</th>
                                 <th scope="col">Modifier</th>
                                 <th scope="col">Fermér </th>
                                 <?php
@@ -56,6 +58,8 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 <td><?= $OpenCompetition->Observation ?></td>
                                 <td><a href="FunctionForCompetition.php?IdCompet=<?= $OpenCompetition->id ?>">sur cette épreuves</a></td>
                                 <?php if (in_array($_SESSION['access'], $Responsible)) { ?>
+                                    <td> <a href="ListOfCompetitors.php?IdCompet=<?= $OpenCompetition->id ?>">ICI</a>
+                                    <td><a href="ListOfOfficialsByCompetition.php?IdCompet=<?= $OpenCompetition->id ?>">ICI</a></td>
                                     <td> <a href="EditACompetiton.php?IdCompet=<?= $OpenCompetition->id ?>&TypeCompet=<?= $OpenCompetition->id_0108asap_categorycompetition ?>">ICI</a></td>
                                     <td> <a href="ClosedCompetition.php?IdCompet=<?= $OpenCompetition->id ?>">ICI</a></td>
                                     <?php

@@ -109,16 +109,17 @@ if (isset($_POST['validate'])) {
     }
     if (count($formError) == 0) {
         $chekMembre = $Member->newMember();
-//        var_dump($Member);
+        
+        var_dump($Member);
 //        var_dump($chekMembre);
         $License->id_0108asap_function = $LicenseTemporary;
         $License->LicencePrimary = 1;
         $License->id_0108asap_member = $LastId->lastInsertId();
-
+        var_dump($License);
         $CheckLicences = $License->AddPrimaryLicense();
         var_dump($CheckLicences);
-
-        if ($chekMembre == true && $CheckLicences == true) {
+        var_dump($chekMembre);
+        if ($chekMembre == true ) {
 
             $_SESSION['TemporyloginMail'] = $TemporaryEmail;
             $_SESSION['TemporyName'] = $TemporaryName;

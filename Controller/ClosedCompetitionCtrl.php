@@ -22,5 +22,6 @@ if (isset($_POST['CloseCompetition'])) {
     $CheckCloseCompetiton = $CloseCompetiton->ClosedCompetiton();
     if ($CheckCloseCompetiton == true) {
         $messageSuccess='La competition a été cloturer avec succees';
+          header("Location: ListOfOpenCompetitons.php");
     }
 }

@@ -40,7 +40,7 @@ class FunctionSummary {
         $queryResult->bindValue(':id_0108asap_member', $this->id_0108asap_member, PDO::PARAM_INT);
         $queryResult->bindValue(':id_0108asap_function', $this->id_0108asap_function, PDO::PARAM_INT);
         $queryResult->bindValue(':LicencePrimary', $this->LicencePrimary, PDO::PARAM_INT);
-        //  //permet d'afficher la reguette excuter
+//          //permet d'afficher la reguette excuter
 //          $queryResult->debugDumpParams();
 //    die();
         return $queryResult->execute();
