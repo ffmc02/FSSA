@@ -11,7 +11,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
             </div>
             <div class="col-lg-6 ">
-                <h1>S'insrire a une course.</h1>
+                <h1>S'insrire à une course.</h1>
             </div>
             <div class="col-lg-3">
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
@@ -39,7 +39,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                             <input value="<?= $_SESSION['idUser'] ?>" type="hidden" name="IdPilote" />
                                         </div>
                                         <div>
-                                            <label>Selectionner le nombre d'occupant*</label>
+                                            <label>Sélectionner le nombre d'occupant*</label>
                                             <select name="NumberOfOccupants" >
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -47,9 +47,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                             <span class="text-danger">Si vous êtes seul dans la voiture mettez 1 </span>
                                         </div>
                                         <div id="CopilotDisplay" class="CopilotDisplay">
-                                            <p>Selection du copilote</p>
+                                            <p>Sélection du copilote</p>
                                             <select name="CoPilot">
-                                                <option value="0" selected="">Selectionnez votre copilote dans la liste suivante</option>
+                                                <option value="0" selected="">Sélectionnez votre copilote dans la liste suivante</option>
                                                 <?php
                                                 foreach ($DisplayMemers AS $ListMembers) {
                                                     if ($ListMembers->id_0108asap_function == 16) {
@@ -62,7 +62,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                             </select>
                                         </div>
                                         <div>
-                                            <label>Sélectionnez Votre voiture pour la compétition:</label><br>
+                                            <label>Sélectionnez votre voiture pour la compétition:</label><br>
                                             <select class="custom-select custom-select-sm" name="Cars" id="Cars">
                                                 <option selected="" value="0">Choissez dans la liste suivante </option>
                                                 <?php
@@ -85,7 +85,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 </div>
                             <?php } else {
                                 ?>
-                                <p class="text-danger" > Vous ne pouvez pas inscrire votre équipage si vous n'avez pas de license de Pilote enregistrer.</p>
+                                <p class="text-danger" > Vous ne pouvez pas inscrire votre équipage si vous n'avez pas de licence de Pilote enregistrée.</p>
                                 <?php
                             }
                         }
@@ -105,9 +105,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                     <form id="RegistrationOfficial" method="POST">
 
                                         <div>
-                                            <label>Sélectionnez le type de Fonction dans la liste suivante :*</label><br>
+                                            <label>Sélectionnez le type de fonction dans la liste suivante :*</label><br>
                                             <select class="custom-select custom-select-sm" name="TypeOfLicence" id="TypeOfLicence">
-                                                <option selected="" value="0">Choissez dans la liste suivante </option>
+                                                <option selected="" value="0">Choisissez dans la liste suivante </option>
                                                 <?php
                                                 foreach ($listerFunctions as $FunctionList) {
                                                     if (in_array($_SESSION['access'], $OfficialBis)) {
@@ -137,11 +137,11 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                             foreach ($ListRally AS $DisplayListRally) {
                                                 if ($IdCompetition == $DisplayListRally->id_0108asap_competiton) {
                                                     ?>
-                                                    <p>Est vous disponible:<br> Pour assuré des fonctions au PC le </p>
+                                                    <p>Est vous disponible:<br> Pour assurer des fonctions au PC le </p>
                                                     <div>
                                                         <p><?= $DisplayListRally->BesoinPC1 ?></p>
                                                         <select class="custom-select custom-select-sm" name="BesoinPC1">
-                                                            <option selected=""<option selected="">Choissez dans la liste suivante </option>
+                                                            <option selected=""<option selected="">Choisissez dans la liste suivante </option>
                                                             <option value="Oui">Oui</option>
                                                             <option value="NON">NON</option>
                                                         </select>
@@ -151,7 +151,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                                         <?php if ($DisplayListRally->BesoinPC2 != null) { ?>
                                                             <p><?= $DisplayListRally->BesoinPC2 ?></p>
                                                             <select class="custom-select custom-select-sm" name="BesoinPC2">
-                                                                <option selected=""<option selected="">Choissez dans la liste suivante </option>
+                                                                <option selected=""<option selected="">Choisissez dans la liste suivante </option>
                                                                 <option value="Oui">Oui</option>
                                                                 <option value="NON">NON</option>
                                                             </select>
@@ -161,7 +161,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                                         <?php if ($DisplayListRally->BesoinPC3 != null) { ?>
                                                             <p><?= $DisplayListRally->BesoinPC3 ?></p>
                                                             <select class="custom-select custom-select-sm" name="BesoinPC3">
-                                                                <option selected=""<option selected="">Choissez dans la liste suivante </option>
+                                                                <option selected=""<option selected="">Choisissez dans la liste suivante </option>
                                                                 <option value="Oui">Oui</option>
                                                                 <option value="NON">NON</option>
                                                             </select>
@@ -172,7 +172,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
 
                                                         <p><?= $DisplayListRally->BesoinSite1 ?></p>
                                                         <select class="custom-select custom-select-sm" name="NeedLand1">
-                                                            <option selected=""<option selected="">Choissez dans la liste suivante </option>
+                                                            <option selected=""<option selected="">Choisissez dans la liste suivante </option>
                                                             <option value="Oui">Oui</option>
                                                             <option value="NON">NON</option>
                                                         </select>
@@ -182,7 +182,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                                         <?php if ($DisplayListRally->BesoinSite2 != null) { ?>
                                                             <p><?= $DisplayListRally->BesoinSite2 ?></p>
                                                             <select class="custom-select custom-select-sm" name="NeedLand2">
-                                                                <option selected=""<option selected="">Choissez dans la liste suivante </option>
+                                                                <option selected=""<option selected="">Choisissez dans la liste suivante </option>
                                                                 <option value="Oui">Oui</option>
                                                                 <option value="NON">NON</option>
                                                             </select>
@@ -192,16 +192,16 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                                         <?php if ($DisplayListRally->BesoinSite3 != null) { ?>
                                                             <p><?= $DisplayListRally->BesoinSite3 ?></p>
                                                             <select class="custom-select custom-select-sm" name="NeedLand3">
-                                                                <option selected=""<option selected="">Choissez dans la liste suivante </option>
+                                                                <option selected=""<option selected="">Choisissez dans la liste suivante </option>
                                                                 <option value="Oui">Oui</option>
                                                                 <option value="NON">NON</option>
                                                             </select>
                                                         <?php } ?>
                                                     </div>
                                                     <div>
-                                                        <label for="Accommodation">Avez vous Besoin d'ëtre Heberger</label>
+                                                        <label for="Accommodation">Avez-vous besoin d'être hébergé?</label>
                                                         <select class="custom-select custom-select-sm" name="Accommodation" id="Accommodation">
-                                                            <option selected=""<option selected="">Choissez dans la liste suivante </option>
+                                                            <option selected=""<option selected="">Choisissez dans la liste suivante </option>
                                                             <option value="Oui">Oui</option>
                                                             <option value="NON">NON</option>
                                                         </select>

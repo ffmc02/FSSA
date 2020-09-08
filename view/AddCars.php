@@ -33,7 +33,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                     <div>
                         <form name="AddCar" method="POST" >
                             <div>
-                                <label for="Occupying">Nombre d'occupant :</label>
+                                <label for="Occupying">Nombre d'occupants :</label>
                                 <input id="Occupying" name="Occupying" type="text" />
                                 <p class="text-danger"><?= isset($formError['Occupying']) ? $formError['Occupying'] : '' ?></p>
                             </div>

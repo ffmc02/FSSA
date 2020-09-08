@@ -31,7 +31,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <th scope="col">Nom de l'épreuve</th>
                             <th scope="col">Type d'épreuve</th>
                             <th scope="col">Localisation ou circuit</th>
-                            <th scope="col">Date de la cource</th>
+                            <th scope="col">Date de la course</th>
                             <?php if (in_array($_SESSION['access'], $Responsible)) { ?>
                                 <th scope="col">Modifier</th>
                                 <th scope="col">Rouvrir </th>

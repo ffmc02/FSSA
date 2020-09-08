@@ -45,14 +45,14 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
 
                         <?php } else {
                             ?>
-                            <p>Vous n'avez pas d'autre licences pour le moment </p>
+                            <p>Vous n'avez pas d'autres licences pour le moment </p>
                             <?php
                         }
                     }
                     ?>
                 </div>  
-                <p>Liste des Compétitions ouvert à l'inscription <a href="ListOfOpenCompetitons.php">ICI</a></p>
-                <p>Liste des compeétitions ou vous étes inscrit <a href="ParticipationAgreement.php">ICI</a></p>
+                <p>Liste des Compétitions ouvertes à l'inscription <a href="ListOfOpenCompetitons.php">ICI</a></p>
+                <p>Liste des compétitions où vous étes inscrit <a href="ParticipationAgreement.php">ICI</a></p>
 
             </div>
             <div class="col-lg-3 rigthColumm">

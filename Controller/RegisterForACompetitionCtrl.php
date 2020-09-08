@@ -44,13 +44,13 @@ if ($Demande == 'Concurrent') {
         }
         if ($_POST['NumberOfOccupants'] == 2) {
             if (!empty($_POST['CoPilot'])) {
-                echo 'proute3333333';
+                echo '';
                 var_dump($_POST['CoPilot']);
                 if (preg_match($regexId, $_POST['CoPilot'])) {
 
                     $Addcrew->Copilot = htmlspecialchars($_POST['CoPilot']);
                 } else {
-                    echo 'proute2';
+                    echo '';
                 }
             }
         }
@@ -59,7 +59,7 @@ if ($Demande == 'Concurrent') {
                 $Addcrew->id_0108asap_cars = htmlspecialchars($_POST['Cars']);
             }
         } else {
-            $formError['Cars'] = 'Veuillez selection votrte voiture pour la compétition';
+            $formError['Cars'] = 'Veuillez sélectionner votrte voiture pour la compétition';
         }
 
         if (count($formError) == 0) {
@@ -91,14 +91,14 @@ if ($Demande == 'Officiel') {
                     if ($_POST['TypeOfLicence'] != 0) {
                         $AddOfficalForCompetition->id_0108asap_functions = htmlspecialchars($_POST['TypeOfLicence']);
                     } else {
-                        $formError['TypeOfLicence'] = 'Veuillez selectionner une fonction dans la liste';
+                        $formError['TypeOfLicence'] = 'Veuillez sélectionner une fonction dans la liste';
                     }
                 }
             }
             if (!empty($_POST['BesoinPC1'])) {
                 $AddOfficalForCompetition->ResponseDatePcNeed1 = htmlspecialchars($_POST['BesoinPC1']);
             } else {
-                $formError['BesoinPC1'] = 'MErci de remplir la premier date de disponibilité pour le pc ';
+                $formError['BesoinPC1'] = 'Merci de remplir la première date de disponibilité pour le pc ';
             }
             if (!empty($_POST['BesoinPC2'])) {
                 $AddOfficalForCompetition->ResponseDatePcNeed2 = htmlspecialchars($_POST['BesoinPC2']);
@@ -148,7 +148,7 @@ if ($Demande == 'Officiel') {
             }
         }
     } else {
-        $AlreadyRegistered = 'Vous êtes dééjà inscri pour cette compétition';
+        $AlreadyRegistered = 'Vous êtes déjà inscrit pour cette compétition';
     }
 }
 

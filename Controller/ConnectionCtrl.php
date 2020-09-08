@@ -8,7 +8,8 @@ $LastId = new membres();
 //liste de fonction 
 $FonctionList = new functions();
 $listerFunctions = $FonctionList->ListOfFunction();
-
+// liste des membre déja inscrit
+$MembersExist = new membres();
 $formError = array();
 $regexMail = '/^[a-z0-9.-]+@[a-z0-9.-]{2,}.[a-z]{2,4}$/';
 $regexTitle = '/^[A-Za-z \d\-àâéèêôùûçÀÂÉÈÔÙÛÇ]+$/';
@@ -37,40 +38,45 @@ if (isset($_POST['validate'])) {
             $Member->Name = htmlspecialchars($_POST['NameUser']);
             $TemporaryName = htmlspecialchars($_POST['NameUser']);
         } else {
-            $formError['NameUser'] = 'Veuiller ne mettre que des caractères alphabétiques!!!!!!!!!!';
+            $formError['NameUser'] = 'Veuillez mettre que des caractères alphabétiques!!!!!!!!!!';
         }
     } else {
-        $formError['NameUser'] = 'Vous n\'avez pas remplie votre Nom';
+        $formError['NameUser'] = 'Vous n\'avez pas rempli votre Nom';
     }
     if (!empty($_POST['FirstnameUser'])) {
         $Member->Firstname = htmlspecialchars($_POST['FirstnameUser']);
     } else {
-        $formError['FirstnameUser'] = 'Vous n\'avez pas remplie votre prénom';
+        $formError['FirstnameUser'] = 'Vous n\'avez pas rempli votre Prénom';
     }
     if (!empty($_POST['EmailUser'])) {
         if (filter_var($_POST['EmailUser'], FILTER_VALIDATE_EMAIL)) {
             $Member->Email = htmlspecialchars($_POST['EmailUser']);
             $TemporaryEmail = htmlspecialchars($_POST['EmailUser']);
+            $MembersExist->Email = htmlspecialchars($_POST['EmailUser']);
         } else {
-            $formError['EmailUser'] = 'Veuillez mettre un mail correct';
+            $formError['EmailUser'] = 'Veuillez mettre un mail correcte';
         }
     } else {
-        $formError['EmailUser'] = 'Veuillez remplir mail';
+        $formError['EmailUser'] = 'Veuillez remplir le mail';
     }
     if (!empty($_POST['AddressUser'])) {
         $Member->Address = htmlspecialchars($_POST['AddressUser']);
     } else {
-        $formError['AddressUser'] = 'Vous n\'avez pas remplie votre adresse';
+        $formError['AddressUser'] = 'Vous n\'avez pas rempli votre adresse';
     }
     if (!empty($_POST['ZipCodeUser'])) {
-        $Member->ZipCode = htmlspecialchars($_POST['ZipCodeUser']);
+        if(preg_match($regexId,$_POST['ZipCodeUser'])){
+            $Member->ZipCode = htmlspecialchars($_POST['ZipCodeUser']);
+        } else {
+             $formError['ZipCodeUser']='Merci de mettre uniquement des chiffres ';
+        }
     } else {
-        $formError['ZipCodeUser'] = 'Vous n\'avez pas remplie votre code postale';
+        $formError['ZipCodeUser'] = 'Vous n\'avez pas rempli votre code postal';
     }
     if (!empty($_POST['City'])) {
         $Member->City = htmlspecialchars($_POST['City']);
     } else {
-        $formError['City'] = 'Vous n\'avez pas remplie votre ville';
+        $formError['City'] = 'Vous n\'avez pas rempli votre ville';
     }
     if (!empty($_POST['PasswordUser'])) {
         if ($_POST['PasswordUser'] == $_POST['ConbfirmPasswordUSer']) {
@@ -85,58 +91,53 @@ if (isset($_POST['validate'])) {
     if (!empty($_POST['AsaCode'])) {
         $Member->AsaCode = htmlspecialchars($_POST['AsaCode']);
     } else {
-        $formError['AsaCode'] = 'Vous n\'avez pas remplie votre numéro d\'ASA';
+        $formError['AsaCode'] = 'Vous n\'avez pas rempli votre numéro d\'ASA';
     }
     if (!empty($_POST['AsaName'])) {
         $Member->AsaName = htmlspecialchars($_POST['AsaName']);
     } else {
-        $formError['AsaName'] = 'Vous n\'avez pas remplie votre Nom de votre ASA';
+        $formError['AsaName'] = 'Vous n\'avez pas rempli votre Nom de votre ASA';
     }
     $Member->Actif = 'true';
     if (!empty($_POST['TypeOfLicence'])) {
         $LicenseTemporary = htmlspecialchars($_POST['TypeOfLicence']);
     } else {
-        $formError['TypeOfLicence'] = 'Vous n\'avez pas séléctionné le type de licences!';
+        $formError['TypeOfLicence'] = 'Vous n\'avez pas séléctionné le type de licence!';
     }
     if (!empty($_POST['LicenceNumber'])) {
         if (preg_match($regexId, $_POST['LicenceNumber'])) {
             $License->LicenceNumber = htmlspecialchars($_POST['LicenceNumber']);
         } else {
-            $formError['LicenceNumber'] = 'Merci de mettre que des chiffres dans le champs Nuéro de licence';
+            $formError['LicenceNumber'] = 'Merci de mettre que des chiffres dans le champ Nuéro de licence';
         }
     } else {
-        $formError['LicenceNumber'] = 'Merci de remplir le champs Numéro de license';
+        $formError['LicenceNumber'] = 'Merci de remplir le champ Numéro de licence';
     }
-    if (count($formError) == 0) {
-        $chekMembre = $Member->newMember();
-        
-        var_dump($Member);
-//        var_dump($chekMembre);
-        $License->id_0108asap_function = $LicenseTemporary;
-        $License->LicencePrimary = 1;
-        $License->id_0108asap_member = $LastId->lastInsertId();
-        var_dump($License);
-        $CheckLicences = $License->AddPrimaryLicense();
-        var_dump($CheckLicences);
-        var_dump($chekMembre);
-        if ($chekMembre == true ) {
-
-            $_SESSION['TemporyloginMail'] = $TemporaryEmail;
-            $_SESSION['TemporyName'] = $TemporaryName;
-            $_SESSION['TemporyLicenceNumber'] = $LicenseTemporary;
-
-
-            $_POST['connexion'] = '';
-            $_POST['LoginNameUseer'] = $_POST['NameUser'];
-            $_POST['LoginMailUser'] = $_POST['EmailUser'];
-            $_POST['LoginPasswordUser'] = $_POST['PasswordUser'];
-            $_POST['LoginLicenceNumber'] = $_POST['LicenceNumber'];
-            header("Location: Connection.php");
+    $CheckMemberExist = $MembersExist->MemberExist();
+    if ($CheckMemberExist == '0') {
+        if (count($formError) == 0) {
+            $chekMembre = $Member->newMember();
+            $License->id_0108asap_function = $LicenseTemporary;
+            $License->LicencePrimary = 1;
+            $License->id_0108asap_member = $LastId->lastInsertId();
+            $CheckLicences = $License->AddPrimaryLicense();
+            if ($chekMembre == true) {
+                $_SESSION['TemporyloginMail'] = $TemporaryEmail;
+                $_SESSION['TemporyName'] = $TemporaryName;
+                $_SESSION['TemporyLicenceNumber'] = $LicenseTemporary;                $_POST['connexion'] = '';
+                $_POST['LoginNameUseer'] = $_POST['NameUser'];
+                $_POST['LoginMailUser'] = $_POST['EmailUser'];
+                $_POST['LoginPasswordUser'] = $_POST['PasswordUser'];
+                $_POST['LoginLicenceNumber'] = $_POST['LicenceNumber'];
+//            header("Location: Connection.php");
+            } else {
+                $formError['Technical'] = 'une erreur est survenue';
+            }
         } else {
-            $formError['Technical'] = 'une erreur est survenue';
+             $formError['MeessageMemberExist']='vous avez des erreurs dans le formulaires';
         }
     } else {
-        
+       $formError['MeessageMemberExist']='L\'adresse mail que vous avez choisie est déja Utlisé merci d\'utiliser une autre adresse mail!';
     }
 }
 // partie connection ----------------------------------------------------------------------------------------------
@@ -150,19 +151,19 @@ if (isset($_POST['connection'])) {
         if (filter_var($_POST['LoginMailUser'], FILTER_VALIDATE_EMAIL)) {
             $MembersExist->Email = htmlspecialchars($_POST['LoginMailUser']);
         } else {
-            $formError['LoginMailUser'] = 'Veuillez mettre un mail correct';
+            $formError['LoginMailUser'] = 'Veuillez mettre un mail correcte';
         }
     } else {
-        $formError['LoginMailUser'] = 'Veuillez remplir mail';
+        $formError['LoginMailUser'] = 'Veuillez remplir le mail';
     }
     if (!empty($_POST['LoginPasswordUser'])) {
 
         $LoginPassword = $_POST['LoginPasswordUser'];
     } else {
-        $formError['LoginPasswordUser'] = 'Merci de remplir les champs password';
+        $formError['LoginPasswordUser'] = 'Merci de remplir le champ password';
     }
-  
-    
+
+
     if (count($formError) == 0) {
         $verif = $MembersExist->ConnexionMembers();
         if ($verif->CountMembers == 1) {
@@ -182,11 +183,11 @@ if (isset($_POST['connection'])) {
                 $_SESSION['TemporyLicenceNumber'] = '';
                 $LicencePrimary->id_0108asap_member = $IDUser;
                 $ListOfLicense = $LicencePrimary->VerifLicense();
-                if ($ListOfLicense== true) {
-                    $CheckLicensesExist= new FunctionSummary();
-                    $CheckLicensesExist->id0108asap_member=$IDUser;
-                    $CheckOkLicenses= $CheckLicensesExist->DisplayPrimaryLicenses();
-                        $_SESSION['access'] = $CheckOkLicenses[0]->id_0108asap_function;
+                if ($ListOfLicense == true) {
+                    $CheckLicensesExist = new FunctionSummary();
+                    $CheckLicensesExist->id0108asap_member = $IDUser;
+                    $CheckOkLicenses = $CheckLicensesExist->DisplayPrimaryLicenses();
+                    $_SESSION['access'] = $CheckOkLicenses[0]->id_0108asap_function;
                 }
                 if (in_array($_SESSION['access'], $Function)) {
                     header("Location: HomeLogin.php");
@@ -194,7 +195,7 @@ if (isset($_POST['connection'])) {
                     header("Location: ../index.php");
                 }
             } else {
-                $formError['LoginPasswordUser'] = 'ERREUR DE MOTS DE PASSE';
+                $formError['LoginPasswordUser'] = 'ERREUR DE MOT DE PASSE';
             }
         } else {
             $UserNotRegistred = 'Vous n\'avez pas de compte';

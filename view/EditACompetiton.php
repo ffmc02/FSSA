@@ -39,7 +39,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         <div>
                             <form name="EdditCompetition" id="EdditCompetition" method="POST" >
                                 <div> 
-                                    <label> Si besoin de modifier le type de Competition selectioner dans la liste suivante.</label>
+                                    <label> Si besoin de modifier le type de Competition sélectioner dans la liste suivante.</label>
                                     <select class="custom-select custom-select-sm" name="CatgoryCompetition" id="CatgoryCompetition">
                                         <?php
                                         foreach ($ListRaceOustideRally as $CategoryCompetitions) {
@@ -89,7 +89,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                             <p class="text-danger"><?= isset($formError['NameOfCompetion']) ? $formError['NameOfCompetion'] : '' ?></p>
                                         </div>
                                         <div> 
-                                            <label for="Location_Circuit">Lieu ou circuit où à lieu la compétition:* </label>
+                                            <label for="Location_Circuit">Lieu ou circuit où a lieu la compétition:* </label>
                                             <input type="text" name="Location_Circuit" id="Location_Circuit" value="<?= $RaceType->Location_Circuit ?>" />
                                             <p class="text-danger"><?= isset($formError['Location_Circuit']) ? $formError['Location_Circuit'] : '' ?></p>
                                         </div>
@@ -104,7 +104,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                             <p class="text-danger"><?= isset($formError['EndOfTheCompetition']) ? $formError['EndOfTheCompetition'] : '' ?></p>
                                         </div>
                                         <div> 
-                                            <label for="NumberDaysCompetition">Nombre de jour de compétition:* </label>
+                                            <label for="NumberDaysCompetition">Nombre de jours de compétition:* </label>
                                             <input type="text" name="NumberDaysCompetition" id="NumberDaysCompetition" value="<?= $RaceType->NumberDays ?>" />
                                             <p class="text-danger"><?= isset($formError['NumberDays ']) ? $formError['NumberDays '] : '' ?></p>
                                         </div>
@@ -155,7 +155,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                     if ($Competid == $CompetitionId) {
                         ?>
                         <div>
-                            <p>Pour modifier les informations du rallye remplacer les données dans le formulaire suivant</p>
+                            <p>Pour modifier les informations du rallye remplacez les données dans le formulaire suivant</p>
                         </div>
                         <div>
                             <form name="EdditRally" method="POST" id="EdditRally">
@@ -191,18 +191,18 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 </div>
                                 <div>
                                     <div> 
-                                        <p class="text-danger">Si vous avez besoin de modifier les informations compléter les champs sinon laissez les Comme ils sont.*</p>
+                                        <p class="text-danger">Si vous avez besoin de modifier les informations complétez les champs sinon laissez les comme ils sont.*</p>
                                     </div>
                                     <div>
                                         <input type="hidden" name="IdSportEvents" id="IdSportEvents" value="<?= $DisplayRally->IdSportEvents ?>"/>
                                     </div>
                                     <div> 
-                                        <label for="NameOfCompetion">Nom de La compétition:* </label>
+                                        <label for="NameOfCompetion">Nom de la compétition:* </label>
                                         <input type="text" name="NameOfCompetion" id="NameOfCompetion" value="<?= $ListRally->NameOfTheTest ?>" />
                                         <p class="text-danger"><?= isset($formError['NameOfCompetion']) ? $formError['NameOfCompetion'] : '' ?></p>
                                     </div>
                                     <div> 
-                                        <label for="Location_Circuit">Lieu ou circuit où à lieu la compétition:* </label>
+                                        <label for="Location_Circuit">Lieu ou circuit où a lieu la compétition:* </label>
                                         <input type="text" name="Location_Circuit" id="Location_Circuit" value="<?= $ListRally->Location_Circuit ?>" />
                                         <p class="text-danger"><?= isset($formError['Location_Circuit']) ? $formError['Location_Circuit'] : '' ?></p>
                                     </div>
@@ -212,7 +212,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                         <p class="text-danger"><?= isset($formError['StartOfTheCompetition']) ? $formError['StartOfTheCompetition'] : '' ?></p>
                                     </div>
                                     <div> 
-                                        <label for="NumberDaysCompetition">Nombre de jour de compétition:* </label>
+                                        <label for="NumberDaysCompetition">Nombre de jours de compétition:* </label>
                                         <input type="text" name="NumberDaysCompetition" id="NumberDaysCompetition" value="<?= $ListRally->NumberDays ?>" />
                                         <p class="text-danger"><?= isset($formError['NumberDays ']) ? $formError['NumberDays '] : '' ?></p>
                                     </div>

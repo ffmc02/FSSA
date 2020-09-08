@@ -37,7 +37,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <th scope="col">Disponible Jour 1 Terrain</th>
                             <th scope="col">Disponible Jour 2 Terrain</th>
                             <th scope="col">Disponible Jour 3 Terrain</th>
-                            <th scope="col">Besoin d'hebergement </th>
+                            <th scope="col">Besoin d'hébergement </th>
                            
                         </tr>
                     </thead>

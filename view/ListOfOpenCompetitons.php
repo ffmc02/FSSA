@@ -31,15 +31,15 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <th scope="col">Nom de l'épreuve</th>
                             <th scope="col">Type d'épreuve</th>
                             <th scope="col">Localisation ou circuit</th>
-                            <th scope="col">Date de la cource</th>
+                            <th scope="col">Date de la course</th>
                             <th scope="col">Durée</th>
                             <th scope="col">Observation </th>
                             <th scope="col">S'inscrire </th>
                             <?php if (in_array($_SESSION['access'], $Responsible)) { ?>
-                                <th scope="col">Concurrent inscrit</th>
-                                <th scope="col">Officiel inscrit</th>
+                                <th scope="col">Concurrents inscrits</th>
+                                <th scope="col">Officiels inscrits</th>
                                 <th scope="col">Modifier</th>
-                                <th scope="col">Fermér </th>
+                                <th scope="col">Fermer </th>
                                 <?php
                             }
                             ?>
@@ -56,7 +56,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 <td><?= $OpenCompetition->DateOfCompetition ?></td>
                                 <td><?= $OpenCompetition->NumberDays ?></td>
                                 <td><?= $OpenCompetition->Observation ?></td>
-                                <td><a href="FunctionForCompetition.php?IdCompet=<?= $OpenCompetition->id ?>">sur cette épreuves</a></td>
+                                <td><a href="FunctionForCompetition.php?IdCompet=<?= $OpenCompetition->id ?>">sur cette épreuve</a></td>
                                 <?php if (in_array($_SESSION['access'], $Responsible)) { ?>
                                     <td> <a href="ListOfCompetitors.php?IdCompet=<?= $OpenCompetition->id ?>">ICI</a>
                                     <td><a href="ListOfOfficialsByCompetition.php?IdCompet=<?= $OpenCompetition->id ?>">ICI</a></td>

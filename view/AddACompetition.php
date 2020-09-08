@@ -25,7 +25,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
             </div>
             <div class="col-lg-6 centralColumm">
                 <div>
-                    <p>Vous pouvez ajouter une comptétition grace au formulaire suivant :</p>
+                    <p>Vous pouvez ajouter une comptétition grâce au formulaire suivant :</p>
                 </div>
                 <div>
                     <form name="AddCompetitions" method="post" id="AddCommpetitions">
@@ -44,7 +44,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <p class="text-danger"><?= isset($formError['CatgoryCompetition']) ? $formError['CatgoryCompetition'] : '' ?></p>
                         </div>
                         <div> 
-                            <label for="typeCompetiton">Type de competition (rallye, course de cote etc): </label>
+                            <label for="typeCompetiton">Type de compétition (rallye, course de côte etc): </label>
                             <select class="custom-select custom-select-sm" name="typeCompetiton" id="typeCompetiton">
                                 <option selected="" value="0">Choissez dans la liste suivante </option>
                                 <?php
@@ -58,7 +58,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <p class="text-danger"><?= isset($formError['typeCompetiton']) ? $formError['typeCompetiton'] : '' ?></p>
                         </div>
                         <div> 
-                            <label for="NameOfCompetion">Nom de La compétition: </label>
+                            <label for="NameOfCompetion">Nom de la compétition: </label>
                             <input type="text" name="NameOfCompetion" id="NameOfCompetion" />
                             <p class="text-danger"><?= isset($formError['NameOfCompetion']) ? $formError['NameOfCompetion'] : '' ?></p>
                         </div>
@@ -73,16 +73,16 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <p class="text-danger"><?= isset($formError['StartOfTheCompetition']) ? $formError['StartOfTheCompetition'] : '' ?></p>
                         </div>
                         <div> 
-                            <label for="NumberDaysCompetition">Nombre de jour de compétition: </label>
+                            <label for="NumberDaysCompetition">Nombre de jours de compétition: </label>
                             <input type="text" name="NumberDaysCompetition" id="NumberDaysCompetition" />
                             <p class="text-danger"><?= isset($formError['NumberDays ']) ? $formError['NumberDays '] : '' ?></p>
                         </div>
                         <div>
-                            <label for="OpenOrClose">Ouvrire la compétition: </label>
+                            <label for="OpenOrClose">Ouvrir la compétition: </label>
                             <select class="custom-select custom-select-sm" name="OpenOrClose" id="OpenOrClose">
                                 <option selected="" value="0">Choissez si vous ouvrez la compétition à l'nscription</option>
                                 <option value="Open">Ouvert</option>
-                                <option value="Close">Fermer</option>
+                                <option value="Close">Fermé</option>
                             </select>
                             <p class="text-danger"><?= isset($formError['OpenOrClose ']) ? $formError['OpenOrClose '] : '' ?></p>
                         </div>
@@ -92,13 +92,13 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <p class="text-danger"><?= isset($formError['Observation']) ? $formError['Observation'] : '' ?></p>
                         </div>
                         <div>
-                            <label for="CompetitionStarDay">date à la quelle débute la compétition</label>
+                            <label for="CompetitionStarDay">date à laquelle débute la compétition</label>
                             <input type="date" name="CompetitionStarDay" id="CompetitionStarDay" />
                             <p class="text-danger"><?= isset($formError['CompetitionStarDay']) ? $formError['CompetitionStarDay'] : '' ?></p>
                         </div>
 
                         <div>
-                            <label for="CompetitionEndDay">date à la quelle se finie la compétition</label>
+                            <label for="CompetitionEndDay">date à laquelle se finit la compétition</label>
                             <input type="date" name="CompetitionEndDay" id="CompetitionStarDay" />
                             <p class="text-danger"><?= isset($formError['CompetitionEndDay']) ? $formError['CompetitionEndDay'] : '' ?></p>
                         </div>

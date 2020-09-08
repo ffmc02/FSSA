@@ -29,10 +29,10 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         <thead>
                             <tr>
                                
-                                <th scope="col">Nom du piote</th>
+                                <th scope="col">Nom du pilote</th>
                                 <th scope="col">Prénom du pilote</th>
                                 <th scope="col">Marque de la voiture</th>
-                                <th scope="col">Model</th>
+                                <th scope="col">Modèle</th>
                                 <th scope="col">Groupe </th>
                                 <th scope="col">Classe</th>
                             </tr>

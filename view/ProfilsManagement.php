@@ -11,7 +11,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
             </div>
             <div class="col-lg-6 ">
-                <h1>Gestion de votre profils</h1>
+                <h1>Gestion de votre profil</h1>
             </div>
             <div class="col-lg-3">
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
@@ -25,7 +25,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
             </div>
             <div class="col-lg-6 centralColumm">
                 <div>
-                    <p>voir mon <a href="MyProfiles.php">profils</a></p>
+                    <p>voir mon <a href="MyProfiles.php">profil</a></p>
                 </div>
                 <div>
                     <p>Ajouter une licence <a href="AddLicense.php">ICI</a></p>

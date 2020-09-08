@@ -71,6 +71,14 @@ class membres {
         return $queryResult->fetch(PDO::FETCH_OBJ);
     }
 
+    public function MemberExist() {
+        $query = 'SELECT COUNT(`Email`) AS MemberExist FROM `0108asap_membres` WHERE `Email`=:Email';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':Email', $this->Email, PDO::PARAM_STR);
+        $queryResult->execute();
+        return $queryResult->fetch(PDO::FETCH_OBJ);
+    }
+
     public function MemberProfile() {
         $query = 'SELECT `0108asap_membres`.`id` AS `IdMembers`, `Name`, `Firstname`, `Email`, `Address`, `ZipCode`, `City`, `AsaCode`, `AsaName` , '
                 . '`TypeOfLicence` '
@@ -149,6 +157,20 @@ class membres {
                 . 'INNER JOIN `0108asap_functionsummary` '
                 . ' ON `0108asap_functionsummary`.`id_0108asap_member`=`0108asap_membres`.`id`'
                 . ' ';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
+    }
+
+//    Liste des membbres avec nom Prenom 
+    public function AssignAManager() {
+        $query = 'SELECT `0108asap_membres`.`id` AS `IdMembers`, `Name`, `Firstname`, `0108asap_functions`.`TypeOfLicence`, `0108asap_functionsummary`.`id` AS `IdFunctionSummary` '
+                . 'FROM `0108asap_membres` '
+                . 'INNER JOIN `0108asap_functionsummary` '
+                . 'ON `0108asap_functionsummary`.`id_0108asap_member`=`0108asap_membres`.`id` '
+                . 'INNER JOIN `0108asap_functions` '
+                . 'ON `0108asap_functions`.`id`=`0108asap_functionsummary`.`id_0108asap_function` '
+                . 'WHERE `0108asap_functionsummary`.`LicencePrimary`=1';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->execute();
         return $queryResult->fetchAll(PDO::FETCH_OBJ);

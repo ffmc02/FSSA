@@ -12,7 +12,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
             </div>
             <div class="col-lg-6 ">
-                <h1>Je modifie mes licenses </h1>
+                <h1>Je modifie mes licences </h1>
             </div>
             <div class="col-lg-3">
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
@@ -26,7 +26,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
             </div>
             <div class="col-lg-6 centralColumm">
                 <div>
-                    <p>Pour modifié votre license Utilisé le formulaire suivant</p>
+                    <p>Pour modifier votre licence Utilisez le formulaire suivant</p>
                 </div>
                 <div>
                     <?php
@@ -34,7 +34,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         $Licences = $modelDetailListe->IdSummary;
                         if ($Licences == $IdLicence) {
                             ?>
-                            <p>Vous souhaitez modifiez la licence <?= $modelDetailListe->TypeOfLicence ?> avec le numéro <?= $modelDetailListe->SecondaryLicense ?></p>
+                            <p>Vous souhaitez modifier la licence <?= $modelDetailListe->TypeOfLicence ?> avec le numéro <?= $modelDetailListe->SecondaryLicense ?></p>
                             <form method="post" name="LicenceAdd">
                                 <div>
                                     <label>Sélectionnez le type de licence dans la liste suivante :*</label><br>

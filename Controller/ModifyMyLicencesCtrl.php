@@ -27,7 +27,7 @@ if (isset($_POST['ModifyLicences'])) {
             
         }
     } else {
-        $formError['TypeOfLicence'] = 'Merci choisir votre fonction à ajouter';
+        $formError['TypeOfLicence'] = 'Merci de choisir votre fonction à ajouter';
     }
     if (isset($_GET['IdLicence'])) {
         if (preg_match($regexId, $_GET['IdLicence'])) {
@@ -50,7 +50,7 @@ if (isset($_POST['ModifyLicences'])) {
         $ModifyTheLicencse = $ModifyLicence->Licensing();
 
         if ($ModifyTheLicencse == true) {
-            $Message = 'votre nouvelle license a été ajouté avec succés';
+            $Message = 'votre nouvelle licence a été ajoutée avec succés';
              header("Location: AddLicense.php");
 
         } else {

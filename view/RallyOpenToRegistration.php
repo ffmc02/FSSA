@@ -25,7 +25,7 @@ include_once '../Include/Navbar.php';
         </div>
         <div class="col-lg-6 centralColumm">
             <div>
-                <p>Vous pouvez ajouter une comptétition grace au formulaire suivant :</p>
+                <p>Vous pouvez ajouter une comptétition grâce au formulaire suivant :</p>
             </div>
             <div>
                 <form name="AddCompetitions" method="post" id="AddCommpetitions">
@@ -44,7 +44,7 @@ include_once '../Include/Navbar.php';
                         <p class="text-danger"><?= isset($formError['CatgoryCompetition']) ? $formError['CatgoryCompetition'] : '' ?></p>
                     </div>
                     <div> 
-                        <label for="typeCompetiton">Type de competition (rallye, course de cote etc): </label>
+                        <label for="typeCompetiton">Type de compétition (rallye, course de côte etc): </label>
                         <select class="custom-select custom-select-sm" name="typeCompetiton" id="typeCompetiton">
                             <option selected="" value="0">Choissez dans la liste suivante </option>
                             <?php
@@ -75,16 +75,16 @@ include_once '../Include/Navbar.php';
                         <p class="text-danger"><?= isset($formError['StartOfTheCompetition']) ? $formError['StartOfTheCompetition'] : '' ?></p>
                     </div>
                     <div> 
-                        <label for="NumberDaysCompetition">Nombre de jour de compétition: </label>
+                        <label for="NumberDaysCompetition">Nombre de jours de compétition: </label>
                         <input type="text" name="NumberDaysCompetition" id="NumberDaysCompetition" />
                         <p class="text-danger"><?= isset($formError['NumberDays ']) ? $formError['NumberDays '] : '' ?></p>
                     </div>
                     <div>
-                        <label for="OpenOrClose">Ouvrire la compétition: </label>
+                        <label for="OpenOrClose">Ouvrir la compétition: </label>
                         <select class="custom-select custom-select-sm" name="OpenOrClose" id="OpenOrClose">
-                            <option selected="" value="0">Choissez si vous ouvrez la compétition à l'nscription</option>
+                            <option selected="" value="0">Choisissez si vous ouvrez la compétition à l'nscription</option>
                             <option value="Open">Ouvert</option>
-                            <option value="Close">Fermer</option>
+                            <option value="Close">Fermé</option>
                         </select>
                         <p class="text-danger"><?= isset($formError['OpenOrClose ']) ? $formError['OpenOrClose '] : '' ?></p>
                     </div>

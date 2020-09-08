@@ -11,7 +11,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
             </div>
             <div class="col-lg-6 ">
-                <h1>Modification de la premiére Licence</h1>
+                <h1>Modification de la premiére licence</h1>
             </div>
             <div class="col-lg-3">
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
@@ -82,7 +82,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             ?>
                         </div>
                         <div>
-                            <input type="submit" name="EditingLicence" value="Je modfie ma Licences" id="EditingLicenceValide" />
+                            <input type="submit" name="EditingLicence" value="Je modfie ma licence" id="EditingLicenceValide" />
                         </div>
                     </form>
                      <div>                        

@@ -33,6 +33,7 @@
                             <a class="dropdown-item"  href="ListOfOpenCompetitons.php">Liste des compétition ouverte</a>
                             <a class="dropdown-item" href="ListOfcloseCompetition.php">Réouvrir une Compétition</a>
                             <a class="dropdown-item" href="ListOfRegisteredCompetitors.php">Concurrent insrit</a>
+                            <a class="dropdown-item" href="ListOfregistridedMembers.php">Liste des membres inscrits</a>
                         </div>
                     </li>
                 <?php

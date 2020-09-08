@@ -11,7 +11,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
             </div>
             <div class="col-lg-6 ">
-                <h1>Ferme Une compétition</h1>
+                <h1>Fermer une compétition</h1>
 
             </div>
             <div class="col-lg-3">

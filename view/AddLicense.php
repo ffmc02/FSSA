@@ -11,7 +11,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
             </div>
             <div class="col-lg-6 ">
-                <h1>Liste des licenses de votre profils</h1>
+                <h1>Liste des licenses de votre profil</h1>
             </div>
             <div class="col-lg-3">
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
@@ -29,7 +29,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                     <p class="text-danger"><?= isset($MessageError) ? $MessageError : '' ?></p>
                 </div>
                 <div class="Licences">
-                    <h2>Vous avez comme license principal  </h2>
+                    <h2>Vous avez comme licence principale </h2>
                     <?php
                     foreach ($MembersProfile as $MemberDetail) {
                         $IdProfile = $MemberDetail->IdMembers;
@@ -42,7 +42,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                     ?>
                 </div>
                 <div class="Licences">
-                    <p>Vous avez comme license secondaire la ou les license de </p>
+                    <p>Vous avez comme licence secondaire la ou les license de </p>
                     <?php
                     foreach ($ListLicences as $MemberDetail) {
                         $IdProfile = $MemberDetail->IdMembers;
@@ -51,8 +51,8 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             ?>
                             <p><?= $MemberDetail->TypeOfLicence ?></p>
                             <p>Avec le Numéro <?= $MemberDetail->SecondaryLicense ?></p>
-                            <p>Modifier cette <a href="ModifyMyLicences.php?IdLicence=<?= $IdSummary ?>">Licences</a></p>
-                            <p>Supprimer cette <a href="DeleteALicences.php?IdLicence=<?= $IdSummary ?>">Licences</a></p>
+                            <p>Modifier cette <a href="ModifyMyLicences.php?IdLicence=<?= $IdSummary ?>">Licence</a></p>
+                            <p>Supprimer cette <a href="DeleteALicences.php?IdLicence=<?= $IdSummary ?>">Licence</a></p>
                             <?php
                         }
                     }
@@ -63,8 +63,8 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 </div>
 
                 <div class="Licences">
-                    <h3> Vous souhaitez ajouter une ou plusieurs licence ?</h3>
-                    <p>Utilisé le formulaire<button class="BtnFormAddLicences"> suivant:</button></p>
+                    <h3> Vous souhaitez ajouter une ou plusieurs licences ?</h3>
+                    <p>Utiliser le formulaire<button class="BtnFormAddLicences"> suivant:</button></p>
                 </div>
                 <div class="FormAddLicences">
                     <form method="post" name="LicenceAdd">

@@ -25,7 +25,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
             </div>
             <div class="col-lg-6 centralColumm">
                 <div>
-                    <h2>Liste des voitures et propiaitaire enregistré</h2>
+                    <h2>Liste des voitures et propriaitaires enregistrés</h2>
                 </div>
                 <div>
 
@@ -36,10 +36,10 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 <th scope="col">Nom</th>
                                 <th scope="col">Prénom</th>
                                 <th scope="col">Marque de la voiture</th>
-                                <th scope="col">Model</th>
+                                <th scope="col">Modèle</th>
                                 <th scope="col">Catégorie</th>
                                 <th scope="col">Classe</th>
-                                <th scope="col">Nombre d'occupant</th>
+                                <th scope="col">Nombre d'occupants</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>

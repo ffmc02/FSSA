@@ -16,7 +16,7 @@ if (isset($_GET['IdCompet'])) {
  
  $DisplayListCompetitorsByCompetition=$listCompetitors->DisplayOfCompitiorsForCompetiton();
   if($DisplayListCompetitorsByCompetition==null){
-      $message="Aucun concurrents inscrit pour le moment ";
+      $message="Aucun concurrent inscrit pour le moment ";
   }
  var_dump($DisplayListCompetitorsByCompetition);
  $TitleCompetition=$NameOfCompetiton->NameOfTest();

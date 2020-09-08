@@ -27,7 +27,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
             <div class="col-lg-6 centralColumm">
                 <div>
                     <p>Votre profil: </p>
-                    <p>Votree nom: <?= $_SESSION['Name'] ?></p>
+                    <p>Votre nom: <?= $_SESSION['Name'] ?></p>
                     <p>votre Prénom: <?= $_SESSION['Firstname'] ?></p>
                     <p> Votre Mail de contact: <?= $_SESSION['loginMail'] ?></p>
                     <?php
@@ -35,7 +35,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         if ($UserProfils->id == $RegisteredId) {
                             ?> 
                             <p>Votre adresse: <?= $UserProfils->Address ?></p>
-                            <p>Votre code postale: <?= $UserProfils->ZipCode ?></p>
+                            <p>Votre code postal: <?= $UserProfils->ZipCode ?></p>
                             <p>Votre ville: <?= $UserProfils->City ?></p>
                             <p>Le numéro de votre ASA ou ASK: <?= $UserProfils->AsaCode ?></p>
                             <p>Le nom de votre ASA ou ASK: <?= $UserProfils->AsaName ?></p>
@@ -44,7 +44,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                     }
                     ?>
                     <div>
-                        <a href="EditingProfiles.php?IdUser=<?= $_SESSION['idUser'] ?>"><button>Modifier Mon profils</button></a>
+                        <a href="EditingProfiles.php?IdUser=<?= $_SESSION['idUser'] ?>"><button>Modifier Mon profil</button></a>
                     </div>
                 </div>
                 <div>
@@ -54,7 +54,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         $IdProfile = $PrimaryLicencesList->IdMembers;
                         if ($IdProfile == $RegisteredId) {
                             ?>
-                            <p>Votre licence principal est : <?= $PrimaryLicencesList->TypeOfLicence ?> avec le numéro: <?= $PrimaryLicencesList->SecondaryLicense ?> </p>
+                            <p>Votre licence principale est : <?= $PrimaryLicencesList->TypeOfLicence ?> avec le numéro: <?= $PrimaryLicencesList->SecondaryLicense ?> </p>
                             <?php
                         }
                     }
@@ -62,14 +62,14 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         $IdProfile = $MemberDetail->IdMembers;
                         if ($IdProfile == $RegisteredId) {
                             ?>
-                            <p>vos licence secondaire sont :<?= $MemberDetail->TypeOfLicence ?>  Numéro <?= $MemberDetail->SecondaryLicense ?></p>
+                            <p>votre licence secondaire est :<?= $MemberDetail->TypeOfLicence ?>  Numéro <?= $MemberDetail->SecondaryLicense ?></p>
                             <?php
                         }
                     }
                     ?>
                 </div>
                 <div>
-                    <a href="ModifyManLicense.php?IdUser=<?= $_SESSION['idUser'] ?>"><button>Modifier ma license principale</button></a>
+                    <a href="ModifyManLicense.php?IdUser=<?= $_SESSION['idUser'] ?>"><button>Modifier ma licence principale</button></a>
                 </div>
                 <div>
                     <br> <br><br>

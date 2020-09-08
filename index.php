@@ -30,8 +30,8 @@ include_once 'Controller/IndexCtrl.php';
                         <img src="https://img.icons8.com/ios/50/000000/user-menu-male.png"/>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="view/MyProfiles.php">Mon profils</a>
-                        <a class="dropdown-item" href="view/AddLicense.php">License complémentaire</a>
+                        <a class="dropdown-item" href="view/MyProfiles.php">Mon profil</a>
+                        <a class="dropdown-item" href="view/AddLicense.php">Licence complémentaire</a>
                         <!--<a class="dropdown-item" href="#">Something else here</a>-->
                     </div>
                 </li>
@@ -43,9 +43,9 @@ include_once 'Controller/IndexCtrl.php';
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="view/ChoiceOfCompetition.php">Ouvrir une compétition</a>
-                            <a class="dropdown-item"  href="view/ListOfOpenCompetitons.php">Liste des compétition ouverte</a>
-                            <a class="dropdown-item" href="view/ListOfcloseCompetition.php">Réouvrir une Compétition</a>
-                            <a class="dropdown-item" href="view/ListOfRegisteredCompetitors.php">Concurrent insrit</a>
+                            <a class="dropdown-item"  href="view/ListOfOpenCompetitons.php">Liste des compétitions ouvertes</a>
+                            <a class="dropdown-item" href="view/ListOfcloseCompetition.php">Réouvrir une compétition</a>
+                            <a class="dropdown-item" href="view/ListOfRegisteredCompetitors.php">Concurrents insrits</a>
                         </div>
                     </li>
                 <?php } ?>
@@ -71,7 +71,7 @@ include_once 'Controller/IndexCtrl.php';
                 <?php if (isset($_SESSION['connect'])) { ?>
                 <h1>Bienvenue sur le site d'inscription aux épreuves  <?= $_SESSION['Firstname'] . " " . $_SESSION['Name'] ?></h1>
                  <?php } else { ?>
-                <h1>Bienvenue sur le site d'inscription aux épreuves de la <br>Ligue des hauts de france (FFSA)
+                <h1>Bienvenue sur le site d'inscription aux épreuves de la <br>Ligue des Hauts de France (FFSA)
                 </h1>
                   <?php }
             ?>
@@ -84,8 +84,8 @@ include_once 'Controller/IndexCtrl.php';
         <div class="row">
             <div class="col-lg-3 leftColumm">
                  <?php if (isset($_SESSION['connect'])) { ?>
-                <p>Les prochaines épreuve <a href="view/RallyOpenToRegistration.php">Par ici</a></p>
-                <p>Liste des épreuves où vous étes <a href="view/ParticipationAgreement.php">ICI</a></p>
+                <p>Les prochaines épreuves <a href="view/RallyOpenToRegistration.php">Par ici</a></p>
+                <p>Liste des épreuves où vous êtes <a href="view/ParticipationAgreement.php">inscrits</a></p>
                  <?php } else {?>
                 
                      <?php }
@@ -94,19 +94,19 @@ include_once 'Controller/IndexCtrl.php';
             <div class="col-lg-6 centralColumm">
                  <?php
                      if(isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Pilote)){?>
-                <p>Ajouter votre ou vcs voiture <a href="view/AddCars.php">ICI</a></p>
+                <p>Ajouter votre ou vos voitures <a href="view/AddCars.php">ICI</a></p>
                 <p>Mes voitures <a href="view/MyRaceCars.php">ICI</a></p>
                 
                  <?php 
                      
                      } else { ?>
-                <p>Inscrivé vous <a href="view/Connection.php">Ici </a> </p>
+                <p>Inscrivez-vous <a href="view/Connection.php">Ici </a> </p>
                    <?php }
             ?>
             </div>
             <div class="col-lg-3 rigthColumm">
                  <?php if (isset($_SESSION['connect'])) { ?>
-                <p>Voir mon profils <a href="view/MyProfiles.php">ICI</a></p>
+                <p>Voir mon profil <a href="view/MyProfiles.php">ICI</a></p>
                  <?php } else {?>
                                 
                             <?php }

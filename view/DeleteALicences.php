@@ -11,7 +11,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
             </div>
             <div class="col-lg-6 ">
-                <h1>Supprimer ma licenses</h1>
+                <h1>Supprimer ma licence</h1>
             </div>
             <div class="col-lg-3">
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
@@ -29,11 +29,11 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                     $Licences = $modelDetailListe->IdSummary;
                     if ($Licences == $IdLicence) {
                         ?>
-                        <p>Vous souhaitez suprimer  la licence de <?= $modelDetailListe->TypeOfLicence ?> avec le numéro <?= $modelDetailListe->SecondaryLicense ?> de votre profils </p>
+                        <p>Vous souhaitez suprimmer  la licence de <?= $modelDetailListe->TypeOfLicence ?> avec le numéro <?= $modelDetailListe->SecondaryLicense ?> de votre profil </p>
 
                         <p class="text-danger"><?= isset($formError['IdLicences']) ? $formError['IdLicences'] : '' ?></p>
                         <div>
-                            <p class="text-danger">Attention si vous validez la license seras supprimer de la base de donnée de maniere définitive</p>
+                            <p class="text-danger">Attention si vous validez la licence sera supprimé de la base de données de manière définitive</p>
                             <form id="DeleteMyLicense" method="POST" name="DeleteMyLicense">
                                 <div>
                                     <input type="hidden" name="IDLicense" id="IDLicense" value="<?= $Licences ?>"/>

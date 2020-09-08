@@ -33,7 +33,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             ?>
                             <p>Vous souhaitez fermer le <?= $DisplayCompetion->NameOfTheTest ?></p>
                             <div>
-                                <p>Cliquez sur Rouvrire </p>
+                                <p>Cliquez sur Rouvrir </p>
                                 <form name="CloseCompet" method="POST">
                                     <input name="CloseCompetition" value="Rouvrir" type="submit" />
                                 </form>

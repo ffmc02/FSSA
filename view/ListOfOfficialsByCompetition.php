@@ -12,7 +12,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
             </div>
             <div class="col-lg-6 ">
-                <h1>Liste des officiels inscrtits sur <?= $ListeOfficialByCompetition ?> </h1>
+                <h1>Liste des officiels inscrits sur <?= $ListeOfficialByCompetition ?> </h1>
             </div>
             <div class="col-lg-3">
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
@@ -36,7 +36,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <th scope="col">Disponible Jour 1 Terrain</th>
                             <th scope="col">Disponible Jour 2 Terrain</th>
                             <th scope="col">Disponible Jour 3 Terrain</th>
-                            <th scope="col">Besoin d'hebergement </th>
+                            <th scope="col">Besoin d'hébergement </th>
                            
                         </tr>
                     </thead>

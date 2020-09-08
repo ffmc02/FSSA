@@ -15,54 +15,54 @@ if (isset($_POST['AddCars'])) {
                 $formError['Occupying'] = 'Vous devez au maximun avoir un copilote et un pilote dans la voiture de course!';
             }
         } else {
-            $formError['Occupying'] = 'vous devez mettre que des chiffres dans ce champs';
+            $formError['Occupying'] = 'vous devez mettre que des chiffres dans ce champ';
         }
     } else {
-        $formError['Occupying'] = 'Vous avez oublié de remplire le champs ci-dessous!!';
+        $formError['Occupying'] = 'Vous avez oublié de remplir le champ ci-dessous!!';
     }
     if (!empty($_POST['Mark'])) {
         $AddCar->Mark = htmlspecialchars($_POST['Mark']);
     } else {
-        $formError['Mark'] = 'Vous avez oublié de remplire le champs ci-dessous!!!';
+        $formError['Mark'] = 'Vous avez oublié de remplir le champ ci-dessous!!!';
     }
 
     if (!empty($_POST['Model'])) {
         $AddCar->Model = htmlspecialchars($_POST['Model']);
     } else {
-        $formError['Model'] = 'Vous avez oublié de remplire le champs ci-dessous!!';
+        $formError['Model'] = 'Vous avez oublié de remplir le champ ci-dessous!!';
     }
     if (!empty($_POST['Category'])) {
         $AddCar->Category = htmlspecialchars($_POST['Category']);
     } else {
-        $formError['Category'] = 'Vous avez oublié de remplire le champs ci-dessous!!';
+        $formError['Category'] = 'Vous avez oublié de remplir le champ ci-dessous!!';
     }
     if (!empty($_POST['Classroom'])) {
         $AddCar->Classroom = htmlspecialchars($_POST['Classroom']);
     } else {
-        $formError['Classroom'] = 'Vous avez oublié de remplire le champs ci-dessous!!';
+        $formError['Classroom'] = 'Vous avez oublié de remplir le champ ci-dessous!!';
     }
     if (isset($_SESSION['idUser'])) {
         if (preg_match($regexId, $_SESSION['idUser'])) {
             $AddCar->id_0108ASAP_membres = htmlspecialchars($_SESSION['idUser']);
         } else {
-            $$Error['Session'] = 'Vous n\'est pas reconnue comme utilisateur ';
+            $$Error['Session'] = 'Vous n\'est pas reconnu comme utilisateur ';
         }
     } else {
-        $$Error['Session'] = 'Une erreur importante est arrivé contacter le webMaster via le mail dev.gaetan.jonard@outlook.fr  sujet addCars';
+        $$Error['Session'] = 'Une erreur importante est arrivée, contacter le webMaster via le mail dev.gaetan.jonard@outlook.fr  sujet addCars';
     }
     if (count($formError) == 0) {
         if (count($Error) == 0) {
             $CheckAddCars = $AddCar->AddCars();
             if ($CheckAddCars == true) {
-             $Success['AddCars']='Votre voiture a bien été ajouté!';   
+             $Success['AddCars']='Votre voiture a bien été ajoutée!';   
             } else {
-                $Error['Error']='Une erreur importante est arrivé contacter le webMaster via le mail dev.gaetan.jonard@outlook.fr  sujet addCars';
+                $Error['Error']='Une erreur importante est arrivée contacter le webMaster via le mail dev.gaetan.jonard@outlook.fr  sujet addCars';
             }
         } else {
-            $Error['Error'] = 'Vous avez des erreur dans le formulaire';
+            $Error['Error'] = 'Vous avez des erreurs dans le formulaire';
         }
     } else {
-        $Error['Error'] = 'Vous avez des erreur dans le formulaire';
+        $Error['Error'] = 'Vous avez des erreurs dans le formulaire';
     }
 }
 

@@ -11,7 +11,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
             </div>
             <div class="col-lg-6 ">
-                <h1>Gestion administratif</h1>
+                <h1>Gestion administrative</h1>
             </div>
             <div class="col-lg-3">
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
@@ -28,10 +28,10 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
     <?php if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Responsible)) {
                     ?>
     
-                    <p> ouvrire une compétition à l'inscription <a href="ChoiceOfCompetition.php">ICI</a></p>
+                    <p> ouvrir une compétition à l'inscription <a href="ChoiceOfCompetition.php">ICI</a></p>
                     <p>liste des compétitions <a href="ListOfOpenCompetitons.php">ICI</a></p>
                     <p>Réouvrir une compétition <a href="ListOfcloseCompetition.php">Par ICI</a></p>
-                    <p>Liste des concurrents inscrit aux compétitions <a href="ListOfRegisteredCompetitors.php">ICI</a></p>
+                    <p>Liste des concurrents inscrits aux compétitions <a href="ListOfRegisteredCompetitors.php">ICI</a></p>
     <?php } ?>
 </div>
             </div>

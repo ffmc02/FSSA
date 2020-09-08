@@ -30,8 +30,8 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                     if ($IdCompetition == $OpenCompetition->id) {
                         ?> 
                         <div>
-                            <p>VOus shaitez participez aux  <?= $OpenCompetition->NameOfTheTest ?> compétition de <?= $OpenCompetition->CategoryCompetition ?>  </p>
-                            <p>qui auras lieux à partire du <?= $OpenCompetition->DateOfCompetition ?> à/ aux <?= $OpenCompetition->Location_Circuit ?>. </p>
+                            <p>VOus souhaitez participer à la  <?= $OpenCompetition->NameOfTheTest ?> compétition de <?= $OpenCompetition->CategoryCompetition ?>  </p>
+                            <p>qui aura lieu à partir du <?= $OpenCompetition->DateOfCompetition ?> à/ au <?= $OpenCompetition->Location_Circuit ?>. </p>
 
                         </div>
                         <div>

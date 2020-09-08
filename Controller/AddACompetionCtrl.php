@@ -12,7 +12,7 @@ if (isset($_POST['AddCompetition'])) {
             $AddCompetitionManger->id_0108asap_typeofcompetition = htmlspecialchars($_POST['CatgoryCompetition']);
         }
     } else {
-        $formError['CatgoryCompetition'] = 'Merci de sélectionner le type de championnat dans le champs Catégorie de la compétition';
+        $formError['CatgoryCompetition'] = 'Merci de sélectionner le type de championnat dans le champ Catégorie de la compétition';
     }
     if (!empty($_POST['typeCompetiton'])) {
         if (!empty($_POST['typeCompetiton'])) {
@@ -22,22 +22,22 @@ if (isset($_POST['AddCompetition'])) {
             }
         }
     } else {
-        $formError['typeCompetiton'] = 'MErci de selectrion le type de comp&tion (Rallye etc)';
+        $formError['typeCompetiton'] = 'Merci de sélectionner le type de compétition (Rallye etc)';
     }
     if (!empty($_POST['NameOfCompetion'])) {
         $SportEvent->NameOfTheTest = htmlspecialchars($_POST['NameOfCompetion']);
     } else {
-        $formError['NameOfCompetion'] = 'Merci de remplire le nom de la compétition';
+        $formError['NameOfCompetion'] = 'Merci de remplir le nom de la compétition';
     }
     if (!empty($_POST['Location_Circuit'])) {
         $SportEvent->Location_Circuit = htmlspecialchars($_POST['Location_Circuit']);
     } else {
-        $formError['Location_Circuit'] = 'Merci de remplire le lieu de la compétition';
+        $formError['Location_Circuit'] = 'Merci de remplir le lieu de la compétition';
     }
     if (!empty($_POST['StartOfTheCompetition'])) {
         $SportEvent->DateOfTeste = htmlspecialchars($_POST['StartOfTheCompetition']);
     } else {
-        $formError['StartOfTheCompetition'] = 'Merci de selectionner la date de la compétition ';
+        $formError['StartOfTheCompetition'] = 'Merci de sélectionner la date de la compétition ';
     }
 
     if (!empty($_POST['NumberDaysCompetition'])) {
@@ -46,10 +46,10 @@ if (isset($_POST['AddCompetition'])) {
 
             $SportEvent->NumberDays = htmlspecialchars($_POST['NumberDaysCompetition']);
         } else {
-            $formError['NumberDays'] = 'Merci de ne mettre que des chiffres';
+            $formError['NumberDays'] = 'Merci de mettre que des chiffres';
         }
     } else {
-        $formError['NumberDays'] = 'Merci d\'inscrire le nombre de jour de compétition.';
+        $formError['NumberDays'] = 'Merci d\'inscrire le nombre de jours de compétition.';
     }
     if (!empty($_POST['Observation'])) {
         $SportEvent->Observation = htmlspecialchars($_POST['Observation']);
@@ -67,18 +67,18 @@ if (isset($_POST['AddCompetition'])) {
     if (!empty($_POST['CompetitionStarDay'])) {
         $AddRace->CompetitionStarDay = htmlspecialchars($_POST['CompetitionStarDay']);
     } else {
-        $formError['CompetitionStarDay'] = 'Merci de mettre la date début de de la compétition ';
+        $formError['CompetitionStarDay'] = 'Merci de mettre la date de début de la compétition ';
     }
     if (!empty($_POST['CompetitionEndDay'])) {
         $AddRace->CompetitionEndDay = htmlspecialchars($_POST['CompetitionEndDay']);
     } else {
-        $formError['CompetitionEndDay'] = 'Merci de mettre la date  de fin de la compétition ';
+        $formError['CompetitionEndDay'] = 'Merci de mettre la date de fin de la compétition ';
     }
 
     if (!empty($_POST['RequirementDate1'])) {
         $AddRace->RequirementDate1 = htmlspecialchars($_POST['RequirementDate1']);
     } else {
-        $formError['RequirementDate1'] = 'Merci de mettre la date  de fin de la compétition ';
+        $formError['RequirementDate1'] = 'Merci de mettre la date de fin de la compétition ';
     }
     if (!empty($_POST['RequirementDate2'])) {
         $AddRace->RequirementDate2 = htmlspecialchars($_POST['RequirementDate2']);

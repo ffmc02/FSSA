@@ -51,7 +51,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 <p class="text-danger"><?= isset($formError['AddressUser']) ? $formError['AddressUser'] : '' ?></p>
                             </div>
                             <div>  
-                                <label for="ZipCodeUser"> Votre code postale :</label> 
+                                <label for="ZipCodeUser"> Votre code postal :</label> 
                                 <input id="ZipCodeUser" type="text" name="ZipCodeUser" value="<?= $UserProfils->ZipCode ?>" />
                                 <p class="text-danger"><?= isset($formError['ZipCodeUser']) ? $formError['ZipCodeUser'] : '' ?></p>
                             </div>

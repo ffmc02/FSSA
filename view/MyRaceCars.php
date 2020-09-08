@@ -31,7 +31,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         <thead>
                             <tr>
                                 <th scope="col">Marque</th>
-                                <th scope="col">Modéle</th>
+                                <th scope="col">Modèle</th>
                                 <th scope="col">Groupe</th>
                                 <th scope="col">Classe</th>
                                 <th scope="col">Nombre d'occupants</th>
