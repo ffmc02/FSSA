@@ -170,10 +170,48 @@ class membres {
                 . 'ON `0108asap_functionsummary`.`id_0108asap_member`=`0108asap_membres`.`id` '
                 . 'INNER JOIN `0108asap_functions` '
                 . 'ON `0108asap_functions`.`id`=`0108asap_functionsummary`.`id_0108asap_function` '
-                . 'WHERE `0108asap_functionsummary`.`LicencePrimary`=1';
+                . 'WHERE `0108asap_functionsummary`.`LicencePrimary`=1 ';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->execute();
         return $queryResult->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function AssignAManagerLicense() {
+        $query = 'SELECT `0108asap_membres`.`id` AS `IdMembers`, `Name`, `Firstname`, `0108asap_functions`.`TypeOfLicence`, `0108asap_functionsummary`.`id` AS `IdFunctionSummary` '
+                . 'FROM `0108asap_membres` '
+                . 'INNER JOIN `0108asap_functionsummary`'
+                . ' ON `0108asap_functionsummary`.`id_0108asap_member`=`0108asap_membres`.`id` '
+                . 'INNER JOIN `0108asap_functions` '
+                . 'ON `0108asap_functions`.`id`=`0108asap_functionsummary`.`id_0108asap_function` '
+                . 'WHERE `0108asap_functionsummary`.`LicencePrimary`=1 && `0108asap_functionsummary`.`id`=:id';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $queryResult->execute();
+        return $queryResult->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function ModifyCle() {
+        $query = 'UPDATE `0108asap_membres` SET `Cle`=:Cle WHERE `Email`=:Email';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':Email', $this->Email, PDO::PARAM_STR);
+        $queryResult->bindValue(':Cle', $this->Cle, PDO::PARAM_STR);
+        $queryResult->execute();
+        return $queryResult->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function ModifyPassword() {
+        $query = 'UPDATE `0108asap_membres` SET `Password`= :Password, `Cle`=:Cle WHERE `Email`=:Email';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':Email', $this->Email, PDO::PARAM_STR);
+        $queryResult->bindValue(':Cle', $this->Cle, PDO::PARAM_STR);
+        $queryResult->bindValue(':Password', $this->Password, PDO::PARAM_STR);  
+        return $queryResult->execute();
+    }
+  public function MemberExistEmailAndCle() {
+        $query = 'SELECT COUNT(`Email`) AS MemberExist, `Email`, Cle FROM `0108asap_membres` WHERE `Email`=:Email GROUP BY`Email`, `Cle`';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':Email', $this->Email, PDO::PARAM_STR);
+        $queryResult->execute();
+        return $queryResult->fetch(PDO::FETCH_OBJ);
+    }
 }

@@ -46,6 +46,9 @@ include_once '../Include/Navbar.php';
                     </div>
                 </form>
                 <div>
+                    <p> Vous avez oubliez votre<a href="ForgottenPassword.php"> mot de passe </a></p>
+                </div>
+                <div>
                     <br>
                     <br>
                     <br>

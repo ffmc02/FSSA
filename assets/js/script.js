@@ -48,16 +48,19 @@ $("#InscriptionUser").submit(function (e) {
             AddressError = 'Vous n\'avez pas rempli votre adresse',
             ZipCodeError1 = 'Merci de mettre uniquement des chiffres ',
             ZipCodeError2 = 'Vous n\'avez pas rempli votre code postal',
+            ZipCodeError3 = 'Merci de metre 5 chiffres!!!!!',
             CityError = 'Vous n\'avez pas rempli votre ville',
             PasswordError1 = 'Attention, les mots de passe ne sont pas identiques.',
             PasswordError2 = 'Merci de remplir le mots de passe',
             PasswordError3 = 'Merci de remplir la confirmation du mot de passe',
             AsaCodeError = 'Merci de remplir votre numéros d\'ASA',
             AsaCodeError2 = 'Merci de mettre uniquement des chiffres dans votre numéro ASA',
+            AsaCodeError3='Merci de metre  4 chiffres!!!!',
             AsaNameError = 'Vous n\'avez pas rempli votre Nom de votre ASA',
             AsaNameError2 = 'Veuillez mettre que des caractères alphabétiques!!!!!!!!!!',
             LicenceNumberError2 = 'Merci de mettre que des chiffres dans le champ Nuéro de licence',
             LicenceNumberError = 'Merci de remplir le champ Numéro de licence',
+            LicenceNumberError3 = 'Merci de metre  6 chiffres!!!!',
             messageRest = '';
 //  On verifie les champs coté utilisateur
 //champs Nom
@@ -101,9 +104,20 @@ $("#InscriptionUser").submit(function (e) {
     } else if (!RegexId.test(ZipCodeUser)) {
         envoi = false;
         $('#ErrorZipCode').text(ZipCodeError2);
-    } else {
+    } else if ($("#ZipCodeUser").val().length > 5) {
+        envoi = false;
+        $('#ErrorZipCode').text(ZipCodeError3);
+    }  else if ($("#ZipCodeUser").val().length < 5) {
+        envoi = false;
+        $('#ErrorZipCode').text(ZipCodeError3);
+    } 
+    else {
         $('#ErrorZipCode').text(messageRest);
     }
+//    $(  ).on('input', function() {
+//           alert('you have reached a limit of 3');       
+//       }
+//});
     //Champs Ville
     if (City == '') {
         envoi = false;
@@ -133,7 +147,13 @@ $("#InscriptionUser").submit(function (e) {
     } else if (!RegexId.test(AsaCode)) {
         envoi = false;
         $('#ErrorAsaCode').text(AsaCodeError2);
-    } else {
+    }else if ($("#AsaCode").val().length > 4) {
+        envoi = false;
+        $('#ErrorAsaCode').text(AsaCodeError3);
+    }  else if ($("#AsaCode").val().length < 4) {
+        envoi = false;
+        $('#ErrorAsaCode').text(AsaCodeError3);
+    }  else {
         $('#ErrorAsaCode').text(messageRest);
     }
     //Chmpas du nom de l'ASA
@@ -153,7 +173,13 @@ $("#InscriptionUser").submit(function (e) {
     } else if (!RegexId.test(LicenceNumber)) {
         envoi = false;
         $('#ErrorLicenceNumber').text(LicenceNumberError2);
-    } else {
+    }else if ($("#LicenceNumber").val().length > 6) {
+        envoi = false;
+        $('#ErrorLicenceNumber').text(LicenceNumberError3);
+    }  else if ($("#LicenceNumber").val().length < 6) {
+        envoi = false;
+        $('#ErrorLicenceNumber').text(LicenceNumberError3);
+    }  else {
         $('#ErrorLicenceNumber').text(messageRest);
     }
     if (envoi != true) {
@@ -172,24 +198,24 @@ $("#ConnexionForm").submit(function (e) {
             EmailError = 'Vous n\'avez pas rempli votre adresse mail',
             PasswordError = 'Merci de remplir le mots de passe',
             messageRest = '';
-            // Verification des champs remplis par l'utilisateur
-        // Champs Email
-         if(LoginMailUser==''){
-           envoi = false; 
+    // Verification des champs remplis par l'utilisateur
+    // Champs Email
+    if (LoginMailUser == '') {
+        envoi = false;
         $('#ErrorMailUserConnect').text(EmailError);
-        }else{
-            $('#ErrorMailUserConnect').text(messageRest);
-        }
-        // chmaps mot de passe 
-        if(LoginPasswordUser==''){
-           envoi = false; 
+    } else {
+        $('#ErrorMailUserConnect').text(messageRest);
+    }
+    // chmaps mot de passe 
+    if (LoginPasswordUser == '') {
+        envoi = false;
         $('#ErrorPasswordUserConnecte').text(PasswordError);
-        }else{
-            $('#ErrorPasswordUserConnecte').text(messageRest);
-        }
-        if (envoi != true) {
+    } else {
+        $('#ErrorPasswordUserConnecte').text(messageRest);
+    }
+    if (envoi != true) {
         alert('erreur dans un champ merci de vous reporter à  la ligne en rouge!:!');
         return false;
         e.preventDefault();
-    } 
+    }
 });

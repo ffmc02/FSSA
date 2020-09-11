@@ -26,19 +26,13 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                     <h2>Vous désirez assigner un nouveau responsable ou président d'ASA remplissez le formulaire suivant:</h2>
                 </div>
                 <div>
+                    <p>Vous soitez donner à <?= $DisplayAccrdinToLicense->Name?>,  <?= $DisplayAccrdinToLicense->Firstname?> une fonction de responsable, Choississez dans la liste suivante </p>
+                    
+                </div>
+                <div>
                     <form id="AssignAManagerLicence" method="POST" name="AssignAManagerLicence">
                         <div>
-                            <label for="Members">Choississez le membres</label>
-                            <select class="custom-select custom-select-sm" id="Members"  name="Member">
-                                 <option selected="">Choissez dans la liste suivante </option>
-                                 <?php
-                                     foreach ($AssignAManagerLicence as $assignAManager){
-                                 ?>
-                                 <option value="<?= $assignAManager->id ?>"><?= $assignAManager->Name?>, <?= $assignAManager->Firstname ?></option>
-                                 <?php 
-                                     }
-                                     ?>
-                            </select>
+                            <input type="hidden" value="<?= $IdLicenceSummaryUser ?>" name="IdLicenceSummary" />
                         </div>
                         <div>
                             <label for="PrimaryLicense">Choisir la nouvelle licence</label>
@@ -46,7 +40,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <option selected="">Choissez dans la liste suivante </option>
                             <?php
                             foreach ($listerFunctions as $FunctionList) {
-                                if ($FunctionList->id != 155 && $FunctionList->id != 1 && $FunctionList->id != 2 &&  $FunctionList->id != 3 && $FunctionList->id != 4
+                                if ($FunctionList->id != 1 && $FunctionList->id != 2 &&  $FunctionList->id != 3 && $FunctionList->id != 4
                                       && $FunctionList->id !=5 && $FunctionList->id !=6  && $FunctionList->id !=7 && $FunctionList->id !=8 && $FunctionList->id !=9 && $FunctionList->id !=10
                                    && $FunctionList->id !=11 && $FunctionList->id !=15  && $FunctionList->id !=16 && $FunctionList->id !=17 && $FunctionList->id !=18) {
                                     ?>
@@ -64,7 +58,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 </div>
             </div>
             <div class="col-lg-1 rigthColumm">
-                <a href="HomeLogin.php"><button>Retour</button></a>
+                <a href="ListOfregistridedMembers.php"><button>Retour</button></a>
             </div>
         </div>
     </div>

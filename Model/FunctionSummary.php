@@ -135,4 +135,12 @@ class FunctionSummary {
         return $queryResult->execute();
     }
 
+    public function LicenseModifyByTheManagement() {
+        $query = 'UPDATE `0108asap_functionsummary` SET `id_0108asap_function`=:id_0108asap_function WHERE `id`=:id';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $queryResult->bindValue(':id_0108asap_function', $this->id_0108asap_function, PDO::PARAM_INT);
+        return $queryResult->execute();
+    }
+
 }

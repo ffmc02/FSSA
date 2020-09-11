@@ -65,10 +65,18 @@ if (isset($_POST['validate'])) {
         $formError['AddressUser'] = 'Vous n\'avez pas rempli votre adresse';
     }
     if (!empty($_POST['ZipCodeUser'])) {
-        if(preg_match($regexId,$_POST['ZipCodeUser'])){
-            $Member->ZipCode = htmlspecialchars($_POST['ZipCodeUser']);
+        if (preg_match($regexId, $_POST['ZipCodeUser'])) {
+             if (strlen($_POST['ZipCodeUser']) > 5) {
+                  if (strlen($_POST['ZipCodeUser']) < 5) {
+                       $Member->ZipCode = htmlspecialchars($_POST['ZipCodeUser']);
+                  } else {
+                      $formError['ZipCodeUser'] ='Vous devez mettre 5 chiffres';
+                  }
+             } else {
+                   $formError['ZipCodeUser'] ='Vous devez mettre 5 chiffres';
+             }
         } else {
-             $formError['ZipCodeUser']='Merci de mettre uniquement des chiffres ';
+            $formError['ZipCodeUser'] = 'Merci de mettre uniquement des chiffres ';
         }
     } else {
         $formError['ZipCodeUser'] = 'Vous n\'avez pas rempli votre code postal';
@@ -89,7 +97,15 @@ if (isset($_POST['validate'])) {
     }
     $Member->Cle = $cle;
     if (!empty($_POST['AsaCode'])) {
-        $Member->AsaCode = htmlspecialchars($_POST['AsaCode']);
+        if (strlen($_POST['AsaCode']) > 4) {
+            if (strlen($_POST['AsaCode']) < 4) {
+                $Member->AsaCode = htmlspecialchars($_POST['AsaCode']);
+            } else {
+                $formError['AsaCode'] = 'Vous devez Metre 4 chiffres ';
+            }
+        } else {
+            $formError['AsaCode'] = 'Vous devez Metre 4 chiffres ';
+        }
     } else {
         $formError['AsaCode'] = 'Vous n\'avez pas rempli votre numéro d\'ASA';
     }
@@ -106,7 +122,15 @@ if (isset($_POST['validate'])) {
     }
     if (!empty($_POST['LicenceNumber'])) {
         if (preg_match($regexId, $_POST['LicenceNumber'])) {
-            $License->LicenceNumber = htmlspecialchars($_POST['LicenceNumber']);
+            if (strlen($_POST['LicenceNumber']) > 6) {
+                if (strlen($_POST['LicenceNumber']) < 6) {
+                      $License->LicenceNumber = htmlspecialchars($_POST['LicenceNumber']);
+                } else {
+                    $formError['LicenceNumber'] ='VOus devez mettre 6 chiffres!';
+                }
+            } else {
+                    $formError['LicenceNumber'] ='VOus devez mettre 6 chiffres!';
+            }
         } else {
             $formError['LicenceNumber'] = 'Merci de mettre que des chiffres dans le champ Nuéro de licence';
         }
@@ -124,7 +148,8 @@ if (isset($_POST['validate'])) {
             if ($chekMembre == true) {
                 $_SESSION['TemporyloginMail'] = $TemporaryEmail;
                 $_SESSION['TemporyName'] = $TemporaryName;
-                $_SESSION['TemporyLicenceNumber'] = $LicenseTemporary;                $_POST['connexion'] = '';
+                $_SESSION['TemporyLicenceNumber'] = $LicenseTemporary;
+                $_POST['connexion'] = '';
                 $_POST['LoginNameUseer'] = $_POST['NameUser'];
                 $_POST['LoginMailUser'] = $_POST['EmailUser'];
                 $_POST['LoginPasswordUser'] = $_POST['PasswordUser'];
@@ -134,10 +159,10 @@ if (isset($_POST['validate'])) {
                 $formError['Technical'] = 'une erreur est survenue';
             }
         } else {
-             $formError['MeessageMemberExist']='vous avez des erreurs dans le formulaires';
+            $formError['MeessageMemberExist'] = 'vous avez des erreurs dans le formulaires';
         }
     } else {
-       $formError['MeessageMemberExist']='L\'adresse mail que vous avez choisie est déja Utlisé merci d\'utiliser une autre adresse mail!';
+        $formError['MeessageMemberExist'] = 'L\'adresse mail que vous avez choisie est déja Utlisé merci d\'utiliser une autre adresse mail!';
     }
 }
 // partie connection ----------------------------------------------------------------------------------------------
@@ -192,7 +217,7 @@ if (isset($_POST['connection'])) {
                 if (in_array($_SESSION['access'], $Function)) {
                     header("Location: HomeLogin.php");
                 } else {
-                    header("Location: ../index.php");
+                    header("Location:index.php");
                 }
             } else {
                 $formError['LoginPasswordUser'] = 'ERREUR DE MOT DE PASSE';

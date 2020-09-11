@@ -40,7 +40,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 <th scope="row"><?= $AssignAManger->Name ?></th>
                                 <td><?= $AssignAManger->Firstname ?></td>
                                 <td><?= $AssignAManger->TypeOfLicence ?></td>
-                                <td><a href="AssignAManagerLicence.php?IdSummRyLicense=<?=$AssignAManger->IdFunctionSummary?>">ICI</a></td>
+                                <td><a href="AssignAManagerLicence.php?IdSummryLicense=<?=$AssignAManger->IdFunctionSummary?>">ICI</a></td>
                             </tr>
                             <?php
                         }
