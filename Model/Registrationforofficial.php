@@ -66,6 +66,8 @@ class Registrationforofficial {
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':id_0108asap_membres', $this->id_0108asap_membres, PDO::PARAM_INT);
         return $queryResult->execute();
+        $queryResult->execute();
+        return $queryResult->fetch(PDO::FETCH_OBJ);
     }
 
     public function DisplayRegistredOfficial() {
@@ -75,7 +77,8 @@ class Registrationforofficial {
                 . 'DATE_FORMAT(`0108asap_rally`. `DatePcNeed3`,\'%d/%m/%Y\') AS `BesoinPC3`, '
                 . ' DATE_FORMAT(`0108asap_rally`. `DateNeedForTheCommissioner1`,\'%d/%m/%Y\') AS `BesoinSite1`,'
                 . ' DATE_FORMAT(`0108asap_rally`. `DateNeedForTheCommissioner2`,\'%d/%m/%Y\') AS `BesoinSite2`, '
-                . 'DATE_FORMAT(`0108asap_rally`. `DateNeedForTheCommissioner3`,\'%d/%m/%Y\') AS `BesoinSite3`, '
+                . 'DATE_FORMAT(`0108asap_rally`. `DateNeedForTheCommissioner3`,\'%d/%m/%Y\') AS `BesoinSite3`,'
+                . 'DATE_FORMAT(`0108asap_sportsevents`. `DateOfTeste`,\'%d/%m/%Y\') AS `StartDate`,'
                 . ' `ResponseDatePcNeed1`, '
                 . '`ResponseDatePcNeed2`, '
                 . '`ResponseDatePcNeed3`, '
@@ -86,6 +89,7 @@ class Registrationforofficial {
                 . '`0108asap_functions`.`TypeOfLicence`, '
                 . '`0108asap_registrationforofficials`.`id_0108asap_competiton`, '
                 . ' `0108asap_sportsevents`.`NameOfTheTest`, '
+                . '`id_0108asap_membres` AS `IdMembers`, '
                 . '`0108asap_membres`.`Name`,'
                 . ' `0108asap_membres`.`Firstname`, '
                 . '`0108asap_sportsevents`.`Location_Circuit`,'
@@ -105,7 +109,8 @@ class Registrationforofficial {
                 . 'INNER JOIN `0108asap_typeofcompetition`'
                 . ' ON `0108asap_typeofcompetition`.`id`=`0108asap_competiton`.`id_0108asap_typeofcompetition`'
                 . ' INNER JOIN `0108asap_rally` '
-                . 'ON `0108asap_rally`.`id_0108asap_competiton`= `0108asap_competiton`.`id`';
+                . 'ON `0108asap_rally`.`id_0108asap_competiton`= `0108asap_competiton`.`id`'
+                . '';
 
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->execute();

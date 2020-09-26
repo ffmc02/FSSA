@@ -50,7 +50,7 @@ include_once 'Controller/IndexCtrl.php';
                     </li>
                 <?php } ?>
                 <li class="nav-item active">
-                    <a class="nav-link" href="logout.php"> <img src="https://img.icons8.com/metro/26/000000/logout-rounded-up.png"/> <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="view/Logout.php"> <img src="https://img.icons8.com/metro/26/000000/logout-rounded-up.png"/> <span class="sr-only">(current)</span></a>
                 </li>
             <?php } else { ?>
                 <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
@@ -84,7 +84,7 @@ include_once 'Controller/IndexCtrl.php';
         <div class="row">
             <div class="col-lg-3 leftColumm">
                  <?php if (isset($_SESSION['connect'])) { ?>
-                <p>Les prochaines épreuves <a href="view/RallyOpenToRegistration.php">Par ici</a></p>
+                <p>Les prochaines épreuves <a href="view/ListOfOpenCompetitons.php">Par ici</a></p>
                 <p>Liste des épreuves où vous êtes <a href="view/ParticipationAgreement.php">inscrits</a></p>
                  <?php } else {?>
                 

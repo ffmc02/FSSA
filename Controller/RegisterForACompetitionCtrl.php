@@ -126,7 +126,7 @@ if ($Demande == 'Officiel') {
                 $AddOfficalForCompetition->AvaibleDateNeedForTheCommissioner3 = 'NON';
             }
             if (!empty($_POST['Accommodation'])) {
-                $AddOfficalForCompetition->Accommodation = htmlspecialchars($_POST['BesoinPC3']);
+                $AddOfficalForCompetition->Accommodation = htmlspecialchars($_POST['Accommodation']);
             } else {
                 $formError['Accommodation'] = 'merci de remplir si vous avez besoin d\'un hébergement';
             }

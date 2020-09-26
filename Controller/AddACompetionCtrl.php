@@ -120,8 +120,3 @@ $DisplayListOfCompetitions = $ListOfCompetitions->ListTypeOfCompetiton();
 //liste des categorie de compétion 
 $listCategoryCompetition = new CategoryCompetition();
 $DisplayCategoryCompetion = $listCategoryCompetition->DisplayCategoryCompetition();
-//   if(!empty($_POST[''])){
-//        
-//    } else {
-//    $formError['']='';
-//    }

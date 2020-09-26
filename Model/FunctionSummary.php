@@ -47,7 +47,7 @@ class FunctionSummary {
     }
 
     public function VerifLicense() {
-        $query = 'SELECT COUNT(`id_0108asap_member`)WHERE `id_0108asap_member`=:id0108asap_member';
+        $query = 'SELECT COUNT(`id_0108asap_member`), `LicenceNumber, WHERE `id_0108asap_member`=:id0108asap_member';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':id0108asap_member', $this->id0108asap_member, PDO::PARAM_INT);
         $queryResult->execute();

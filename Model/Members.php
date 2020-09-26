@@ -15,10 +15,10 @@ class membres {
     public $Password = '';
     public $Cle = '';
     public $Address = '';
-    public $ZipCode = 0;
+    public $ZipCode = '0';
     public $City = '';
     public $AsaCode = '0';
-    public $AsaName = '0';
+    public $AsaName = '';
     public $Actif = false;
     public $id_0108asap_functions = 0;
     public $PliotID = 0;
@@ -49,7 +49,7 @@ class membres {
         $queryResult->bindValue(':Cle', $this->Cle, PDO::PARAM_STR);
         $queryResult->bindValue(':Actif', $this->Actif, PDO::PARAM_STR);
         $queryResult->bindValue(':Address', $this->Address, PDO::PARAM_STR);
-        $queryResult->bindValue(':ZipCode', $this->ZipCode, PDO::PARAM_INT);
+        $queryResult->bindValue(':ZipCode', $this->ZipCode, PDO::PARAM_STR);
         $queryResult->bindValue(':City', $this->City, PDO::PARAM_STR);
         $queryResult->bindValue(':AsaCode', $this->AsaCode, PDO::PARAM_STR);
         $queryResult->bindValue(':AsaName', $this->AsaName, PDO::PARAM_STR);
@@ -61,7 +61,7 @@ class membres {
     }
 
     public function ConnexionMembers() {
-        $query = 'SELECT COUNT(`id`)AS `CountMembers` , `id`, `Name`, `Firstname`, `Email`, `Password`,`AsaName`,`AsaCode`FROM `0108asap_membres`'
+        $query = 'SELECT `id` AS `CountMembers` , `id`, `Name`, `Firstname`, `Email`, `Password`,`AsaName`,`AsaCode`FROM `0108asap_membres`'
                 . 'WHERE `Email`= :Email '
                 . 'GROUP BY `id`, `Email`, `Name`, `Firstname`, `Password`,`AsaCode`,`AsaName`'
                 . '';
@@ -72,11 +72,15 @@ class membres {
     }
 
     public function MemberExist() {
-        $query = 'SELECT COUNT(`Email`) AS MemberExist FROM `0108asap_membres` WHERE `Email`=:Email';
+        $query = 'SELECT `Email` AS MemberExist FROM `0108asap_membres` WHERE `Email`=:Email';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':Email', $this->Email, PDO::PARAM_STR);
         $queryResult->execute();
-        return $queryResult->fetch(PDO::FETCH_OBJ);
+        if ($queryResult->rowCount() == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function MemberProfile() {
@@ -204,14 +208,26 @@ class membres {
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':Email', $this->Email, PDO::PARAM_STR);
         $queryResult->bindValue(':Cle', $this->Cle, PDO::PARAM_STR);
-        $queryResult->bindValue(':Password', $this->Password, PDO::PARAM_STR);  
+        $queryResult->bindValue(':Password', $this->Password, PDO::PARAM_STR);
         return $queryResult->execute();
     }
-  public function MemberExistEmailAndCle() {
+
+    public function MemberExistEmailAndCle() {
         $query = 'SELECT COUNT(`Email`) AS MemberExist, `Email`, Cle FROM `0108asap_membres` WHERE `Email`=:Email GROUP BY`Email`, `Cle`';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':Email', $this->Email, PDO::PARAM_STR);
         $queryResult->execute();
         return $queryResult->fetch(PDO::FETCH_OBJ);
     }
+
+    public function FunctionOfUser() {
+        $query = 'SELECT `id_0108asap_functions`,`TypeOfLicence`, 0108asap_functions.`id` AS `IdFunction` FROM `0108asap_membres` INNER JOIN 0108asap_functions ON 0108asap_membres.`id_0108asap_functions`=0108asap_functions.`id` WHERE 0108asap_membres.`id`=:id GROUP BY `TypeOfLicence`, `id_0108asap_functions`';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':id', $this->id, PDO::PARAM_INT);
+//         $queryResult->debugDumpParams();
+//    die();
+        $queryResult->execute();
+        return $queryResult->fetch(PDO::FETCH_OBJ);
+    }
+
 }

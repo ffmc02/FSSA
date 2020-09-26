@@ -9,6 +9,16 @@ $MembersProfile = $Profil->MemberProfile();
 if (isset($_SESSION['idUser'])) {
     $RegisteredId = $_SESSION['idUser'];
 }
+$Profil = new membres();
+$MembersProfile = $Profil->MemberProfile();
+if(isset($_SESSION['idUser'])){
+$RegisteredId = $_SESSION['idUser'];
+}
+$ListOfLicense= new FunctionSummary();
+$ListLicences= $ListOfLicense->DisplayOfAllLicenses();
+
+$ListPrimaryLicenses=new FunctionSummary();
+$PrmaryLicensesUsed= $ListPrimaryLicenses->PrimaryLicensesUsed();
 
 //liste de fonction 
 $FonctionList = new functions();

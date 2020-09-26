@@ -27,7 +27,7 @@ include_once '../Include/Navbar.php';
             <div class="connection" id="connection">
                 <h2>Formulaire de connexion</h2>
                 <div>
-                    <p class="text-danger"><?= isset($$UserNotRegistred) ? $$UserNotRegistred : '' ?></p>
+                    <p class="text-danger"><?= isset($UserNotRegistred) ? $UserNotRegistred : '' ?></p>
                     <p class="text-danger"><?= isset($formError['Technical']) ? $formError['Technical'] : '' ?></p>
                 </div>
                 <form method="post" id="ConnexionForm">

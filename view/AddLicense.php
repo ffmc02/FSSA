@@ -25,30 +25,31 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
             </div>
             <div class="col-lg-6 centralColumm">
                 <div>
-                    <p class="text-primary"><?= isset($Message) ? $Message : '' ?></p>
+                    <p class="text-success"><?= isset($Message) ? $Message : '' ?></p>
                     <p class="text-danger"><?= isset($MessageError) ? $MessageError : '' ?></p>
                 </div>
                 <div class="Licences">
                     <h2>Vous avez comme licence principale </h2>
                     <?php
-                    foreach ($MembersProfile as $MemberDetail) {
-                        $IdProfile = $MemberDetail->IdMembers;
+                    foreach ($PrmaryLicensesUsed as $PrimaryLicencesList) {
+                        $IdProfile = $PrimaryLicencesList->IdMembers;
                         if ($IdProfile == $RegisteredId) {
                             ?>
-                            <p><?= $MemberDetail->TypeOfLicence ?></p>
+                            <p>Vous avez la fonction  <?= $PrimaryLicencesList->TypeOfLicence ?></p>
                             <?php
                         }
                     }
                     ?>
                 </div>
                 <div class="Licences">
-                    <p>Vous avez comme licence secondaire la ou les license de </p>
+                   
                     <?php
                     foreach ($ListLicences as $MemberDetail) {
                         $IdProfile = $MemberDetail->IdMembers;
                         $IdSummary = $MemberDetail->IdSummary;
                         if ($IdProfile == $RegisteredId) {
                             ?>
+                    <p>Vous avez comme licence secondaire la ou les license de </p>
                             <p><?= $MemberDetail->TypeOfLicence ?></p>
                             <p>Avec le Numéro <?= $MemberDetail->SecondaryLicense ?></p>
                             <p>Modifier cette <a href="ModifyMyLicences.php?IdLicence=<?= $IdSummary ?>">Licence</a></p>
